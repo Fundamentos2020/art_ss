@@ -1,0 +1,110 @@
+/*
+    Pagina destinada a poner los estilos generales que todas las paginas de html del sistema tendran
+*/
+
+/*Menu horizontal superior*/
+
+.top-menu {
+    display: block;
+    background-color: black;
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    right: auto;
+}
+
+.left-menu {
+    display: block;
+    background-color: black;
+    height: 100%;
+    width: 70px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    transition: width 0.2s;
+}
+
+#search-in {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    height: 25px;
+    width: 30%;
+    border-radius: 5px;
+}
+
+.fa {
+    color: white;
+    padding-right: 15px;
+}
+
+.left-menu:hover{
+    display: block;
+    background-color: black;
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+}
+
+ul#menu-item {
+    display: none;
+    list-style-type: none; 
+    padding: 5%; 
+    color: white;
+}
+
+.left-menu:hover > #menu-item {
+    display: block;
+    list-style-type: none; 
+    color: white;
+    padding: 5%; 
+}
+
+.item {
+    padding: 10px;
+}
+
+.left-menu:hover > #menu-item-icon {
+    display: none;
+    list-style-type: none; 
+    color: white;
+    padding: 10px;
+}
+
+#menu-item-icon {
+    list-style-type: none;
+    padding: 15px;
+}
+
+#items{
+    padding-left: 25px;
+}
+
+.img-logo {
+    position: fixed;
+    top: 5px;
+    left: 10px;
+}
+
+.search-user {
+    position: fixed;
+    left: 50%;
+    width: 100%;
+    height: 60px;
+}
+
+.fa-user {
+    position: fixed;
+    left: 95%;
+    padding: 20px;
+}
+
+.fa-cart-plus {
+    position: fixed;
+    left: 90%;
+    padding: 20px;
+}

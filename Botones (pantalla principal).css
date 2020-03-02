@@ -1,0 +1,115 @@
+* {
+    border: 0px;
+    font-family: 'Agency FB';
+}
+
+.text1 {
+    font-size: 50px;
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.text2_b {
+    font-size: 45px;
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.text2_w {
+    font-size: 45px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.top2_4 {
+    height: 410px;
+    width: 360px;
+    background-position: center;
+    background-size: 500px;
+    text-align: left;
+    font-size: 75px;
+    transition: background-size 1s;
+}
+
+.top2_4:hover {
+    background-size: 700px;
+}
+
+
+.text3_b {
+    font-size: 30px;
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.text3_w {
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.top5_10 {
+    height: 205px;
+    width: 360px;
+    background-position: center;
+    background-size: 400px;
+    text-align: right;
+    font-size: 60px;
+    transition: background-size 1s;
+}
+
+.top5_10:hover {
+    background-size: 550px;
+}
+
+#top1 {
+    background-image: url("01 dog - playback & quick EQ.jpg");
+    background-size: 750px;
+    width: 727px;
+    height: 410px;
+    text-align: left;
+    font-size: 80px;
+    transition: background-size 1s;
+}
+
+#top1:hover {
+    background-size: 900px;
+}
+
+#top2 {
+    background-image: url("1-photoshop-art-illustration-by-rikoostenbroek.jpg");
+    color: white;
+}
+
+#top3 {
+    background-image: url("3d-abstract-digital-art-photo-manipulation-photoshop-wallpaper-preview.jpg");
+    color: white;
+}
+
+#top4 {
+    background-image: url("04.jpg");
+    color: black;
+}
+
+#top5 {
+    background-image: url("7-paisajes-tan-hermosos-que-no-parecen-de-este-mundo-964x640.jpg");
+    color: white;
+}
+
+#top6 {
+    background-image: url("18-graphic-art-photoshop.jpg");
+    color: white;
+}
+
+#top7 {
+    background-image: url("3948ffa0c660a572d48e125d37065cb9cf2fdae9.jpeg");
+}
+
+#top8 {
+    background-image: url("86167014daefbe82bd3a5f1469503cd274f151dbr1-310-310v2_uhq.jpg");
+}
+
+#top9 {
+    background-image: url("b2c1e8a6adec67f4fb13ccb7da9e7ecd.jpg");
+    color: white;
+}
+
+#top10 {
+    background-image: url("Captura.png");
+    color: white;
+}
