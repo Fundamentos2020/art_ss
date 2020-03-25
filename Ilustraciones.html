@@ -43,24 +43,39 @@
                 <br>
                 Precio
             </div>
-            <input class="pad1" type="radio" checked>Cualquier precio
+            <p>
+                <input class="pad1" name="price" type="radio" onclick="block()" checked>Cualquier precio
+                <br>
+                <input class="pad1" name="price" type="radio" onclick="block()" id="filter">Establecer rango de precio
+            </p>
+            <!--Bloquear-->
             <div class="pad1">
-                <input type="radio">Establecer rango de precio
-            </div>
-            <!--Bloquear
-                Establecer que el min. no sea mayor que el max., y viceversa-->
-            <div class="pad1">
-                Maximo<input type="number" min="1">
+                Maximo<input type="number" min="1" id="Ma" oninput="getMax(this.value)" disabled>
             </div>
             <div class="pad1" style="padding-left: 0.25em;">
-                Minimo<input type="number" min="0">
+                Minimo<input type="number" min="0" id="Mi" disabled>
             </div>
+            <script>
+                function getMax(val) {
+                    document.getElementById('Mi').setAttribute('max', val-1);
+                }
+
+                function block() {
+                    if(document.getElementById('filter').checked) {
+                        document.getElementById('Ma').disabled=false;
+                        document.getElementById('Mi').disabled=false;
+                    }
+                    else {
+                        document.getElementById('Ma').disabled=true;
+                        document.getElementById('Mi').disabled=true;
+                    }
+                }
+            </script>
         </div>
     </div>
     <div class="col-m_9p5 col_12">
         <div class="col-m_3 col_12">
-            <div class="t1">
-                
+            <div class="t1 fondo" id="i1">
             </div>
             <div class="t2 l-name">
                 Dog
@@ -87,8 +102,7 @@
             </div>
         </div>
         <div class="col-m_3 col_12">
-            <div class="t1">
-                
+            <div class="t1 fondo" id="i2">
             </div>
             <div class="t2 l-name">
                 Ghost
@@ -115,8 +129,7 @@
             </div>
         </div>
         <div class="col-m_3 col_12">
-            <div class="t1">
-                
+            <div class="t1 fondo" id="i3">
             </div>
             <div class="t2 l-name">
                 Woman
@@ -143,8 +156,7 @@
             </div>
         </div>
         <div class="col-m_3 col_12">
-            <div class="t1">
-                
+            <div class="t1 fondo" id="i4">
             </div>
             <div class="t2 l-name">
                 Beauty
@@ -171,8 +183,7 @@
             </div>
         </div>
         <div class="col-m_3 col_12">
-            <div class="t1">
-                
+            <div class="t1 fondo" id="i5">
             </div>
             <div class="t2 l-name">
                 Smaug

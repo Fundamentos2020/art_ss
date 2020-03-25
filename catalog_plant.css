@@ -86,6 +86,7 @@
 
 .pad1 {
     padding-top: 0.5em;
+    width: max-content;
 }
 
 .pad2 {
@@ -111,4 +112,31 @@
 
 .t3 {
     height: 25px;
+}
+
+.fondo {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: solid white 20px;
+}
+
+#i1 {
+    background-image: url("01 dog - playback & quick EQ.jpg");
+}
+
+#i2 {
+    background-image: url("1-photoshop-art-illustration-by-rikoostenbroek.jpg");
+}
+
+#i3 {
+    background-image: url("3d-abstract-digital-art-photo-manipulation-photoshop-wallpaper-preview.jpg");
+}
+
+#i4 {
+    background-image: url("04.jpg");
+}
+
+#i5 {
+    background-image: url("18-graphic-art-photoshop.jpg");
 }
