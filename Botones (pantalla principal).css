@@ -1,37 +1,98 @@
-.button_font {
+* {
     border: 0px;
     font-family: 'Agency FB';
+    box-sizing: border-box;
 }
 
-.text1 {
-    font-size: 50px;
-    color: rgba(0, 0, 0, 0.55);
+@media (min-width: 0px) {
+    .col_1 {
+        width: 8.33%;
+        height: 40px;
+    }
+    .col_1p5{width: 12.5%;}
+    .col_2{width: 16.66%;}
+    .col_2p5{width: 20%;}
+    .col_3{width: 25%;}
+    .col_4{width: 33.33%;}
+    .col_5{width: 41.66%;}
+    .col_5p5{width: 49%;}
+    .col_6{width: 50%;}
+    .col_7{width: 58.33%;}
+    .col_8{width: 66.66%;}
+    .col_9{width: 75%;}
+    .col_10{width: 83.33%;}
+    .col_11 {
+        width: 91.66%;
+        height: 230px;
+    }
+    .col_12{
+        width: 100%;
+        height: 230px;
+    }
+
+    .textS1-b{font-size: 55px;}
+    .textS2-b{font-size: 30px;}
 }
+
+@media (min-width: 768px) {
+    .col-m_1{width: 8.33%;}
+    .col-m_1p5{width: 12.5%;}
+    .col-m_2{width: 16.66%;}
+    .col-m_2p5{width: 20%;}
+    .col-m_2p75{width: 20.83%;}
+    .col-m_3{width: 25%;}
+    .col-m_4{width: 33.33%;}
+    .col-m_5{width: 41.66%;}
+    .col-m_6{width: 50%;}
+    .col-m_7{width: 58.33%;}
+    .col-m_8{width: 66.66%;}
+    .col-m_9{width: 75%;}
+    .col-m_9p5{width: 80%;}
+    .col-m_10{width: 83.33%;}
+    .col-m_11{width: 91.66%;}
+    .col-m_12{width: 100%;}
+
+    .alt1{height: 410px;}
+    .alt2{height: 205px;}
+
+    .textS1-a{font-size: 90px;}
+    .textS2-a{font-size: 60px;}
+    .textS3-a{font-size: 40px;}
+    .textS4-a{font-size: 30px;}
+}
+
+[class*="col_"] {
+    float: left;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.textC1{color: rgba(0, 0, 0, 0.55);}
+.textC2{color: rgba(255, 255, 255, 0.75);}
 
 .text2_b {
     font-size: 45px;
-    color: rgba(0, 0, 0, 0.55);
+    color: rgba(0, 0, 0, 0.418);
 }
 
-.text2_w {
-    font-size: 45px;
-    color: rgba(255, 255, 255, 0.75);
+[class*="top"] {
+    border: solid white;
 }
 
 .top2_4 {
-    height: 410px;
-    width: 360px;
     background-position: center;
-    background-size: 500px;
+    background-size: 150%;
     text-align: left;
-    font-size: 75px;
     transition: background-size 1s;
 }
 
 .top2_4:hover {
-    background-size: 700px;
+    background-size: 220%;
 }
-
 
 .text3_b {
     font-size: 30px;
@@ -44,31 +105,27 @@
 }
 
 .top5_10 {
-    height: 205px;
-    width: 360px;
     background-position: center;
-    background-size: 400px;
+    background-size: 120%;
     text-align: right;
-    font-size: 60px;
     transition: background-size 1s;
 }
 
 .top5_10:hover {
-    background-size: 550px;
+    background-size: 150%;
 }
 
 #top1 {
     background-image: url("01 dog - playback & quick EQ.jpg");
-    background-size: 750px;
-    width: 727px;
-    height: 410px;
+    background-size: 120%;
+    /*contain*/
     text-align: left;
-    font-size: 80px;
     transition: background-size 1s;
+    border: solid white;
 }
 
 #top1:hover {
-    background-size: 900px;
+    background-size: 150%;
 }
 
 #top2 {
