@@ -26,6 +26,7 @@
 @media (min-width: 768px) {
     .col-m_1{width: 8.33%;}
     .col-m_1p5{width: 12.5%;}
+    .col-m_1p75{width: 15.5%;}
     .col-m_2{width: 16.66%;}
     .col-m_2p5{width: 20%;}
     .col-m_3{width: 25%;}
@@ -139,4 +140,24 @@
 
 #i5 {
     background-image: url("18-graphic-art-photoshop.jpg");
+}
+
+#i6 {
+    background-image: url("86167014daefbe82bd3a5f1469503cd274f151dbr1-310-310v2_uhq.jpg");
+}
+
+#i7 {
+    background-image: url("7-paisajes-tan-hermosos-que-no-parecen-de-este-mundo-964x640.jpg");
+}
+
+#i8 {
+    background-image: url("87556462-pintura-al-óleo-colorida-abstracta-en-lona-imagen-semi-abstracta-de-flores-en-amarillo-y-rojo-con-color.jpg");
+}
+
+.bC {
+    color: rgb(184, 184, 184);
+}
+
+.dC {
+    color: black;
 }

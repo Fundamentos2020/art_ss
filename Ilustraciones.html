@@ -23,7 +23,7 @@
     </div>
     <br>
     <br>
-    <div class="col-m_2p5 col_12">
+    <div class="col-m_2 col_12">
         <div style="padding: 1em;">
             <b>Filtrar:</b>
         </div>
@@ -48,12 +48,15 @@
                 <br>
                 <input class="pad1" name="price" type="radio" onclick="block()" id="filter">Establecer rango de precio
             </p>
-            <!--Bloquear-->
-            <div class="pad1">
-                Maximo<input type="number" min="1" id="Ma" oninput="getMax(this.value)" disabled>
+            <div class="pad1 bC" id="RBa">
+                <label>Maximo </label>
+                <br>
+                <input type="number" min="1" id="Ma" oninput="getMax(this.value)" disabled>
             </div>
-            <div class="pad1" style="padding-left: 0.25em;">
-                Minimo<input type="number" min="0" id="Mi" disabled>
+            <div class="pad1 bC" id="RBb">
+                <label>Minimo </label>
+                <br>
+                <input type="number" min="0" id="Mi" disabled>
             </div>
             <script>
                 function getMax(val) {
@@ -64,10 +67,14 @@
                     if(document.getElementById('filter').checked) {
                         document.getElementById('Ma').disabled=false;
                         document.getElementById('Mi').disabled=false;
+                        document.getElementById('RBa').classList='dC';
+                        document.getElementById('RBb').classList='dC';
                     }
                     else {
                         document.getElementById('Ma').disabled=true;
                         document.getElementById('Mi').disabled=true;
+                        document.getElementById('RBa').classList='bC';
+                        document.getElementById('RBb').classList='bC';
                     }
                 }
             </script>
