@@ -26,15 +26,6 @@
     transition: width 0.2s;
 }
 
-#search-in {
-    position: fixed;
-    top: 10px;
-    left: 50%;
-    height: 25px;
-    width: 30%;
-    border-radius: 5px;
-}
-
 .fa {
     color: white;
     padding-right: 15px;
@@ -109,6 +100,13 @@ ul#menu-item {
     padding: 20px;
 }
 
+.title-page{
+    font-family: 'Caveat';
+    font-size: 35px;
+    color: white;
+    font-weight: bold;
+}
+
 /*---------------------------------------------Contenido de la pagina*/
 
 .content-page {
@@ -124,6 +122,17 @@ ul#menu-item {
 
 .form{
     display: block;
+    width: 95%;
+}
+
+.search-user input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 .form input,select {
@@ -204,7 +213,9 @@ ul#menu-item {
     transform: rotate(45deg);
   }
 
-
+  .margin-div {
+      padding: 5%;
+  }
 /*---------------------------------------------Botones------------------------------*/
 
 .btn-submit {
@@ -243,19 +254,24 @@ ul#menu-item {
     .col_11{width: 91.66%;}
     .col_12{width: 100%}
 
+    #search-in {
+        display: hide;
+    }
+
     .form .btn-submit {
         text-align: center;
         align-content: center;
         position: absolute;
-        left: 40%;
-        top: 100%;
+        top: 110%;
+        left: 5%;
+        width: 85%;
     }
 
     .content-form {
-        padding: 10px;
         position: absolute;
-        top: 40%;
-        left: 30%;
+        top: 20%;
+        left: 5%;
+        width: 95%;
     }
 
     .content-user-form {
@@ -283,6 +299,15 @@ ul#menu-item {
     .col-m_10{width: 83.33%;}
     .col-m_11{width: 91.66%;}
     .col-m_12{width: 100%;}
+
+    #search-in {
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        height: 25px;
+        width: 30%;
+        border-radius: 5px;
+    }
     
     .content-form {
         padding: 10px;
@@ -295,8 +320,18 @@ ul#menu-item {
         text-align: center;
         align-content: center;
         position: absolute;
+        left: 30%;
+        top: 100%;
+        width: 30%;
+    }
+
+    .col-m_12 .form .btn-submit {
+        text-align: center;
+        align-content: center;
+        position: absolute;
         left: 40%;
         top: 100%;
+        width: 15%;
     }
 
     .content-user-form {

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesGeneral.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Blinker' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <style>
+    *{
+        font-family: 'Blinker';
+    }
+    </style>
+    <title>Advanced Sign in ART_SS</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="top-menu">
+            <div class="img-logo">
+                <label for="" class="title-page">ART_SS</label>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-page">
+        <div class="col-m_12 title-reg">
+            <h1 style="font-size: 50px;">Registro</h1>
+            <p class="label-gray" style="font-size: 25px;">Introduzca cada uno de los datos necesarios para guardar la cuenta donde se haran las transferencias</p>
+        </div>
+
+        <div class="col-m_12 col_12 content-user-form">
+            <form class="form">
+                <div class="col-m_6 col_12 ">
+                    <div class="margin-div">
+                        <label class="container">Tarjeta de credito
+                            <input type="checkbox" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+    
+                        <label for="">Banco</label>
+                        <input type="text" required>
+    
+                        <div class="col-m_12">
+                            <label class="container">Debito
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+        
+                            <label class="container">Credito
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+    
+                        <label for="">Numero de Tarjeta</label>
+                        <input type="text" required>
+                    </div>
+                </div>
+
+                <div class="col-m_6 col_12 ">
+                    <div class="margin-div">
+                        <label class="container">Paypal
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+    
+                        <label for="">Usuario</label>
+                        <input type="text" required>
+    
+                        <label for="">Constrasena</label>
+                        <input type="text" required>
+                    </div>
+                </div>          
+                <button type="submit" class="btn-submit">Save</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
