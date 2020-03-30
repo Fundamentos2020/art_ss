@@ -109,30 +109,21 @@ ul#menu-item {
     padding: 20px;
 }
 
+/*---------------------------------------------Contenido de la pagina*/
+
+.content-page {
+    display: block;
+    position: absolute;
+    width: 95%;
+    top: 8%;
+}
+
 .content-form .form{
     display: block;
 }
 
 .form{
     display: block;
-}
-
-.btn-submit {
-    background-color: #3376AE;
-    color: white;
-    padding: 1em;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    border-radius: 0.8em;
-}
-
-.btn-submit:hover {
-    background-color: rgb(64, 125, 175);
-    color: white;
-    padding: 1em;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    border-radius: 0.8em;
 }
 
 .form input,select {
@@ -145,112 +136,12 @@ ul#menu-item {
     box-sizing: border-box;
 }
 
-.content {
-    display: block;
-    position: absolute;
-    width: 95%;
-    top: 8%;
-    
-}
-
-.content .title-reg {
+.content-page .title-reg {
     text-align: center;
-}
-
-.header {
-    display: block;
 }
 
 .label-gray {
     color: lightslategray;
-}
-
-@media (min-width: 0px) {
-    .col_1{width: 8.33%;}
-    .col_1p5{width: 12.5%;}
-    .col_2{width: 16.66%;}
-    .col_2p5{width: 20%;}
-    .col_3{width: 25%;}
-    .col_4{width: 33.33%;}
-    .col_5{width: 41.66%;}
-    .col_6{width: 50%;}
-    .col_7{width: 58.33%;}
-    .col_8{width: 66.66%;}
-    .col_9{width: 75%;}
-    .col_10{width: 83.33%;}
-    .col_11{width: 91.66%;}
-    .col_12{width: 100%}
-
-    .form .btn-submit {
-        text-align: center;
-        align-content: center;
-        position: absolute;
-        left: 40%;
-        top: 100%;
-    }
-
-    .content-form {
-        padding: 10px;
-        position: absolute;
-        top: 20%;
-    }
-
-    .content-user-form {
-        position: absolute;
-        top: 100%;
-        width: 80%;
-        left: 10%;
-    }
-}
-
-@media (min-width: 768px) {
-    .col-m_1{width: 8.33%;}
-    .col-m_1p5{width: 12.5%;}
-    .col-m_1p75{width: 15.5%;}
-    .col-m_2{width: 16.66%;}
-    .col-m_2p5{width: 20%;}
-    .col-m_3{width: 25%;}
-    .col-m_4{width: 33.33%;}
-    .col-m_5{width: 41.66%;}
-    .col-m_6{width: 50%;}
-    .col-m_7{width: 58.33%;}
-    .col-m_8{width: 66.66%;}
-    .col-m_9{width: 75%;}
-    .col-m_9p5{width: 80%;}
-    .col-m_10{width: 83.33%;}
-    .col-m_11{width: 91.66%;}
-    .col-m_12{width: 100%;}
-    
-    .content-form {
-        padding: 10px;
-        position: absolute;
-        top: 40%;
-        left: 30%;
-    }
-    .form .btn-submit {
-        text-align: center;
-        align-content: center;
-        position: absolute;
-        left: 40%;
-        top: 100%;
-    }
-
-    .content-user-form {
-        position: absolute;
-        top: 100%;
-        width: 85%;
-        left: 10%;
-    }
-}
-
-[class*="col_"] {
-    float: left;
-}
-
-.row::after {
-    content: "";
-    clear: both;
-    display: table;
 }
 
 .container {
@@ -312,3 +203,118 @@ ul#menu-item {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+
+/*---------------------------------------------Botones------------------------------*/
+
+.btn-submit {
+    background-color: #3376AE;
+    color: white;
+    padding: 1em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    border-radius: 0.8em;
+}
+
+.btn-submit:hover {
+    background-color: rgb(64, 125, 175);
+    color: white;
+    padding: 1em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    border-radius: 0.8em;
+}
+
+/*---------------------------------------------Contenido de la pagina Responsive*/
+
+@media (min-width: 0px) {
+    .col_1{width: 8.33%;}
+    .col_1p5{width: 12.5%;}
+    .col_2{width: 16.66%;}
+    .col_2p5{width: 20%;}
+    .col_3{width: 25%;}
+    .col_4{width: 33.33%;}
+    .col_5{width: 41.66%;}
+    .col_6{width: 50%;}
+    .col_7{width: 58.33%;}
+    .col_8{width: 66.66%;}
+    .col_9{width: 75%;}
+    .col_10{width: 83.33%;}
+    .col_11{width: 91.66%;}
+    .col_12{width: 100%}
+
+    .form .btn-submit {
+        text-align: center;
+        align-content: center;
+        position: absolute;
+        left: 40%;
+        top: 100%;
+    }
+
+    .content-form {
+        padding: 10px;
+        position: absolute;
+        top: 40%;
+        left: 30%;
+    }
+
+    .content-user-form {
+        position: absolute;
+        top: 100%;
+        width: 80%;
+        left: 10%;
+    }
+}
+
+@media (min-width: 768px) {
+    .col-m_1{width: 8.33%;}
+    .col-m_1p5{width: 12.5%;}
+    .col-m_1p75{width: 15.5%;}
+    .col-m_2{width: 16.66%;}
+    .col-m_2p5{width: 20%;}
+    .col-m_3{width: 25%;}
+    .col-m_4{width: 33.33%;}
+    .col-m_5{width: 41.66%;}
+    .col-m_6{width: 50%;}
+    .col-m_7{width: 58.33%;}
+    .col-m_8{width: 66.66%;}
+    .col-m_9{width: 75%;}
+    .col-m_9p5{width: 80%;}
+    .col-m_10{width: 83.33%;}
+    .col-m_11{width: 91.66%;}
+    .col-m_12{width: 100%;}
+    
+    .content-form {
+        padding: 10px;
+        position: absolute;
+        top: 40%;
+        left: 30%;
+    }
+
+    .form .btn-submit {
+        text-align: center;
+        align-content: center;
+        position: absolute;
+        left: 40%;
+        top: 100%;
+    }
+
+    .content-user-form {
+        position: absolute;
+        top: 100%;
+        width: 85%;
+        left: 10%;
+    }
+}
+
+
+[class*="col_"] {
+    float: left;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+} 
+
