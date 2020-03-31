@@ -8,224 +8,226 @@
     <link rel="stylesheet" href="catalog_plant.css">
 </head>
 <body>
-    <br>
-    <h1 class="title" style="padding-left: 1.5%;">Ilustraciones</h1>
-    <div style="padding-left: 10%;">
-        <b>Ordenar por:</b>
-        <select>
-            <option>Fecha (más recientes)</option>
-            <option>Fecha (más antiguos)</option>
-            <option>Precio</option>
-            <option>Popularidad</option>
-            <option>Alfabeticamente (A-Z)</option>
-            <option>Alfabeticamente (Z-A)</option>
-        </select>
-    </div>
-    <br>
-    <br>
-    <div class="col-m_2 col_12">
-        <div style="padding: 1em;">
-            <b>Filtrar:</b>
-        </div>
-        <div class="l-1" style="padding: 1em;">
-            <div>
-                Por fecha de publicación
-            </div>
-            <select class="pad1">
-                <option>Cualquier fecha</option>
-                <option>Ultima hora</option>
-                <option>Hoy</option>
-                <option>Esta semana</option>
-                <option>Este mes</option>
-                <option>Este año</option>
+    <div style="padding-left: 75px;">
+        <br>
+        <h1 class="title" style="padding-left: 1.5%;">Ilustraciones</h1>
+        <div style="padding-left: 10%;">
+            <b>Ordenar por:</b>
+            <select>
+                <option>Fecha (más recientes)</option>
+                <option>Fecha (más antiguos)</option>
+                <option>Precio</option>
+                <option>Popularidad</option>
+                <option>Alfabeticamente (A-Z)</option>
+                <option>Alfabeticamente (Z-A)</option>
             </select>
-            <div class="pad1">
-                <br>
-                Precio
-            </div>
-            <p>
-                <input class="pad1" name="price" type="radio" onclick="block()" checked>Cualquier precio
-                <br>
-                <input class="pad1" name="price" type="radio" onclick="block()" id="filter">Establecer rango de precio
-            </p>
-            <div class="pad1 bC" id="RBa">
-                <label>Maximo </label>
-                <br>
-                <input type="number" min="1" id="Ma" oninput="getMax(this.value)" disabled>
-            </div>
-            <div class="pad1 bC" id="RBb">
-                <label>Minimo </label>
-                <br>
-                <input type="number" min="0" id="Mi" disabled>
-            </div>
-            <script>
-                function getMax(val) {
-                    document.getElementById('Mi').setAttribute('max', val-1);
-                }
-
-                function block() {
-                    if(document.getElementById('filter').checked) {
-                        document.getElementById('Ma').disabled=false;
-                        document.getElementById('Mi').disabled=false;
-                        document.getElementById('RBa').classList='dC';
-                        document.getElementById('RBb').classList='dC';
-                    }
-                    else {
-                        document.getElementById('Ma').disabled=true;
-                        document.getElementById('Mi').disabled=true;
-                        document.getElementById('RBa').classList='bC';
-                        document.getElementById('RBb').classList='bC';
-                    }
-                }
-            </script>
         </div>
-    </div>
-    <div class="col-m_9p5 col_12">
-        <a href="Dog.html" style="color: black;">
-            <div class="col-m_3 col_12">
-                <div class="t1 fondo bf1" id="i1">
+        <br>
+        <br>
+        <div class="col-m_2 col_12">
+            <div style="padding: 1em;">
+                <b>Filtrar:</b>
+            </div>
+            <div class="l-1" style="padding: 1em;">
+                <div>
+                    Por fecha de publicación
                 </div>
-                <div class="t2 l-name">
-                    Dog
+                <select class="pad1">
+                    <option>Cualquier fecha</option>
+                    <option>Ultima hora</option>
+                    <option>Hoy</option>
+                    <option>Esta semana</option>
+                    <option>Este mes</option>
+                    <option>Este año</option>
+                </select>
+                <div class="pad1">
+                    <br>
+                    Precio
                 </div>
-                <div class="t2 l-price">
-                    <div class="pad2">
-                        $32
+                <p>
+                    <input class="pad1" name="price" type="radio" onclick="block()" checked>Cualquier precio
+                    <br>
+                    <input class="pad1" name="price" type="radio" onclick="block()" id="filter">Establecer rango de precio
+                </p>
+                <div class="pad1 bC" id="RBa">
+                    <label>Maximo </label>
+                    <br>
+                    <input type="number" min="1" id="Ma" oninput="getMax(this.value)" disabled>
+                </div>
+                <div class="pad1 bC" id="RBb">
+                    <label>Minimo </label>
+                    <br>
+                    <input type="number" min="0" id="Mi" disabled>
+                </div>
+                <script>
+                    function getMax(val) {
+                        document.getElementById('Mi').setAttribute('max', val-1);
+                    }
+
+                    function block() {
+                        if(document.getElementById('filter').checked) {
+                            document.getElementById('Ma').disabled=false;
+                            document.getElementById('Mi').disabled=false;
+                            document.getElementById('RBa').classList='dC';
+                            document.getElementById('RBb').classList='dC';
+                        }
+                        else {
+                            document.getElementById('Ma').disabled=true;
+                            document.getElementById('Mi').disabled=true;
+                            document.getElementById('RBa').classList='bC';
+                            document.getElementById('RBb').classList='bC';
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+        <div class="col-m_9p5 col_12">
+            <a href="Dog.html" style="color: black;">
+                <div class="col-m_3 col_12">
+                    <div class="t1 fondo bf1" id="i1">
                     </div>
-                </div>
-                <div class="t3">
-                    <div class="t3 col-m_6 col_6 pad2">
-                        <div class="pad3 l-vs">
-                            37 visitas
+                    <div class="t2 l-name">
+                        Dog
+                    </div>
+                    <div class="t2 l-price">
+                        <div class="pad2">
+                            $32
                         </div>
                     </div>
-                    <div class="t3 col-m_6 col_6 l-vs">
-                        2 ventas
-                    </div>
-                </div>
-                <div class="t3">
-                    <div class="l-date pad4" style="float: right;">
-                        <i>20/03/20</i>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <a href="Ghost.html" style="color: black;">
-            <div class="col-m_3 col_12">
-                <div class="t1 fondo bf1" id="i2">
-                </div>
-                <div class="t2 l-name">
-                    Ghost
-                </div>
-                <div class="t2 l-price">
-                    <div class="pad2">
-                        $135
-                    </div>
-                </div>
-                <div class="t3">
-                    <div class="t3 col-m_6 col_6 pad2">
-                        <div class="pad3 l-vs">
-                            35 visitas
+                    <div class="t3">
+                        <div class="t3 col-m_6 col_6 pad2">
+                            <div class="pad3 l-vs">
+                                37 visitas
+                            </div>
+                        </div>
+                        <div class="t3 col-m_6 col_6 l-vs">
+                            2 ventas
                         </div>
                     </div>
-                    <div class="t3 col-m_6 col_6 l-vs">
-                        5 ventas
-                    </div>
-                </div>
-                <div class="t3">
-                    <div class="l-date pad4" style="float: right;">
-                        <i>09/03/20</i>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <a href="Woman.html" style="color: black;">
-            <div class="col-m_3 col_12">
-                <div class="t1 fondo bf1" id="i3">
-                </div>
-                <div class="t2 l-name">
-                    Woman
-                </div>
-                <div class="t2 l-price">
-                    <div class="pad2">
-                        $230
-                    </div>
-                </div>
-                <div class="t3">
-                    <div class="t3 col-m_6 col_6 pad2">
-                        <div class="pad3 l-vs">
-                            39 visitas
+                    <div class="t3">
+                        <div class="l-date pad4" style="float: right;">
+                            <i>20/03/20</i>
                         </div>
                     </div>
-                    <div class="t3 col-m_6 col_6 l-vs">
-                        1 venta
+                </div>
+            </a>
+            <a href="Ghost.html" style="color: black;">
+                <div class="col-m_3 col_12">
+                    <div class="t1 fondo bf1" id="i2">
                     </div>
-                </div>
-                <div class="t3">
-                    <div class="l-date pad4" style="float: right;">
-                        <i>18/02/20</i>
+                    <div class="t2 l-name">
+                        Ghost
                     </div>
-                </div>
-            </div>
-        </a>
-        <a href="Beauty.html" style="color: black;">
-            <div class="col-m_3 col_12">
-                <div class="t1 fondo bf1" id="i4">
-                </div>
-                <div class="t2 l-name">
-                    Beauty
-                </div>
-                <div class="t2 l-price">
-                    <div class="pad2">
-                        $250
-                    </div>
-                </div>
-                <div class="t3">
-                    <div class="t3 col-m_6 col_6 pad2">
-                        <div class="pad3 l-vs">
-                            2 visitas
+                    <div class="t2 l-price">
+                        <div class="pad2">
+                            $135
                         </div>
                     </div>
-                    <div class="t3 col-m_6 col_6 l-vs">
-                        4 ventas
-                    </div>
-                </div>
-                <div class="t3">
-                    <div class="l-date pad4" style="float: right;">
-                        <i>16/02/20</i>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <a href="Smaug.html" style="color: black;">
-            <div class="col-m_3 col_12">
-                <div class="t1 fondo bf1" id="i5">
-                </div>
-                <div class="t2 l-name">
-                    Smaug
-                </div>
-                <div class="t2 l-price">
-                    <div class="pad2">
-                        $300
-                    </div>
-                </div>
-                <div class="t3">
-                    <div class="t3 col-m_6 col_6 pad2">
-                        <div class="pad3 l-vs">
-                            3 visitas
+                    <div class="t3">
+                        <div class="t3 col-m_6 col_6 pad2">
+                            <div class="pad3 l-vs">
+                                35 visitas
+                            </div>
+                        </div>
+                        <div class="t3 col-m_6 col_6 l-vs">
+                            5 ventas
                         </div>
                     </div>
-                    <div class="t3 col-m_6 col_6 l-vs">
-                        6 ventas
+                    <div class="t3">
+                        <div class="l-date pad4" style="float: right;">
+                            <i>09/03/20</i>
+                        </div>
                     </div>
                 </div>
-                <div class="t3">
-                    <div class="l-date pad4" style="float: right;">
-                        <i>26/01/20</i>
+            </a>
+            <a href="Woman.html" style="color: black;">
+                <div class="col-m_3 col_12">
+                    <div class="t1 fondo bf1" id="i3">
+                    </div>
+                    <div class="t2 l-name">
+                        Woman
+                    </div>
+                    <div class="t2 l-price">
+                        <div class="pad2">
+                            $230
+                        </div>
+                    </div>
+                    <div class="t3">
+                        <div class="t3 col-m_6 col_6 pad2">
+                            <div class="pad3 l-vs">
+                                39 visitas
+                            </div>
+                        </div>
+                        <div class="t3 col-m_6 col_6 l-vs">
+                            1 venta
+                        </div>
+                    </div>
+                    <div class="t3">
+                        <div class="l-date pad4" style="float: right;">
+                            <i>18/02/20</i>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a>
+            </a>
+            <a href="Beauty.html" style="color: black;">
+                <div class="col-m_3 col_12">
+                    <div class="t1 fondo bf1" id="i4">
+                    </div>
+                    <div class="t2 l-name">
+                        Beauty
+                    </div>
+                    <div class="t2 l-price">
+                        <div class="pad2">
+                            $250
+                        </div>
+                    </div>
+                    <div class="t3">
+                        <div class="t3 col-m_6 col_6 pad2">
+                            <div class="pad3 l-vs">
+                                2 visitas
+                            </div>
+                        </div>
+                        <div class="t3 col-m_6 col_6 l-vs">
+                            4 ventas
+                        </div>
+                    </div>
+                    <div class="t3">
+                        <div class="l-date pad4" style="float: right;">
+                            <i>16/02/20</i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="Smaug.html" style="color: black;">
+                <div class="col-m_3 col_12">
+                    <div class="t1 fondo bf1" id="i5">
+                    </div>
+                    <div class="t2 l-name">
+                        Smaug
+                    </div>
+                    <div class="t2 l-price">
+                        <div class="pad2">
+                            $300
+                        </div>
+                    </div>
+                    <div class="t3">
+                        <div class="t3 col-m_6 col_6 pad2">
+                            <div class="pad3 l-vs">
+                                3 visitas
+                            </div>
+                        </div>
+                        <div class="t3 col-m_6 col_6 l-vs">
+                            6 ventas
+                        </div>
+                    </div>
+                    <div class="t3">
+                        <div class="l-date pad4" style="float: right;">
+                            <i>26/01/20</i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
 </body>
 </html>

@@ -7,108 +7,110 @@
     <link rel="stylesheet" href="catalog_plant.css">
 </head>
 <body>
-    <br>
-    <h1 class="title" style="padding-left: 1.5%;">Fotografia</h1>
-    <div style="padding-left: 10%;">
-        <b>Ordenar por:</b>
-        <select>
-            <option>Fecha (más recientes)</option>
-            <option>Fecha (más antiguos)</option>
-            <option>Precio</option>
-            <option>Popularidad</option>
-            <option>Alfabeticamente (A-Z)</option>
-            <option>Alfabeticamente (Z-A)</option>
-        </select>
-    </div>
-    <br>
-    <br>
-    <div class="col-m_2 col_12">
-        <div style="padding: 1em;">
-            <b>Filtrar:</b>
-        </div>
-        <div class="l-1" style="padding: 1em;">
-            <div>
-                Por fecha de publicación
-            </div>
-            <select class="pad1">
-                <option>Cualquier fecha</option>
-                <option>Ultima hora</option>
-                <option>Hoy</option>
-                <option>Esta semana</option>
-                <option>Este mes</option>
-                <option>Este año</option>
+    <div style="padding-left: 75px;">
+        <br>
+        <h1 class="title" style="padding-left: 1.5%;">Fotografia</h1>
+        <div style="padding-left: 10%;">
+            <b>Ordenar por:</b>
+            <select>
+                <option>Fecha (más recientes)</option>
+                <option>Fecha (más antiguos)</option>
+                <option>Precio</option>
+                <option>Popularidad</option>
+                <option>Alfabeticamente (A-Z)</option>
+                <option>Alfabeticamente (Z-A)</option>
             </select>
-            <div class="pad1">
-                <br>
-                Precio
-            </div>
-            <p>
-                <input class="pad1" name="price" type="radio" onclick="block()" checked>Cualquier precio
-                <br>
-                <input class="pad1" name="price" type="radio" onclick="block()" id="filter">Establecer rango de precio
-            </p>
-            <div class="pad1 bC" id="RBa">
-                <label>Maximo </label>
-                <br>
-                <input type="number" min="1" id="Ma" oninput="getMax(this.value)" disabled>
-            </div>
-            <div class="pad1 bC" id="RBb">
-                <label>Minimo </label>
-                <br>
-                <input type="number" min="0" id="Mi" disabled>
-            </div>
-            <script>
-                function getMax(val) {
-                    document.getElementById('Mi').setAttribute('max', val-1);
-                }
-
-                function block() {
-                    if(document.getElementById('filter').checked) {
-                        document.getElementById('Ma').disabled=false;
-                        document.getElementById('Mi').disabled=false;
-                        document.getElementById('RBa').classList='dC';
-                        document.getElementById('RBb').classList='dC';
-                    }
-                    else {
-                        document.getElementById('Ma').disabled=true;
-                        document.getElementById('Mi').disabled=true;
-                        document.getElementById('RBa').classList='bC';
-                        document.getElementById('RBb').classList='bC';
-                    }
-                }
-            </script>
         </div>
-    </div>
-    <div class="col-m_9p5 col_12">
-        <a href="Mountain.html" style="color: black;">
-            <div class="col-m_3 col_12">
-                <div class="t1 fondo" id="i7">
+        <br>
+        <br>
+        <div class="col-m_2 col_12">
+            <div style="padding: 1em;">
+                <b>Filtrar:</b>
+            </div>
+            <div class="l-1" style="padding: 1em;">
+                <div>
+                    Por fecha de publicación
                 </div>
-                <div class="t2 l-name">
-                    Mountain
+                <select class="pad1">
+                    <option>Cualquier fecha</option>
+                    <option>Ultima hora</option>
+                    <option>Hoy</option>
+                    <option>Esta semana</option>
+                    <option>Este mes</option>
+                    <option>Este año</option>
+                </select>
+                <div class="pad1">
+                    <br>
+                    Precio
                 </div>
-                <div class="t2 l-price">
-                    <div class="pad2">
-                        $100
+                <p>
+                    <input class="pad1" name="price" type="radio" onclick="block()" checked>Cualquier precio
+                    <br>
+                    <input class="pad1" name="price" type="radio" onclick="block()" id="filter">Establecer rango de precio
+                </p>
+                <div class="pad1 bC" id="RBa">
+                    <label>Maximo </label>
+                    <br>
+                    <input type="number" min="1" id="Ma" oninput="getMax(this.value)" disabled>
+                </div>
+                <div class="pad1 bC" id="RBb">
+                    <label>Minimo </label>
+                    <br>
+                    <input type="number" min="0" id="Mi" disabled>
+                </div>
+                <script>
+                    function getMax(val) {
+                        document.getElementById('Mi').setAttribute('max', val-1);
+                    }
+
+                    function block() {
+                        if(document.getElementById('filter').checked) {
+                            document.getElementById('Ma').disabled=false;
+                            document.getElementById('Mi').disabled=false;
+                            document.getElementById('RBa').classList='dC';
+                            document.getElementById('RBb').classList='dC';
+                        }
+                        else {
+                            document.getElementById('Ma').disabled=true;
+                            document.getElementById('Mi').disabled=true;
+                            document.getElementById('RBa').classList='bC';
+                            document.getElementById('RBb').classList='bC';
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+        <div class="col-m_9p5 col_12">
+            <a href="Mountain.html" style="color: black;">
+                <div class="col-m_3 col_12">
+                    <div class="t1 fondo" id="i7">
                     </div>
-                </div>
-                <div class="t3">
-                    <div class="t3 col-m_6 col_6 pad2">
-                        <div class="pad3 l-vs">
-                            47 visitas
+                    <div class="t2 l-name">
+                        Mountain
+                    </div>
+                    <div class="t2 l-price">
+                        <div class="pad2">
+                            $100
                         </div>
                     </div>
-                    <div class="t3 col-m_6 col_6 l-vs">
-                        25 ventas
+                    <div class="t3">
+                        <div class="t3 col-m_6 col_6 pad2">
+                            <div class="pad3 l-vs">
+                                47 visitas
+                            </div>
+                        </div>
+                        <div class="t3 col-m_6 col_6 l-vs">
+                            25 ventas
+                        </div>
+                    </div>
+                    <div class="t3">
+                        <div class="l-date pad4" style="float: right;">
+                            <i>22/06/19</i>
+                        </div>
                     </div>
                 </div>
-                <div class="t3">
-                    <div class="l-date pad4" style="float: right;">
-                        <i>22/06/19</i>
-                    </div>
-                </div>
-            </div>
-        </a>
+            </a>
+        </div>
     </div>
 </body>
 </html>
