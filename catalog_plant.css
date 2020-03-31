@@ -87,6 +87,17 @@
         padding-left: 0.65em;
         padding-right: 1.5em;
     }
+
+    .lat_menu {
+        position: fixed;
+        right: 0px;
+        height: 93%;
+        bottom: 0%;
+    }
+
+    .adapt {
+        padding-left: 75px;
+    }
 }
 
 [class*="col_"] {
