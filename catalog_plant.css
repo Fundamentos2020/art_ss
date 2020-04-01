@@ -41,9 +41,22 @@
         padding-top: 100px;
     }
 
+    .pad14 {
+        padding-top: 40px;
+    }
+
     .cent2 {
         padding-left: 0.5em;
         padding-right: 0.8em;
+    }
+
+    .com {
+        border-top: 10px solid #999999;
+        border-bottom: 25px solid #999999;
+    }
+
+    .imgSize {
+        width: 120px;
     }
 }
 
@@ -81,6 +94,14 @@
 
     .pad7 {
         padding-top: 250px;
+    }
+
+    .pad13 {
+        padding-left: 25px;
+    }
+
+    .pad7 {
+        padding-top: 500px;
     }
 
     .cent1 {
@@ -177,6 +198,18 @@
     padding-left: 3em;
 }
 
+.pad10 {
+    padding-top: 50px;
+}
+
+.pad11 {
+    padding-top: 100px;
+}
+
+.pad12 {
+    padding-left: 25px;
+}
+
 .t1 {
     height: 300px;
 }
@@ -235,6 +268,18 @@
 
 #i8 {
     background-image: url("87556462-pintura-al-óleo-colorida-abstracta-en-lona-imagen-semi-abstracta-de-flores-en-amarillo-y-rojo-con-color.jpg");
+}
+
+#i9 {
+    background-image: url("Captura.png");
+}
+
+#i10 {
+    background-image: url("b2c1e8a6adec67f4fb13ccb7da9e7ecd.jpg");
+}
+
+#i11 {
+    background-image: url("3948ffa0c660a572d48e125d37065cb9cf2fdae9.jpeg");
 }
 
 .bC {
