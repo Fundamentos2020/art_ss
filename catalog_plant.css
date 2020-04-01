@@ -2,10 +2,6 @@
     box-sizing: border-box;
 }
 
-/*div {
-    border: solid black;
-}*/
-
 @media (min-width: 0px) {
     .col_p5{width: 4%;}
     .col_1{width: 8.33%;}
@@ -83,8 +79,17 @@
         height: 675px;
     }
 
+    .t6 {
+        height: 175px;
+    }
+
     .bf2 {
         border: solid grey 70px;
+        background-color: grey;
+    }
+
+    .bf4 {
+        border: solid grey 100x;
         background-color: grey;
     }
 
