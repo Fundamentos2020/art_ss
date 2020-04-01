@@ -203,13 +203,25 @@ a {
 
     .fa-cart-plus {
         position: fixed;
-        left: 70%;
+        left: 75%;
         padding: 20px;
     }
 
     .fa-user {
         position: fixed;
         left: 85%;
+        padding: 20px;
+    }
+
+    .fa-shopping-bag {
+        position: fixed;
+        left: 55%;
+        padding: 20px;
+    }
+
+    .fa-history {
+        position: fixed;
+        left: 65%;
         padding: 20px;
     }
 
@@ -354,6 +366,18 @@ a {
     .fa-user {
         position: fixed;
         left: 95%;
+        padding: 20px;
+    }
+
+    .fa-shopping-bag {
+        position: fixed;
+        left: 80%;
+        padding: 20px;
+    }
+
+    .fa-history {
+        position: fixed;
+        left: 85%;
         padding: 20px;
     }
 
