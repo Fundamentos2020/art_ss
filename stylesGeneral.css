@@ -23,6 +23,10 @@
     right: auto;
 }
 
+.adapt {
+    padding-left: 15px;
+}
+
 a {
     color: white;
     text-decoration: none;
@@ -309,6 +313,18 @@ a {
         width: 80%;
         left: 10%;
     }
+
+    .content-user-form-pay {
+        position: absolute;
+        top: 100%;
+        left: 5%;
+        width: 85%;
+        border: lightgray solid 2px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    
 }
 
 @media (min-width: 768px) {
@@ -447,6 +463,12 @@ a {
         top: 100%;
         width: 85%;
         left: 10%;
+    }
+
+    .content-user-form-pay > .btn-submit {
+        position: absolute;
+        top: 85%;
+        left: 92%;
     }
 }
 
