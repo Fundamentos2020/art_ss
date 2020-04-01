@@ -104,12 +104,12 @@
     color: rgba(255, 255, 255, 0.75);
 }
 
-.top5_10 {
+/* .top5_10 {
     background-position: center;
     background-size: 120%;
     text-align: right;
     transition: background-size 1s;
-}
+} */
 
 .top5_10:hover {
     background-size: 150%;
