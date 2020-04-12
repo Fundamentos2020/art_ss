@@ -34,11 +34,17 @@
     }
 
     .pad8 {
-        padding-top: 100px;
+        padding-top: 60px;
+        padding-bottom: 150px;
     }
 
     .pad14 {
         padding-top: 40px;
+    }
+
+    .pad16 {
+        padding-top: 120px;
+        padding-bottom: 150px;
     }
 
     .cent2 {
@@ -98,15 +104,15 @@
     }
 
     .pad7 {
-        padding-top: 250px;
+        padding-top: 225px;
     }
 
     .pad13 {
         padding-left: 25px;
     }
 
-    .pad7 {
-        padding-top: 500px;
+    .pad15 {
+        padding-top: 130px;
     }
 
     .cent1 {
@@ -200,7 +206,7 @@
 }
 
 .pad9 {
-    padding-left: 3em;
+    padding-left: 20%;
 }
 
 .pad10 {
