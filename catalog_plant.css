@@ -47,6 +47,11 @@
         padding-bottom: 150px;
     }
 
+    .pad18 {
+        padding-left: 20px;
+        padding-bottom: 7px;
+    }
+
     .cent2 {
         padding-left: 0.5em;
         padding-right: 0.8em;
@@ -59,6 +64,15 @@
 
     .imgSize {
         width: 120px;
+    }
+
+    .adjGraf2 {
+        width: 315px;
+        height: 170px;
+    }
+
+    .men2 {
+        flex-direction: row;
     }
 }
 
@@ -115,6 +129,10 @@
         padding-top: 130px;
     }
 
+    .pad17 {
+        padding-left: 10%;
+    }
+
     .cent1 {
         padding-left: 0.65em;
         padding-right: 1.5em;
@@ -129,6 +147,20 @@
 
     .adapt {
         padding-left: 15px;
+    }
+
+    .adjGraf1 {
+        width: 600px;
+        height: 278px;
+    }
+
+    .adjGraf3 {
+        width: 530px;
+        height: 280px;
+    }
+
+    .men1 {
+        flex-direction: column;
     }
 }
 
@@ -145,6 +177,13 @@
 .title {
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(184, 184, 184);
+}
+
+.title2 {
+    padding-left: 10%;
+    padding-top: 10%;
+    font-size: x-large;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .filter {
@@ -219,6 +258,10 @@
 
 .pad12 {
     padding-left: 25px;
+}
+
+.pad19 {
+    padding-bottom: 3px;
 }
 
 .t1 {
@@ -316,4 +359,22 @@
     border-top: solid #404040 10px;
     border-radius: 0.4em;
     text-align: center;
+}
+
+.boton {
+    background-color: rgb(211, 211, 211);
+    color: black;
+    border-radius: 1em;
+    border: solid black 1px;
+}
+
+.graphMenu {
+    display: flex; 
+    flex-direction: row;
+}
+
+.fb {
+    color: black;
+    padding-top: 15px;
+    padding-right: 10px;
 }
