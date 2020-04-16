@@ -212,6 +212,10 @@ a {
     .col_11{width: 91.66%;}
     .col_12style{width: 100%}
 
+    li {
+        float: left;
+    }
+
     .fa-cart-plus {
         position: fixed;
         left: 75%;
@@ -365,6 +369,10 @@ a {
     .col-m_10{width: 83.33%;}
     .col-m_11{width: 91.66%;}
     .col-m_12{width: 100%;}
+
+    li {
+        float: none;
+    }
 
     .fa-cart-plus {
         position: fixed;
