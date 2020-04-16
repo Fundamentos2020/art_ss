@@ -216,6 +216,12 @@ a {
         float: left;
     }
 
+    .fa-plus-circle {
+        position: fixed;
+        left: 65%;
+        padding: 20px;
+    }
+
     .fa-cart-plus {
         position: fixed;
         left: 75%;
@@ -374,6 +380,12 @@ a {
         float: none;
     }
 
+    .fa-plus-circle {
+        position: fixed;
+        left: 75%;
+        padding: 20px;
+    }
+
     .fa-cart-plus {
         position: fixed;
         left: 90%;
@@ -508,7 +520,7 @@ a {
 
     .content-user-form-pay > .btn-submit {
         position: absolute;
-        top: 85%;
+        top: 90%;
         left: 92%;
     }
 }
