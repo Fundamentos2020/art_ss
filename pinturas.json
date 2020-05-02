@@ -43,5 +43,51 @@
         "ventas": 1,
         "categoria": "Pintura",
         "imagen": "pajarillo.jpg"
+    },
+    {
+        "id": 3,
+        "Nombre": "Oleo",
+        "Descripcion": "Pintura al oleo colorida, abrstracta",
+        "Stock": 4,
+        "Autor": "Dennise Ibarra",
+        "vendedor_id": 12430,
+        "fechaAlta": "2020-02-18 10:00:00",
+        "status": "DISPONIBLE",
+        "precio": 1450.0,
+        "vistas": 39,
+        "ventas": 1,
+        "categoria": "Pintura",
+        "imagen": "87556462-pintura-al-óleo-colorida-abstracta-en-lona-imagen-semi-abstracta-de-flores-en-amarillo-y-rojo-con-color.jpg"
+        
+    },
+    {
+        "id": 4,
+        "Nombre": "Mountain",
+        "Descripcion": "Montaña al oleo",
+        "Stock": 4,
+        "Autor": "Dennise Ibarra",
+        "vendedor_id": 12430,
+        "fechaAlta": "2020-02-18 10:00:00",
+        "status": "DISPONIBLE",
+        "precio": 100.0,
+        "vistas": 39,
+        "ventas": 1,
+        "categoria": "Pintura",
+        "imagen":"7-paisajes-tan-hermosos-que-no-parecen-de-este-mundo-964x640.jpg"
+    },
+    {
+        "id": 5,
+        "Nombre": "Japan",
+        "Descripcion": "Japan",
+        "Stock": 4,
+        "Autor": "Alvaro",
+        "vendedor_id": 12430,
+        "fechaAlta": "2020-02-18 10:00:00",
+        "status": "DISPONIBLE",
+        "precio": 50.0,
+        "vistas": 39,
+        "ventas": 1,
+        "categoria": "Pintura",
+        "imagen":"Captura.png"
     }
 ]

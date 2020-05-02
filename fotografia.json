@@ -58,5 +58,20 @@
         "ventas": 2,
         "categoria": "Fotografia",
         "imagen": "colores.jpg"
+    },
+    {
+        "id": 4,
+        "Nombre": "Windows",
+        "Descripcion": "Ventanas Foto",
+        "Stock": 5,
+        "Autor": "Dennise Ibarra",
+        "vendedor_id": 12430,
+        "fechaAlta": "2020-02-20 10:00:00",
+        "status": "DISPONIBLE",
+        "precio": 2570.0,
+        "vistas": 4,
+        "ventas": 2,
+        "categoria": "Fotografia",
+        "imagen": "3948ffa0c660a572d48e125d37065cb9cf2fdae9.jpeg"
     }
 ]

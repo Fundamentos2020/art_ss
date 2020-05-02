@@ -88,5 +88,20 @@
         "ventas": 3,
         "categoria": "Dibujos",
         "imagen": "arbol.jpg"
+    },
+    {
+        "id": 5,
+        "Nombre": "Blood",
+        "Descripcion": "Dibujo representativo",
+        "Stock": 0,
+        "Autor": "Alvaro de la Rosa",
+        "vendedor_id": 34030,
+        "fechaAlta": "2020-04-26 10:00:00",
+        "status": "AGOTADO",
+        "precio": 50.0,
+        "vistas": 9,
+        "ventas": 3,
+        "categoria": "Dibujos",
+        "imagen": "86167014daefbe82bd3a5f1469503cd274f151dbr1-310-310v2_uhq.jpg"
     }
 ]
