@@ -1,0 +1,47 @@
+[
+    {
+        "id": 0,
+        "Nombre": "Violin",
+        "Descripcion": "Violin Colorido",
+        "Stock": 1,
+        "Autor": "Dennise Ibarra",
+        "vendedor_id": 12430,
+        "fechaAlta": "2020-03-20 10:00:00",
+        "status": "DISPONIBLE",
+        "precio": 1300.0,
+        "vistas": 800,
+        "ventas": 120,
+        "categoria": "Pintura",
+        "imagen": "violin.jpg"
+    },
+    {
+        "id": 1,
+        "Nombre": "Mariposa",
+        "Descripcion": "Monarca",
+        "Stock": 3,
+        "Autor": "Alvaro de la Rosa",
+        "vendedor_id": 34030,
+        "fechaAlta": "2020-03-09 10:00:00",
+        "status": "DISPONIBLE",
+        "precio": 4000.0,
+        "vistas": 35,
+        "ventas": 5,
+        "categoria": "Pintura",
+        "imagen": "mariposa.jpg"
+    },
+    {
+        "id": 2,
+        "Nombre": "Pajarillo Acuarela",
+        "Descripcion": "Pajarillo Colorido",
+        "Stock": 4,
+        "Autor": "Dennise Ibarra",
+        "vendedor_id": 12430,
+        "fechaAlta": "2020-02-18 10:00:00",
+        "status": "DISPONIBLE",
+        "precio": 1350.0,
+        "vistas": 39,
+        "ventas": 1,
+        "categoria": "Pintura",
+        "imagen": "pajarillo.jpg"
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "id": 0,
+        "Nombre": "Sombra y Luz",
+        "Descripcion": "Efectos con poca luz",
+        "Stock": 1,
+        "Autor": "Dennise Ibarra",
+        "vendedor_id": 12430,
+        "fechaAlta": "2020-03-20 10:00:00",
+        "status": "DISPONIBLE",
+        "precio": 3600.0,
+        "vistas": 140,
+        "ventas": 79,
+        "categoria": "Fotografia",
+        "imagen": "sombra.jpg"
+    },
+    {
+        "id": 1,
+        "Nombre": "Broken",
+        "Descripcion": "Sobreponiendo vidrio roto sobre silueta",
+        "Stock": 12,
+        "Autor": "Alvaro de la Rosa",
+        "vendedor_id": 34030,
+        "fechaAlta": "2020-03-09 10:00:00",
+        "status": "DISPONIBLE",
+        "precio": 1455.0,
+        "vistas": 312,
+        "ventas": 1,
+        "categoria": "Fotografia",
+        "imagen": "vidrio.jpg"
+    },
+    {
+        "id": 2,
+        "Nombre": "Reflejo",
+        "Descripcion": "Efectos del agua",
+        "Stock": 4,
+        "Autor": "Dennise Ibarra",
+        "vendedor_id": 12430,
+        "fechaAlta": "2020-02-18 10:00:00",
+        "status": "DISPONIBLE",
+        "precio": 1315.0,
+        "vistas": 39,
+        "ventas": 1,
+        "categoria": "Fotografia",
+        "imagen": "reflejo.jpg"
+    },
+    {
+        "id": 3,
+        "Nombre": "Destellos",
+        "Descripcion": "Rostro estampado con colores",
+        "Stock": 5,
+        "Autor": "Dennise Ibarra",
+        "vendedor_id": 12430,
+        "fechaAlta": "2020-02-20 10:00:00",
+        "status": "DISPONIBLE",
+        "precio": 2570.0,
+        "vistas": 4,
+        "ventas": 2,
+        "categoria": "Fotografia",
+        "imagen": "colores.jpg"
+    }
+]

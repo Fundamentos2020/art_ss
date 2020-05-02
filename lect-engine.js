@@ -1,7 +1,6 @@
-window.onload = function() {
+function loadJson(arch) {
     const cont=document.getElementById('gallery');
     let inyect='';
-    let arch='Ilustraciones.json';
     xhr=new XMLHttpRequest();
     xhr.open('GET', arch, true);
     xhr.onload=function() {
