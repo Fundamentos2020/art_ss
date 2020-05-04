@@ -11,7 +11,7 @@
     <title>Art SS - Ilustraciones</title>
     <link rel="stylesheet" href="catalog_plant.css">
 </head>
-<body>
+<body onload="loadJson('Ilustraciones.json')">
     <header class="header col-m_12 col-12">
         <div class="full-menu">
             <div class="img-logo">
@@ -19,7 +19,11 @@
             </div>
             <div class="search-user">
                 <!-- <input type="text" placeholder="Ingrese alguna busqueda" id="search-in"> -->
+                <a href="Agregar_Producto.html"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                 <a href="OrdenPago.html"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                <a href="Historial_compras.html"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <a href="Historial_ventas.html"><i class="fa fa-history" aria-hidden="true"></i></a>
+                <a href="Administrador.html"><i class="fa fa-user" aria-hidden="true"></i></a>
                 <i class="fa fa-user" aria-hidden="true"></i>
             </div>
         </div>
@@ -47,50 +51,70 @@
                 <div>
                     <a href="Fotografia.html"><span class="item-menu-text"><i class="fa fa-camera" aria-hidden="true"></i>Fotografia</span></a>
                 </div>
-            </li>
-            <li class="item">
+			</li>
+			<li class="item">
                 <div>
                     <a href="Pintura.html"><span class="item-menu-text"><i class="fa fa-paint-brush" aria-hidden="true"></i>Pintura</span></a>
                 </div>
             </li>
             <li class="item">
                 <div>
+                    <a href="Login.html"><span class="item-menu-text"><i class="fa fa-sign-in" aria-hidden="true"></i>INICIAR SESION</span></a>
+                </div>
+			</li>
+			<li class="item">
+                <div>
+                    <a href="SignIn.html"><span class="item-menu-text"><i class="fa fa-user-plus" aria-hidden="true"></i>REGISTRARSE</span></a>
+                </div>
+			</li>
+            <li class="item">
+                <div>
                     <span class="item-menu-text">CONTACTO</span>
                 </div>
-            </li>
+			</li>
         </ul>
 
         <ul id="menu-item-icon">
-            <li class="item">
+			<li class="item">
                 <div>
-                    <span><i class="fa fa-ellipsis-h" aria-hidden="true"></i></span>
+                    <span class="item-menu-text"></span>
                 </div>
             </li>
             <li class="item">
                 <div>
-                    <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                    <a href="Ilustraciones.html"><span class="item-menu-text"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
                 </div>
             </li>
             <li class="item">
                 <div>
-                    <span><i class="fa fa-book" aria-hidden="true"></i></span>
+                    <a href="Dibujos.html"><span class="item-menu-text"><i class="fa fa-book" aria-hidden="true"></i></span></a>
                 </div>
             </li>
             <li class="item">
                 <div>
-                    <span><i class="fa fa-camera" aria-hidden="true"></i></span>
+                    <a href="Fotografia.html"><span class="item-menu-text"><i class="fa fa-camera" aria-hidden="true"></i></span></a>
+                </div>
+			</li>
+			<li class="item">
+                <div>
+                    <a href="Pintura.html"><span class="item-menu-text"><i class="fa fa-paint-brush" aria-hidden="true"></i></span></a>
                 </div>
             </li>
             <li class="item">
                 <div>
-                    <span><i class="fa fa-paint-brush" aria-hidden="true"></i></span>
+                    <a href="Login.html"><span class="item-menu-text"><i class="fa fa-sign-in" aria-hidden="true"></i></span></a>
                 </div>
-            </li>
+			</li>
+			<li class="item">
+                <div>
+                    <a href="SignIn.html"><span class="item-menu-text"><i class="fa fa-user-plus" aria-hidden="true"></i></span></a>
+                </div>
+			</li>
             <li class="item">
                 <div>
-                    <span><i class="fa fa-ellipsis-h" aria-hidden="true"></i></span>
+                    <span class="item-menu-text"></span>
                 </div>
-            </li>
+			</li>
         </ul>
 	</div>
     
@@ -100,13 +124,13 @@
             <h1 class="title">Ilustraciones</h1>
             <div>
                 <b>Ordenar por:</b>
-                <select>
-                    <option>Fecha (más recientes)</option>
-                    <option>Fecha (más antiguos)</option>
-                    <option>Precio</option>
-                    <option>Popularidad</option>
-                    <option>Alfabeticamente (A-Z)</option>
-                    <option>Alfabeticamente (Z-A)</option>
+                <select id="orden">
+                    <option value="0">Fecha (más recientes)</option>
+                    <option value="1">Fecha (más antiguos)</option>
+                    <option value="2">Precio</option>
+                    <option value="3">Popularidad</option>
+                    <option value="4">Alfabeticamente (A-Z)</option>
+                    <option value="5">Alfabeticamente (Z-A)</option>
                 </select>
             </div>
             <br>
@@ -119,7 +143,7 @@
                     <div>
                         Por fecha de publicación
                     </div>
-                    <select class="pad1">
+                    <select class="pad1" id="date">
                         <option>Cualquier fecha</option>
                         <option>Ultima hora</option>
                         <option>Hoy</option>
