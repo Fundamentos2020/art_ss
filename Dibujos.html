@@ -9,7 +9,6 @@
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>Art SS - Dibujos</title>
     <link rel="stylesheet" href="catalog_plant.css">
-    <script src="lect-engine.js"></script>
 </head>
 <body onload="loadJson('dibujos.json')">
     <header class="header col-m_12 col-12">
@@ -19,7 +18,11 @@
             </div>
             <div class="search-user">
                 <!-- <input type="text" placeholder="Ingrese alguna busqueda" id="search-in"> -->
+                <a href="Agregar_Producto.html"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                 <a href="OrdenPago.html"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                <a href="Historial_compras.html"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <a href="Historial_ventas.html"><i class="fa fa-history" aria-hidden="true"></i></a>
+                <a href="Administrador.html"><i class="fa fa-user" aria-hidden="true"></i></a>
                 <i class="fa fa-user" aria-hidden="true"></i>
             </div>
         </div>
@@ -117,8 +120,8 @@
     <div class="content-page">
         <div class="adapt">
             <br>
-            <h1 class="title" style="padding-left: 1.5%;">Dibujos</h1>
-            <div style="padding-left: 10%;">
+            <h1 class="title">Dibujos</h1>
+            <div>
                 <b>Ordenar por:</b>
                 <select id="orden">
                     <option value="0">Fecha (más recientes)</option>
@@ -191,7 +194,7 @@
             <div class="col-m_9p5 col_12" id="gallery">
                 
             </div>
-            
+            <script src="lect-engine.js"></script>
         </div>
     </div>
     
