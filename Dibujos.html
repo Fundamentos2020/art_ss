@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="stylesGeneral.css"/>
 	<link href='https://fonts.googleapis.com/css?family=Blinker' rel='stylesheet'>
 	<link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
@@ -142,13 +143,12 @@
                     <div>
                         Por fecha de publicación
                     </div>
-                    <select class="pad1">
-                        <option>Cualquier fecha</option>
-                        <option>Ultima hora</option>
-                        <option>Hoy</option>
-                        <option>Esta semana</option>
-                        <option>Este mes</option>
-                        <option>Este año</option>
+                    <select class="pad1" id="date">
+                        <option value="0">Cualquier fecha</option>
+                        <option value="1">Hoy</option>
+                        <option value="2">Esta semana</option>
+                        <option value="3">Este mes</option>
+                        <option value="4">Este año</option>
                     </select>
                     <div class="pad1">
                         <br>
