@@ -79,6 +79,9 @@ function dateFilter() {
             y=f.getFullYear();
             m=f.getMonth()+1;
             d=f.getDate();
+            if(w==0) {
+                w=7;
+            }
             for(x=w;x>0;x--) {
                 date=String(y);
                 if(m<10) {
