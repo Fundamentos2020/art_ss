@@ -12,7 +12,7 @@
         "vistas": 37,
         "ventas": 2,
         "categoria": "Ilustraciones",
-        "imagen": "01 dog - playback & quick EQ.jpg"
+        "imagen": "../images/01 dog - playback & quick EQ.jpg"
     },
     {
         "id": 1,
@@ -27,7 +27,7 @@
         "vistas": 35,
         "ventas": 5,
         "categoria": "Ilustraciones",
-        "imagen": "1-photoshop-art-illustration-by-rikoostenbroek.jpg"
+        "imagen": "../images/1-photoshop-art-illustration-by-rikoostenbroek.jpg"
     },
     {
         "id": 2,
@@ -42,7 +42,7 @@
         "vistas": 39,
         "ventas": 1,
         "categoria": "Ilustraciones",
-        "imagen": "3d-abstract-digital-art-photo-manipulation-photoshop-wallpaper-preview.jpg"
+        "imagen": "../images/3d-abstract-digital-art-photo-manipulation-photoshop-wallpaper-preview.jpg"
     },
     {
         "id": 3,
@@ -57,7 +57,7 @@
         "vistas": 4,
         "ventas": 2,
         "categoria": "Ilustraciones",
-        "imagen": "04.jpg"
+        "imagen": "../images/04.jpg"
     },
     {
         "id": 4,
@@ -72,6 +72,6 @@
         "vistas": 6,
         "ventas": 3,
         "categoria": "Ilustraciones",
-        "imagen": "18-graphic-art-photoshop.jpg"
+        "imagen": "../images/18-graphic-art-photoshop.jpg"
     }
 ]

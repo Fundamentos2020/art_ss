@@ -12,7 +12,7 @@
         "vistas": 800,
         "ventas": 120,
         "categoria": "Pintura",
-        "imagen": "violin.jpg"
+        "imagen": "../images/violin.jpg"
     },
     {
         "id": 1,
@@ -27,7 +27,7 @@
         "vistas": 35,
         "ventas": 5,
         "categoria": "Pintura",
-        "imagen": "mariposa.jpg"
+        "imagen": "../images/mariposa.jpg"
     },
     {
         "id": 2,
@@ -42,7 +42,7 @@
         "vistas": 39,
         "ventas": 1,
         "categoria": "Pintura",
-        "imagen": "pajarillo.jpg"
+        "imagen": "../images/pajarillo.jpg"
     },
     {
         "id": 3,
@@ -57,7 +57,7 @@
         "vistas": 39,
         "ventas": 1,
         "categoria": "Pintura",
-        "imagen": "87556462-pintura-al-óleo-colorida-abstracta-en-lona-imagen-semi-abstracta-de-flores-en-amarillo-y-rojo-con-color.jpg"
+        "imagen": "../images/87556462-pintura-al-óleo-colorida-abstracta-en-lona-imagen-semi-abstracta-de-flores-en-amarillo-y-rojo-con-color.jpg"
         
     },
     {
@@ -73,7 +73,7 @@
         "vistas": 39,
         "ventas": 1,
         "categoria": "Pintura",
-        "imagen":"7-paisajes-tan-hermosos-que-no-parecen-de-este-mundo-964x640.jpg"
+        "imagen":"../images/7-paisajes-tan-hermosos-que-no-parecen-de-este-mundo-964x640.jpg"
     },
     {
         "id": 5,
@@ -88,6 +88,6 @@
         "vistas": 39,
         "ventas": 1,
         "categoria": "Pintura",
-        "imagen":"Captura.png"
+        "imagen":"../images/Captura.png"
     }
 ]

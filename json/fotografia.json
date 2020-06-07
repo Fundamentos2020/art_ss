@@ -12,7 +12,7 @@
         "vistas": 140,
         "ventas": 79,
         "categoria": "Fotografia",
-        "imagen": "sombra.jpg"
+        "imagen": "../images/sombra.jpg"
     },
     {
         "id": 1,
@@ -27,7 +27,7 @@
         "vistas": 312,
         "ventas": 1,
         "categoria": "Fotografia",
-        "imagen": "vidrio.jpg"
+        "imagen": "../images/vidrio.jpg"
     },
     {
         "id": 2,
@@ -42,7 +42,7 @@
         "vistas": 39,
         "ventas": 1,
         "categoria": "Fotografia",
-        "imagen": "reflejo.jpg"
+        "imagen": "../images/reflejo.jpg"
     },
     {
         "id": 3,
@@ -57,7 +57,7 @@
         "vistas": 4,
         "ventas": 2,
         "categoria": "Fotografia",
-        "imagen": "colores.jpg"
+        "imagen": "../images/colores.jpg"
     },
     {
         "id": 4,
@@ -72,6 +72,6 @@
         "vistas": 4,
         "ventas": 2,
         "categoria": "Fotografia",
-        "imagen": "3948ffa0c660a572d48e125d37065cb9cf2fdae9.jpeg"
+        "imagen": "../images/3948ffa0c660a572d48e125d37065cb9cf2fdae9.jpeg"
     }
 ]

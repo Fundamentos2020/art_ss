@@ -12,7 +12,7 @@
         "vistas": 37,
         "ventas": 2,
         "categoria": "Dibujos",
-        "imagen": "peces.jpg"
+        "imagen": "../images/peces.jpg"
     },
     {
         "id": 1,
@@ -27,7 +27,7 @@
         "vistas": 35,
         "ventas": 5,
         "categoria": "Dibujos",
-        "imagen": "abeja.jpg"
+        "imagen": "../images/abeja.jpg"
     },
     {
         "id": 2,
@@ -42,7 +42,7 @@
         "vistas": 39,
         "ventas": 1,
         "categoria": "Dibujos",
-        "imagen": "algodon.jpg"
+        "imagen": "../images/algodon.jpg"
     },
     {
         "id": 3,
@@ -57,7 +57,7 @@
         "vistas": 4,
         "ventas": 2,
         "categoria": "Dibujos",
-        "imagen": "manzana.jpg"
+        "imagen": "../images/manzana.jpg"
     },
     {
         "id": 4,
@@ -72,7 +72,7 @@
         "vistas": 6,
         "ventas": 3,
         "categoria": "Dibujos",
-        "imagen": "flor.jpg"
+        "imagen": "../images/flor.jpg"
     },
     {
         "id": 5,
@@ -87,7 +87,7 @@
         "vistas": 6,
         "ventas": 3,
         "categoria": "Dibujos",
-        "imagen": "arbol.jpg"
+        "imagen": "../images/arbol.jpg"
     },
     {
         "id": 5,
@@ -102,6 +102,6 @@
         "vistas": 9,
         "ventas": 3,
         "categoria": "Dibujos",
-        "imagen": "86167014daefbe82bd3a5f1469503cd274f151dbr1-310-310v2_uhq.jpg"
+        "imagen": "../images/86167014daefbe82bd3a5f1469503cd274f151dbr1-310-310v2_uhq.jpg"
     }
 ]
