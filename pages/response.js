@@ -26,6 +26,21 @@ function savePublicacion(jParams) {
     return REQUEST(`Controllers/publicacionesControllers`, 'POST', jParams);
 }
 
-//UPDATES-PUT
+//UPDATES-PUT-PATCH
 
 //GETS
+function getPublicacionById(jParams) {
+    return REQUEST(`Controllers/publicacionesControllers`, 'GET', jParams);
+}
+
+function getPublicacionByCategoria(jParams) {
+    return REQUEST(`Controllers/publicacionesControllers`, 'GET', jParams);
+}
+
+function getPublicacionesByVendedor(jParams) {
+    return REQUEST(`Controllers/publicacionesControllers`, 'GET', jParams);
+}
+
+function getPublicacionesByComprador(jParams) {
+    return REQUEST(`Controllers/publicacionesControllers`, 'GET', jParams);
+}
