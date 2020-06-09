@@ -1,6 +1,6 @@
 <?php
 
-class connect() {
+class connect {
     public function dbConnect() {
         try {
             $dns = 'mysql:host=localhost;dbname=art_ss';
@@ -14,7 +14,6 @@ class connect() {
         catch(PDOExeption $e) {
             echo 'Error'. $e;
         }
-        
     }
 }
 
