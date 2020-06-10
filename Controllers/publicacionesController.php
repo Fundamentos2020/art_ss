@@ -293,6 +293,7 @@ function savePublicacion() {
         }
 
         $postData = file_get_contents('php://input');
+        print($postData);
 
         if (!$json_data = json_decode($postData)) {
             $response = new Response();

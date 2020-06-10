@@ -1,11 +1,17 @@
 //General variables
-var commandName = "CREATE";
 
-//Callbacks
-document.getElementById('btnProducto').addEventListener('click', fnProducto);
+
+//Handlers
+window.addEventListener('DOMContentLoaded', function () {
+
+    document.getElementById('btnProducto').addEventListener('click', fnProducto, false);
+
+});
+
 
 //Functions
 var fnProducto = function(e) {
+    //alert("A button of product was clicked!");
     if(commandName === "CREATE")
         save();
     else

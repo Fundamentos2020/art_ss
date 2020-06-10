@@ -1,29 +1,36 @@
+const api="http://localhost:80/art_ss/";
 //Peticion General
-function REQUEST(url, method, params) {
+async function REQUEST(url, method, params) {
+    let options = {
+        method: method
+    };
 
     if (method !== 'GET') {
         options['headers'] = { 'Content-Type': 'application/json' };
-        options['body'] = JSON.stringify(jParams);
+        options['body'] = JSON.stringify(params);
     }
 
-    var req = new XMLHttpRequest();
-    req.open(method, url, true);
+    try {
+        let response = await fetch(url, options);
 
-    var json = {};
-    req.onload = function() {
-        if(req.status == 200) {
-            var response = req.responseText;
-            json = JSON.parse(response);
+        if (response.ok) {
+            let data = await response.json();
+            return data;
         }
-        return json;
-    }
+        else if (response.status === 404) {
+            console.log("Error: No se encontro la ruta especificada en el servidor.");
 
-    req.send();
+            return [];
+        }
+    }
+    catch (e) {
+        return JSON.stringify([]);
+    }
 }
 
 //SAVES-POST
 function savePublicacion(jParams) {
-    return REQUEST(`Controllers/publicacionesControllers`, 'POST', jParams);
+    return REQUEST(`${api}Controllers/publicacionesControllers`, 'POST', jParams);
 }
 
 //UPDATES-PUT-PATCH
