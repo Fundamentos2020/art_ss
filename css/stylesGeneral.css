@@ -338,6 +338,14 @@ a {
         width: 95%;
     }
 
+    .content-form2 {
+        position: absolute;
+        top: 20%;
+        left: 5%;
+        width: 95%;
+        margin-bottom: 50%;
+    }
+
     .content-user-form {
         position: absolute;
         top: 100%;
@@ -490,6 +498,14 @@ a {
         padding: 10px;
         position: absolute;
         top: 40%;
+        left: 30%;
+    }
+    
+    .content-form2 {
+        padding: 10px;
+        position: absolute;
+        top: 10%;
+        margin-bottom: 5%;
         left: 30%;
     }
 
