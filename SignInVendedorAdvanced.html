@@ -30,52 +30,73 @@
         </div>
 
         <div class="col-m_12 col_12style content-user-form">
-            <form class="form" action="index.html">
+            <form class="form" id="signIn" >
                 <div class="col-m_6 col_12style ">
                     <div class="margin-div">
                         <label class="container">Tarjeta de credito
-                            <input type="checkbox" checked="checked">
+                            <input type="checkbox" checked="checked" name="card">
                             <span class="checkmark"></span>
                         </label>
     
                         <label for="">Banco</label>
-                        <input type="text" required>
+                        <select name="banco">
+                            <option value="BANCOMER">Banamex</option>
+                            <option value="BBVA">BBVA</option>
+                            <option value="BANORTE">Banorte</option>
+                            <option value="AZTECA">Banco Azteca</option>
+                            <option value="SANTANDER">Santander</option>
+                        </select>
     
                         <div class="col-m_12">
                             <label class="container">Debito
-                                <input type="checkbox" checked="checked">
+                                <input type="checkbox" checked="checked" id="deb" onclick="debito()">
                                 <span class="checkmark"></span>
                             </label>
         
                             <label class="container">Credito
-                                <input type="checkbox">
+                                <input type="checkbox" id="cred" onclick="credito()">
                                 <span class="checkmark"></span>
                             </label>
+                            
+                            <script>
+                                function credito() {
+                                    if(document.getElementById('cred').checked) {
+                                        document.getElementById('deb').checked=false;
+                                    }
+                                }
+
+                                function debito() {
+                                    if(document.getElementById('deb').checked) {
+                                        document.getElementById('cred').checked=false;
+                                    }
+                                }
+                            </script>
                         </div>
     
                         <label for="">Numero de Tarjeta</label>
-                        <input type="number" required>
+                        <input type="number" name="credit">
                     </div>
                 </div>
 
                 <div class="col-m_6 col_12 ">
                     <div class="margin-div">
                         <label class="container">Paypal
-                            <input type="checkbox">
+                            <input type="checkbox" name="paypal">
                             <span class="checkmark"></span>
                         </label>
     
                         <label for="">Usuario</label>
-                        <input type="text" required>
+                        <input type="text" name="user">
     
-                        <label for="">Constrasena</label>
-                        <input type="password" required>
+                        <label for="">Constraseña</label>
+                        <input type="password" name="cont">
                     </div>
                 </div>          
                 <button type="submit" class="btn-submit">Save</button>
             </form>
         </div>
     </div>
-    <script src="pages/Master.js"></script>
+    <!--<script src="pages/Master.js"></script>-->
+    <script src="pages/clientInsert.js"></script>
 </body>
 </html>
