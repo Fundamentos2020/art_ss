@@ -1,4 +1,4 @@
-const api="http://localhost:80/pages/";
+const api="http://localhost:80/Pages";
 //Peticion General
 async function REQUEST(url, method, params) {
     let options = {
@@ -30,7 +30,7 @@ async function REQUEST(url, method, params) {
 
 //SAVES-POST
 function savePublicacion(jParams) {
-    return REQUEST(`${api}Controllers/publicacionesControllers`, 'POST', jParams);
+    return REQUEST(`${api}/Controllers/publicacionesController.php`, 'POST', jParams);
 }
 
 //UPDATES-PUT-PATCH
@@ -41,7 +41,7 @@ function getPublicacionById(jParams) {
 }
 
 function getPublicacionByCategoria(jParams) {
-    return REQUEST(`Controllers/publicacionesControllers`, 'GET', jParams);
+    return REQUEST(`${api}/Controllers/publicacionesController.php`, 'GET', jParams);
 }
 
 function getPublicacionesByVendedor(jParams) {
