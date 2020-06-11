@@ -1,4 +1,4 @@
-const api="http://localhost:80/art_ss/";
+const api="http://localhost:80/pages/";
 //Peticion General
 async function REQUEST(url, method, params) {
     let options = {

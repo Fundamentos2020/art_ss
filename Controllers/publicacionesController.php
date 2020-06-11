@@ -5,7 +5,7 @@ require_once('../Models/Publicacion.php');
 require_once('../Models/Response.php');
 
 try {
-    $connection = DB::getConnection();
+    $connection = DB::dbConnect();
 }
 catch (PDOException $e){
     error_log("Error de conexión - " . $e);
@@ -16,7 +16,6 @@ catch (PDOException $e){
     $response->send();
     exit();
 }
-
 if($_SERVER['REQUEST_METHOD'] === 'GET')
 {
     if (array_key_exists("id", $_GET))
@@ -46,7 +45,7 @@ else {
     $response = new Response();
     $response->setHttpStatusCode(405);
     $response->setSuccess(false);
-    $response->addMessage("Método no permitido");
+    $response->addMessage("Metodo no permitido");
     $response->send();
     exit();
 }
@@ -235,8 +234,9 @@ function getByCategoria($categoria) {
     }
 
     try {
+        $connection = DB::dbConnect();
         $query = $connection->prepare('SELECT * FROM publicaciones WHERE categoria = :categoria');
-        $query->bindParam(':categoria', $categoria, PDO::PARAM_INT);
+        $query->bindParam(':categoria', $categoria, PDO::PARAM_STR);
         //$query->bindParam(':usuario_id', $consulta_idUsuario, PDO::PARAM_INT);
         $query->execute();
 
@@ -244,7 +244,7 @@ function getByCategoria($categoria) {
         $publicaciones = array();
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor'], $row['fecha'], $row['precio'], $row['precio'], $row['vistas'], $row['categoria'], $row['imagen']);
+            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], $row['precio'], $row['vistas'], $row['ventas'], $row['categoria'], $row['imagen']);
             $publicaciones[] = $publicacion->getArray();
         }
 
@@ -304,7 +304,7 @@ function savePublicacion() {
             exit();
         }
 
-        if (!isset($json_data->nombre) || || !isset($json_data->descripcion) || !isset($json_data->stock) || 
+        if (!isset($json_data->nombre) || !isset($json_data->descripcion) || !isset($json_data->stock) || 
         !isset($json_data->vendedor_id) || !isset($json_data->comprador_id) || 
         !isset($json_data->precio) || !isset($json_data->vistas) || !isset($json_data->ventas) ||
         !isset($json_data->categoria) || !isset($json_data->imagen)) {
@@ -344,7 +344,7 @@ function savePublicacion() {
         $nombre = $publicacion->getNombre();
         $descripcion = $publicacion->getDescipcion();
         $stock = $publicacion->getStock();
-        $vendedor_id = $publicacion->getVendedor()
+        $vendedor_id = $publicacion->getVendedor();
         $comprador_id = $publicacion->getComprador();
         //Fecha
         $precio = $publicacion->getPrecio();

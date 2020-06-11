@@ -8,23 +8,23 @@ class Publicacion {
     private $_descripcion;
     private $_stock;
     private $_vendedor;
-    private $_compradores=array();
+    private $_comprador;
     private $_fecha;
     private $_precio;
     private $_vistas;
     private $_categoria;
     private $_imagen;
 
-    public function __construct($id, $nombre, $descripcion, $stock, $vendedor, $compradores, $fecha, $precio, $vistas, $categoria, $imagen) {
+    public function __construct($id, $nombre, $descripcion, $stock, $vendedor, $comprador, $fecha, $precio, $vistas, $categoria, $imagen) {
         $this->setID($id);
         $this->setNombre($nombre);
         $this->setDescripcion($descripcion);
         $this->setStock($stock);
         $this->setVendedor($vendedor);
-        $this->setCompradores($compradores);
+        $this->setComprador($comprador);
         $this->setFecha($fecha);
         $this->setPrecio($precio);
-        $this->setVisitas($vistas);
+        $this->setVistas($vistas);
         $this->setCategoria($categoria);
         $this->setImagen($imagen);
     }
@@ -50,7 +50,7 @@ class Publicacion {
     }
 
     public function getComprador() {
-        return $this->_comprador[count($this->_comprador)];
+        return $this->_comprador;
     }
 
     public function getFecha() {
@@ -67,6 +67,7 @@ class Publicacion {
 
     public function getVentas() {
         return $this->_vistas;
+    }
 
     public function getCategoria() {
         return $this->_categoria;
@@ -108,11 +109,19 @@ class Publicacion {
         if ($vendedorId!==null && (!is_numeric($vendedorId) || $vendedorId<=0 || $vendedorId>=2147483647 || $this->_vendedor!==null)) {
             throw new publicateException("Error en ID del vendedor");
         }
-        $this->_id=$id;
+        $this->_vendedor=$vendedorId;
+    }
+
+    public function setComprador($compradorId) {
+        if ($compradorId!==null && (!is_numeric($compradorId) || $compradorId<=0 || $compradorId>=2147483647 || $this->_comprador!==null)) {
+            throw new publicateException("Error en ID del comprador");
+        }
+        $this->_comprador=$compradorId;
     }
 
     public function setFecha($fechaAlta) {
-        if ($fechaAlta!==null && date_format(date_create_from_format('Y-m-d H:i', $fechaAlta), 'Y-m-d H:i')!==$fechaAlta) {
+        print($fechaAlta);
+        if ($fechaAlta!==null && date_format(date_create_from_format('Y-m-d H:i:s', $fechaAlta), 'Y-m-d H:i:s')!==$fechaAlta) {
             throw new publicateException("Error en fecha de alta de la publicacion");
         }
         $this->_fechaAlta=$fechaAlta;
@@ -127,7 +136,7 @@ class Publicacion {
 
     public function setVistas($vistas) {
         if ($vistas!==null && (!is_numeric($vistas) || $vistas<=0 || $vistas>=2147483647)) {
-            throw new publicateException("Error en las vistas");
+            throw new publicateException("Error en las visitas");
         }
         $this->_vistas=$vistas;
     }
@@ -143,7 +152,7 @@ class Publicacion {
         if ($categoria!==null && strlen($categoria)>20) {
             throw new publicateException("Error en la categoria");
         }
-        $this->_estado=$estado;
+        $this->_categoria=$categoria;
     }
 
     public function setImagen($foto) {

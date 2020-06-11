@@ -1,6 +1,6 @@
 <?php
 
-class connect {
+class DB {
     public function dbConnect() {
         try {
             $dns = 'mysql:host=localhost;dbname=art_ss';
