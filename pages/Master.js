@@ -29,7 +29,7 @@ sesion.addEventListener('click', function(e) {
         var tokens=JSON.parse(localStorage.getItem('l_sesion'));
         var xhttp=new XMLHttpRequest();
         xhttp.withCredentials=true;
-        xhttp.open("DELETE", "http://localhost:80/art_ss/sesiones/"+tokens.id_sesion, true);
+        xhttp.open("DELETE", "./sesiones/"+tokens.id_sesion, true);
         xhttp.setRequestHeader("Authorization", tokens.token);
         xhttp.onload=function() {
             if (this.status!==200) {
