@@ -123,40 +123,44 @@
             <h1 class="title">Agregar Producto</h1>
             <div class="col-m_12 col_12style">
                 <div class="content-user-form-pay">
-                    <div class="col-m_6 col_12style ">
-                        <input id="productImage" type="file">
-                        <img src="images/01 dog - playback & quick EQ.jpg" alt="" width="100%" height="100%"> 
-                    </div>
-
-                    <div class="col-m_6 col_12 ">
-                        <div class="margin-div">
-                            <label style="font-weight: bold;">Nombre:</label>
-                            <input id="pubTitle" type="text" required placeholder="Titulo de la publicacion">
-                            <br>
-                            <br>
-                            <label for="" style="font-weight: bold;">Descripcion:</label>
-                            <br>
-                            <textarea id="pubDescription" name="" id="" cols="80" rows="10"></textarea>
-                            <br>
-                            <br>
-                            <label for="" style="font-weight: bold;" >Precio Unitario:</label>
-                            <input id="pubUnitPrice" type="number" required placeholder="Precio por unidad">
-                            <br>
-                            <br>
-                            <label for="" style="font-weight: bold;">Cantidad en Stock: </label>
-                            <input id="pubStock" type="number" required placeholder="Cantidad en Stock">
-                            <br>
-                            <br>
-                            <label for="" style="font-weight: bold;">Categoria: </label>
-                            <select id="pubCategory" type="number" required placeholder="Cantidad en Stock">
-                                <option value="Fotografia">Fotografia</option>
-                                <option value="Ilustraciones">Ilustraciones</option>
-                                <option value="Dibujos">Dibujos</option>
-                                <option value="Pintura">Pintura</option>
-                            </select>
+                        <div class="col-m_6 col_12style ">
+                            <input id="productImage" type="file">
+                            <img src="images/01 dog - playback & quick EQ.jpg" alt="" width="100%" height="100%"> 
                         </div>
-                    </div>          
-                    <button id="btnProducto" type="submit" class="btn-submit">Guardar</button>
+
+                    <!--<form method="POST" action="Controllers/publicacionesController.php" id="Form" enctype="multipart/form-data">-->       
+                        <div class="col-m_6 col_12 ">
+                            <div class="margin-div">
+                                <label style="font-weight: bold;">Nombre:</label>
+                                <input id="pubTitle" type="text" required placeholder="Titulo de la publicacion">
+                                <br>
+                                <br>
+                                <label for="" style="font-weight: bold;">Descripcion:</label>
+                                <br>
+                                <textarea id="pubDescription" name="" id="" cols="80" rows="10"></textarea>
+                                <br>
+                                <br>
+                                <label for="" style="font-weight: bold;" >Precio Unitario:</label>
+                                <input id="pubUnitPrice" type="number" required placeholder="Precio por unidad">
+                                <br>
+                                <br>
+                                <label for="" style="font-weight: bold;">Cantidad en Stock: </label>
+                                <input id="pubStock" type="number" required placeholder="Cantidad en Stock">
+                                <br>
+                                <br>
+                                <label for="" style="font-weight: bold;">Categoria: </label>
+                                <select id="pubCategory" type="number" required placeholder="Cantidad en Stock">
+                                    <option value="Fotografia">Fotografia</option>
+                                    <option value="Ilustraciones">Ilustraciones</option>
+                                    <option value="Dibujos">Dibujos</option>
+                                    <option value="Pintura">Pintura</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button id="btnProducto" type="submit" class="btn-submit">Guardar</button>
+  
+                         <!--<button id="btnProducto" type="submit" class="btn-submit">Guardar imagen</button>
+                   </form>-->
                 </div>
             </div>
         </div>
