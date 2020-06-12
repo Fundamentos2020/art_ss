@@ -69,7 +69,7 @@ function getById($id) {
         $pedidos = array();
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $pedido = new Pedido($row['id'], $row['comprador_id'], $row['status'], $row['monto_total'], $row['forma_pago'], $row['fecha_pedido']);
+            $pedido = new Pedido($row['id'], $row['comprador_id'], $row['estatus'], $row['monto_total'], $row['forma_pago'], $row['fecha_pedido']);
             $pedidos[] = $pedido->getArray();
         }
 
@@ -105,6 +105,7 @@ function getById($id) {
     }
 }
 
+/* Obtiene los pedidos por Comprador ID */
 function getByCompradorID($comprador_id) {
     if ($comprador_id == '' || !is_numeric($comprador_id)) {
         $response = new Response();
@@ -126,7 +127,7 @@ function getByCompradorID($comprador_id) {
         $pedidos = array();
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $pedido = new Pedido($row['id'], $row['comprador_id'], $row['status'], $row['monto_total'], $row['forma_pago'], $row['fecha_pedido']);
+            $pedido = new Pedido($row['id'], $row['comprador_id'], $row['estatus'], $row['monto_total'], $row['forma_pago'], $row['fecha_pedido']);
             $pedidos[] = $pedido->getArray();
         }
 
