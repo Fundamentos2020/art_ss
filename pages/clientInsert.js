@@ -111,7 +111,40 @@ newClientData.addEventListener('submit', function(e) {
                                 });
                             }
                             if(ready===true) {
-                                location.href="index.html";
+                                var xhttp=new XMLHttpRequest();
+                                xhttp.withCredentials=true;
+                                xhttp.open("POST", "http://localhost:80/ejercicios-php/art_ss-master/sesiones", true);
+                                xhttp.setRequestHeader("Content-Type", "application/json");
+                                xhttp.onload=function() {
+                                    if (this.status == 201) {
+                                        var data=JSON.parse(this.responseText);
+                                        if (data.success === true){
+                                            localStorage.setItem('l_sesion', JSON.stringify(data.data));
+                                            //location.href="index.html";
+                                        }
+                                    }
+                                    else {
+                                        var data=JSON.parse(this.responseText);
+                                        alert(data.messages);
+                                        ready=false;
+                                    }
+                                };
+                                if(ready===true) {
+                                    var nombre_usuario=localStorage.getItem('User_Name');
+                                    var contrasena=localStorage.getItem('Password');
+                                    json={ 
+                                        "nombre_usuario": nombre_usuario, 
+                                        "contrasena": contrasena 
+                                    };
+                                    xhttp.send(JSON.stringify(json));
+                                    xhr.addEventListener("readystatechange", function() {
+                                        mes=JSON.parse(this.responseText);
+                                        if (mes.success===true){
+                                            alert(mes.messages);
+                                            location.href="index.html";
+                                        }
+                                    });
+                                }
                             }
                         }
                     }

@@ -4,6 +4,7 @@ const pay=document.getElementById('deb');
 
 newUserData.addEventListener('submit', function(e) {
     e.preventDefault();
+    localStorage.setItem('Password', document.getElementById('Contrasena').value);
     var f=new Date();
     var fechaA=String(f.getFullYear())+"-";
     if((f.getMonth()+1)<10) {
@@ -66,6 +67,7 @@ newUserData.addEventListener('submit', function(e) {
                 else {
                     localStorage.setItem('ID_User', mes.data.id);
                     localStorage.setItem('Rol', r);
+                    localStorage.setItem('User_Name', mes.data.nombre);
                     location.href="SignInVendedorAdvanced.html";
                 }
             });
