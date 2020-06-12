@@ -4,7 +4,7 @@ require_once('../Models/DB.php');
 require_once('../Models/Response.php');
 
 try {
-    $connection=connect::dbConnect();
+    $connection=DB::dbConnect();
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 }
@@ -86,7 +86,7 @@ try {
         $response->send();
         exit();
     }
-    $contrasena_hash=password_hash($contrasena, PASSWORD_DEFAULT);
+    $contrasena_hash=password_hash($contrasena, PASSWORD_BCRYPT);
     $query=$connection->prepare('INSERT INTO usuarios(nombre, rol_id, pais, fecha_alta, calle, colonia, numero_exterior, codigo_postal, estado, status, email, contraseña, 
         foto_perfil) VALUES(:nombre, :rol_id, :pais, STR_TO_DATE(:fecha_alta, \'%Y-%m-%d %H:%i\'), :calle, :colonia, :numero_exterior, :codigo_postal, :estado, :status, 
         :email, :contrasena, :foto_perfil)');
