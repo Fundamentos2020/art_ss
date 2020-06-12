@@ -8,6 +8,7 @@ async function REQUEST(url, method, params) {
     if (method !== 'GET') {
         options['headers'] = { 'Content-Type': 'application/json' };
         options['body'] = JSON.stringify(params);
+        options['credentials'] = "omit";
     }
 
     try {
@@ -37,7 +38,7 @@ function savePublicacion(jParams) {
 
 //GETS
 function getPublicacionById(jParams) {
-    return REQUEST(`Controllers/publicacionesControllers`, 'GET', jParams);
+    return REQUEST(`${api}/Controllers/publicacionesControllers`, 'GET', jParams);
 }
 
 function getPublicacionByCategoria(jParams) {
@@ -45,9 +46,17 @@ function getPublicacionByCategoria(jParams) {
 }
 
 function getPublicacionesByVendedor(jParams) {
-    return REQUEST(`Controllers/publicacionesControllers`, 'GET', jParams);
+    return REQUEST(`${api}/Controllers/publicacionesControllers`, 'GET', jParams);
 }
 
 function getPublicacionesByComprador(jParams) {
-    return REQUEST(`Controllers/publicacionesControllers`, 'GET', jParams);
+    return REQUEST(`${api}/Controllers/publicacionesControllers`, 'GET', jParams);
+}
+
+function getPedidosByComprador(jParams) {
+    return REQUEST(`${api}/Controllers/pedidosController.php`, 'GET', jParams);
+}
+
+function getPedidosByID (jParams) {
+    return REQUEST(`${api}/Controllers/pedidosController.php?&`, 'GET', jParams);
 }

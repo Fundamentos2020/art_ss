@@ -30,10 +30,10 @@ if($_SERVER['REQUEST_METHOD'] === 'GET')
     }
 }
 else if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    savePublicacion();
+    savePedido();
 }
 else if($_SERVER['REQUEST_METHOD'] === 'PATCH') {
-    editPublicacion();
+    editPedido();
 }
 else {
     $response = new Response();
@@ -44,4 +44,61 @@ else {
     exit();
 }
 
+//Obtiene el pedido por su ID
+function getById($id) {
+    if ($id == '' || !is_numeric($id)) {
+        $response = new Response();
+        $response->setHttpStatusCode(400);
+        $response->setSuccess(false);
+        $response->addMessage("El id de pedido no puede estar vacío y debe ser numérico");
+        $response->send();
+        exit();
+    }
+
+    try {
+        $connection = DB::dbConnect();
+        $query = $connection->prepare('SELECT * FROM pedidos WHERE id = :id');
+        $query->bindParam(':id', $id, PDO::PARAM_INT);
+        //$query->bindParam(':usuario_id', $consulta_idUsuario, PDO::PARAM_INT);
+        $query->execute();
+
+        $rowCount = $query->rowCount();
+        $pedidos = array();
+
+        while($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            $pedido = new Pedido($row['id'], $row['comprador_id'], $row['status'], $row['monto_total'], $row['forma_pago'], $row['fecha_pedido']);
+            $pedido[] = $pedido->getArray();
+        }
+
+        $returnData = array();
+        $returnData['total_registros'] = $rowCount;
+        $returnData['res'] = $pedidos;
+
+        $response = new Response();
+        $response->setHttpStatusCode(200);
+        $response->setSuccess(true);
+        $response->setToCache(true);
+        $response->setData($returnData);
+        $response->send();
+        exit();
+    }
+    catch(PublicacionException $e){
+        $response = new Response();
+        $response->setHttpStatusCode(500);
+        $response->setSuccess(false);
+        $response->addMessage($e->getMessage());
+        $response->send();
+        exit();
+    }
+    catch(PDOException $e) {
+        error_log("Error en BD - " . $e);
+
+        $response = new Response();
+        $response->setHttpStatusCode(500);
+        $response->setSuccess(false);
+        $response->addMessage("Error en consulta de publicacion");
+        $response->send();
+        exit();
+    }
+}
 ?>

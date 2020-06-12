@@ -113,14 +113,17 @@ class Publicacion {
     }
 
     public function setComprador($compradorId) {
-        if ($compradorId!==null && (!is_numeric($compradorId) || $compradorId<=0 || $compradorId>=2147483647 || $this->_comprador!==null)) {
-            throw new publicateException("Error en ID del comprador");
+        //print($compradorId);
+        if(!$compradorId === NULL) {
+            if ((!is_numeric($compradorId) || $compradorId<=0 || $compradorId>=2147483647 || $this->_comprador!==null)) {
+                throw new publicateException("Error en ID del comprador");
+            }
         }
         $this->_comprador=$compradorId;
     }
 
     public function setFecha($fechaAlta) {
-        print($fechaAlta);
+        //print($fechaAlta);
         if ($fechaAlta!==null && date_format(date_create_from_format('Y-m-d H:i:s', $fechaAlta), 'Y-m-d H:i:s')!==$fechaAlta) {
             throw new publicateException("Error en fecha de alta de la publicacion");
         }
@@ -128,6 +131,7 @@ class Publicacion {
     }
 
     public function setPrecio($precio) {
+        //print($precio);
         if ($precio!==null && (!is_numeric($precio) || $precio<=0 || $precio>=2147483647)) {
             throw new publicateException("Error en el precio");
         }
@@ -135,7 +139,7 @@ class Publicacion {
     }
 
     public function setVistas($vistas) {
-        if ($vistas!==null && (!is_numeric($vistas) || $vistas<=0 || $vistas>=2147483647)) {
+        if ($vistas!==null && (!is_numeric($vistas) || $vistas<0 || $vistas>=2147483647)) {
             throw new publicateException("Error en las visitas");
         }
         $this->_vistas=$vistas;

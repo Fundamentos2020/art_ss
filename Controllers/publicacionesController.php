@@ -1,5 +1,4 @@
 <?php
-
 require_once('../Models/DB.php');
 require_once('../Models/Publicacion.php');
 require_once('../Models/Response.php');
@@ -16,6 +15,7 @@ catch (PDOException $e){
     $response->send();
     exit();
 }
+
 if($_SERVER['REQUEST_METHOD'] === 'GET')
 {
     if (array_key_exists("id", $_GET))
@@ -63,7 +63,8 @@ function getById($id) {
     }
 
     try {
-        $query = $connection->prepare('SELECT id FROM publicaciones WHERE id = :id');
+        $connection = DB::dbConnect();
+        $query = $connection->prepare('SELECT * FROM publicaciones WHERE id = :id');
         $query->bindParam(':id', $id, PDO::PARAM_INT);
         //$query->bindParam(':usuario_id', $consulta_idUsuario, PDO::PARAM_INT);
         $query->execute();
@@ -72,7 +73,7 @@ function getById($id) {
         $publicaciones = array();
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor'], $row['fecha'], $row['precio'], $row['precio'], $row['vistas'], $row['categoria'], $row['imagen']);
+            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], $row['precio'], $row['vistas'], $row['ventas'], $row['categoria'], $row['imagen']);
             $publicaciones[] = $publicacion->getArray();
         }
 
@@ -120,6 +121,7 @@ function getByVendedorId($vendedor_id) {
     }
 
     try {
+        $connection = DB::dbConnect();
         $query = $connection->prepare('SELECT * FROM publicaciones WHERE vendedor_id = :vendedor_id');
         $query->bindParam(':vendedor_id', $vendedor_id, PDO::PARAM_INT);
         //$query->bindParam(':usuario_id', $consulta_idUsuario, PDO::PARAM_INT);
@@ -129,7 +131,7 @@ function getByVendedorId($vendedor_id) {
         $publicaciones = array();
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor'], $row['fecha'], $row['precio'], $row['precio'], $row['vistas'], $row['categoria'], $row['imagen']);
+            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], $row['precio'], $row['vistas'], $row['ventas'], $row['categoria'], $row['imagen']);
             $publicaciones[] = $publicacion->getArray();
         }
 
@@ -177,6 +179,7 @@ function getByCompradorId($comprador_id) {
     }
 
     try {
+        $connection = DB::dbConnect();
         $query = $connection->prepare('SELECT * FROM publicaciones WHERE comprador_id = :comprador_id');
         $query->bindParam(':comprador_id', $comprador_id, PDO::PARAM_INT);
         //$query->bindParam(':usuario_id', $consulta_idUsuario, PDO::PARAM_INT);
@@ -186,7 +189,7 @@ function getByCompradorId($comprador_id) {
         $publicaciones = array();
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor'], $row['fecha'], $row['precio'], $row['precio'], $row['vistas'], $row['categoria'], $row['imagen']);
+            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], $row['precio'], $row['vistas'], $row['ventas'], $row['categoria'], $row['imagen']);
             $publicaciones[] = $publicacion->getArray();
         }
 
@@ -283,6 +286,7 @@ function getByCategoria($categoria) {
 /* ------------------------------------------- POST -------------------------------------------------- */
 function savePublicacion() {
     try {
+        $connection = DB::dbConnect();
         if ($_SERVER['CONTENT_TYPE'] !== 'application/json'){
             $response = new Response();
             $response->setHttpStatusCode(400);
@@ -293,7 +297,7 @@ function savePublicacion() {
         }
 
         $postData = file_get_contents('php://input');
-        print($postData);
+        //print("Intentas POSTEAR:"+$postData);
 
         if (!$json_data = json_decode($postData)) {
             $response = new Response();
@@ -305,9 +309,9 @@ function savePublicacion() {
         }
 
         if (!isset($json_data->nombre) || !isset($json_data->descripcion) || !isset($json_data->stock) || 
-        !isset($json_data->vendedor_id) || !isset($json_data->comprador_id) || 
+        !isset($json_data->vendedor_id) || !isset($json_data->fecha_alta) || 
         !isset($json_data->precio) || !isset($json_data->vistas) || !isset($json_data->ventas) ||
-        !isset($json_data->categoria) || !isset($json_data->imagen)) {
+        !isset($json_data->categoria)){
             $response = new Response();
             $response->setHttpStatusCode(400);
             $response->setSuccess(false);
@@ -315,57 +319,43 @@ function savePublicacion() {
             (!isset($json_data->descripcion) ? $response->addMessage('El campo de descripcion es obligatorio') : false);
             (!isset($json_data->stock) ? $response->addMessage('El campo de stock es obligatorio') : false);
             (!isset($json_data->vendedor_id) ? $response->addMessage('El campo de vendedor_id es obligatorio') : false);
-            (!isset($json_data->comprador_id) ? $response->addMessage('El campo de comprador_id es obligatorio') : false);
-            //Fecha
             (!isset($json_data->precio) ? $response->addMessage('El campo de precio es obligatorio') : false);
             (!isset($json_data->vistas) ? $response->addMessage('El campo de vistas es obligatorio') : false);
             (!isset($json_data->ventas) ? $response->addMessage('El campo de ventas es obligatorio') : false);
             (!isset($json_data->categoria) ? $response->addMessage('La categoría es obligatoria') : false);
-            (!isset($json_data->imagen) ? $response->addMessage('El campo de imagen es obligatorio') : false);
+           //(!isset($json_data->imagen) ? $response->addMessage('El campo de imagen es obligatorio') : false);
             $response->send();
             exit();
         }
 
-        $publicacion = new Publicacion(
-            null, 
-            $json_data->nombre,
-            $json_data->descipcion,
-            $json_data->stock,
-            $json_data->vendedor_id,
-            $json_data->comprador_id,
-            //Fecha
-            $json_data->precio,
-            $json_data->vistas,
-            $json_data->ventas,
-            $json_data->categoria,
-            $json_data->imagen
-        );
+        $nombre = $json_data->nombre;
+        $descripcion = $json_data->descripcion;
+        $stock = $json_data->stock;
+        $vendedor_id = $json_data->vendedor_id;
+        $comprador_id = NULL;
+        $fecha_alta = $json_data->fecha_alta;
+        $precio = $json_data->precio;
+        $vistas = $json_data->vistas;
+        $ventas = $json_data->ventas;
+        $categoria = $json_data->categoria;
+        $imagen = NULL;
 
-        $nombre = $publicacion->getNombre();
-        $descripcion = $publicacion->getDescipcion();
-        $stock = $publicacion->getStock();
-        $vendedor_id = $publicacion->getVendedor();
-        $comprador_id = $publicacion->getComprador();
-        //Fecha
-        $precio = $publicacion->getPrecio();
-        $vistas = $publicacion->getVistas();
-        $ventas = $publicacion->getVentas();
-        $categoria = $publicacion->getCategoria();
-        $imagen = $publicacion->getImagen();
-
-        $query = $connection->prepare('INSERT INTO publicaciones (nombre, descripcion, stock, vendedor_id, comprador_id, precio, vistas, ventas, categoria, imagen) VALUES (:nombre, :descripcion, :stock, :vendedor_id, :comprador_id, :precio, :vistas, :ventas, :categoria, :imagen)');
+        $query = $connection->prepare('INSERT INTO publicaciones(nombre, descripcion, stock, vendedor_id, comprador_id, fecha_alta, precio, vistas, 
+        ventas, categoria, imagen) VALUES(:nombre, :descripcion, :stock, :vendedor_id, :comprador_id, STR_TO_DATE(:fecha_alta, \'%Y-%m-%d %H:%i\'), 
+        :precio, :vistas, :ventas, :categoria, :imagen)');
         $query->bindParam(':nombre', $nombre, PDO::PARAM_STR);
         $query->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
         $query->bindParam(':stock', $stock, PDO::PARAM_INT);
         $query->bindParam(':vendedor_id', $vendedor_id, PDO::PARAM_INT);
+        $query->bindParam(':fecha_alta', $fecha_alta, PDO::PARAM_STR);
         $query->bindParam(':comprador_id', $comprador_id, PDO::PARAM_INT);
         $query->bindParam(':precio', $precio, PDO::PARAM_INT);
         $query->bindParam(':vistas', $vistas, PDO::PARAM_INT);
         $query->bindParam(':ventas', $ventas, PDO::PARAM_INT);
         $query->bindParam(':categoria', $categoria, PDO::PARAM_STR);
-        $query->bindParam(':imagen', $imagen, PDO::PARAM_INT);
+        $query->bindParam(':imagen', $imagen, PDO::PARAM_LOB);
         $query->execute();
-
+        
         $rowCount = $query->rowCount();
 
         if ($rowCount === 0) {
@@ -379,9 +369,10 @@ function savePublicacion() {
 
         $ultimo_ID = $connection->lastInsertId();
 
-        $query = $connection->prepare('SELECT id, titulo, descripcion, DATE_FORMAT(fecha_limite, "%Y-%m-%d %H:%i") fecha_limite, completada, categoria_id FROM tareas WHERE id = :id AND usuario_id = :usuario_id');
+        $query = $connection->prepare('SELECT id, nombre, descripcion, stock, vendedor_id, comprador_id, fecha_alta, precio, vistas, ventas, categoria, imagen 
+        FROM publicaciones WHERE id = :id');
         $query->bindParam(':id', $ultimo_ID, PDO::PARAM_INT);
-        $query->bindParam(':usuario_id', $consulta_idUsuario, PDO::PARAM_INT);
+        //$query->bindParam(':usuario_id', $consulta_idUsuario, PDO::PARAM_INT);
         $query->execute();
 
         $rowCount = $query->rowCount();
@@ -390,15 +381,15 @@ function savePublicacion() {
             $response = new Response();
             $response->setHttpStatusCode(500);
             $response->setSuccess(false);
-            $response->addMessage("Error al obtener tarea después de crearla");
+            $response->addMessage("Error al obtener la publicación después de crearla");
             $response->send();
             exit();
         }
 
-        $tareas = array();
+        $publicaciones = array();
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor'], $row['fecha'], $row['precio'], $row['precio'], $row['vistas'], $row['categoria'], $row['imagen']);
+            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], $row['precio'], $row['vistas'], $row['ventas'], $row['categoria'], $row['imagen']);
             $publicaciones[] = $publicacion->getArray();
         }
 
@@ -409,7 +400,7 @@ function savePublicacion() {
         $response = new Response();
         $response->setHttpStatusCode(201);
         $response->setSuccess(true);
-        $response->addMessage("Publicacion creada");
+        $response->addMessage("Publicacion Creada");
         $response->setData($returnData);
         $response->send();
         exit();
@@ -424,11 +415,10 @@ function savePublicacion() {
     }
     catch (PDOException $e){
         error_log("Error en BD - " . $e);
-
         $response = new Response();
         $response->setHttpStatusCode(500);
         $response->setSuccess(false);
-        $response->addMessage("Error en creación de publicaciones");
+        $response->addMessage("Error en crear publicación");
         $response->send();
         exit();
     }
