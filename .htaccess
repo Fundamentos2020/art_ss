@@ -10,7 +10,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 
 #Publicaciones
-RewriteRule ^publicaciones$ Controllers/publicacionesController.php [L,R]
+RewriteRule ^publicaciones$ Controllers/publicacionesController.php [L]
 
 #Clientes
 RewriteRule ^clientes$ Controllers/clientesController.php [L]

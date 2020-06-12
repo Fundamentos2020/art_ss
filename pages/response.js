@@ -35,7 +35,7 @@ async function REQUEST(url, method, params) {
 
 //SAVES-POST
 function savePublicacion(jParams) {
-    return REQUEST(`http://localhost:80/art_ss/publicaciones`, 'POST', jParams);
+    return REQUEST(`./Controllers/publicacionesController.php`, 'POST', jParams);
 }
 
 //UPDATES-PUT-PATCH

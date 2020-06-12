@@ -307,9 +307,9 @@ function savePublicacion() {
             $response->send();
             exit();
         }
-        //echo "Paso";
+        
 
-        /*if (!isset($json_data->nombre) || !isset($json_data->descripcion) || !isset($json_data->stock) || !isset($json_data->vendedor_id) || 
+        if (!isset($json_data->nombre) || !isset($json_data->descripcion) || !isset($json_data->stock) || !isset($json_data->vendedor_id) || 
         !isset($json_data->fecha_alta) || !isset($json_data->precio) || !isset($json_data->vistas) || !isset($json_data->ventas) || !isset($json_data->categoria)) {
             $response = new Response();
             $response->setHttpStatusCode(400);
@@ -325,7 +325,7 @@ function savePublicacion() {
             (!isset($json_data->imagen) ? $response->addMessage('El campo de imagen es obligatorio') : false);
             $response->send();
             exit();
-        }*/
+        }
         
         $nombre = $json_data->nombre;
         $descripcion = $json_data->descripcion;
@@ -337,25 +337,30 @@ function savePublicacion() {
         $vistas = $json_data->vistas;
         $ventas = $json_data->ventas;
         $categoria = $json_data->categoria;
-        $imagen=file_get_contents('Imagenes/'.$json_data->imagen);
-        //echo $_FILES;
-
-        $query = $connection->prepare('INSERT INTO publicaciones(nombre, descripcion, stock, vendedor_id, comprador_id, fecha_alta, precio, vistas, 
-        ventas, categoria, imagen) VALUES(:nombre, :descripcion, :stock, :vendedor_id, :comprador_id, STR_TO_DATE(:fecha_alta, \'%Y-%m-%d %H:%i\'), 
-        :precio, :vistas, :ventas, :categoria, :imagen)');
+        $imagen=$json_data->imagen;
+        //$imagen=null;
+        
+        $query = $connection->prepare('INSERT INTO publicaciones(
+            nombre, descripcion, stock, vendedor_id, comprador_id, fecha_alta, precio, vistas, ventas,
+            categoria, imagen) 
+            VALUES (:nombre, :descripcion, :stock, :vendedor_id, :comprador_id, 
+            :fecha_alta, :precio, :vistas, :ventas, :categoria, :imagen)');
+            
         $query->bindParam(':nombre', $nombre, PDO::PARAM_STR);
         $query->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
         $query->bindParam(':stock', $stock, PDO::PARAM_INT);
         $query->bindParam(':vendedor_id', $vendedor_id, PDO::PARAM_INT);
         $query->bindParam(':fecha_alta', $fecha_alta, PDO::PARAM_STR);
         $query->bindParam(':comprador_id', $comprador_id, PDO::PARAM_INT);
-        $query->bindParam(':precio', $precio, PDO::PARAM_INT);
+        $query->bindParam(':precio', $precio, PDO::PARAM_STR);
         $query->bindParam(':vistas', $vistas, PDO::PARAM_INT);
         $query->bindParam(':ventas', $ventas, PDO::PARAM_INT);
         $query->bindParam(':categoria', $categoria, PDO::PARAM_STR);
         //$imagen=null;
-        $query->bindParam(':imagen', $imagen, PDO::PARAM_LOB);
+        $query->bindParam(':imagen', $imagen, PDO::PARAM_INT);
         $query->execute();
+        print_r($query->errorInfo());
+        
         
         $rowCount = $query->rowCount();
 
@@ -363,7 +368,7 @@ function savePublicacion() {
             $response = new Response();
             $response->setHttpStatusCode(500);
             $response->setSuccess(false);
-            $response->addMessage("Error al crear la publicacion");
+            $response->addMessage("Error al CREAR la publicacion");
             $response->send();
             exit();
         }
@@ -375,7 +380,7 @@ function savePublicacion() {
         $query->bindParam(':id', $ultimo_ID, PDO::PARAM_INT);
         //$query->bindParam(':usuario_id', $consulta_idUsuario, PDO::PARAM_INT);
         $query->execute();
-
+        print_r($connection->errorInfo());
         $rowCount = $query->rowCount();
 
         if ($rowCount === 0) {
