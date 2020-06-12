@@ -1,6 +1,9 @@
-const api="http://localhost:80/Pages";
+
+const api="http://localhost:80/art_ss";
 //Peticion General
+
 async function REQUEST(url, method, params) {
+    'use strict';
     let options = {
         method: method
     };
@@ -8,11 +11,11 @@ async function REQUEST(url, method, params) {
     if (method !== 'GET') {
         options['headers'] = { 'Content-Type': 'application/json' };
         options['body'] = JSON.stringify(params);
-        options['credentials'] = "omit";
+        //options['credentials'] = "omit";
     }
 
     try {
-        let response = await fetch(url, options);
+        let response = await fetch(url, options).catch(console.error);
 
         if (response.ok) {
             let data = await response.json();
@@ -25,13 +28,14 @@ async function REQUEST(url, method, params) {
         }
     }
     catch (e) {
+        console.log(e);
         return JSON.stringify([]);
     }
 }
 
 //SAVES-POST
 function savePublicacion(jParams) {
-    return REQUEST(`${api}/Controllers/publicacionesController.php`, 'POST', jParams);
+    return REQUEST(`http://localhost:80/art_ss/publicaciones`, 'POST', jParams);
 }
 
 //UPDATES-PUT-PATCH

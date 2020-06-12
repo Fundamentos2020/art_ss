@@ -1,4 +1,5 @@
 //General variables
+'use strict';
 
 //Handlers
 window.addEventListener('DOMContentLoaded', function () {
@@ -30,20 +31,20 @@ function save() {
         imagen:"C:/Users/Usuario/Downloads/descarga.png"
     }
 
-    var xhr=new XMLHttpRequest();
-    xhr.withCredentials = true; 
-    xhr.open("POST", `${api}/Controllers/publicacionesController.php/savePublicacion`);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(params));
-    xhr.addEventListener("readystatechange", function() {
-        var response = JSON.parse(this.responseText);
-        console.log(response);
-    });
-    // savePublicacion(params).then((data) => {
-    //     if(data != [] && data != undefined) {
-    //         console.log(data);
-    //     }
+    // var xhr=new XMLHttpRequest();
+    // xhr.withCredentials = true; 
+    // xhr.open("POST", `${api}/Controllers/publicacionesController.php/savePublicacion`);
+    // xhr.setRequestHeader("Content-Type", "application/json");
+    // xhr.send(JSON.stringify(params));
+    // xhr.addEventListener("readystatechange", function() {
+    //     var response = JSON.parse(this.responseText);
+    //     console.log(response);
     // });
+    savePublicacion(params).then((data) => {
+        if(data != [] && data != undefined) {
+            console.log(data);
+        }
+    });
 }
 
 /* Funcion para editar una publicacion */

@@ -4,7 +4,7 @@ require_once('../Models/DB.php');
 require_once('../Models/Response.php');
 
 try {
-    $connection=connect::dbConnect();
+    $connection=DB::dbConnect();
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 }

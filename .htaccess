@@ -4,10 +4,32 @@ Header Set Access-Control-Allow-Origin "*"
 
 RewriteEngine On
 
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 
-#Categias
-RewriteRule ^publicaciones$ Controllers/publicacionesController.php [L]
+#Publicaciones
+RewriteRule ^publicaciones$ Controllers/publicacionesController.php [L,R]
+
+#Clientes
+RewriteRule ^clientes$ Controllers/clientesController.php [L]
+
+#Compradores
+RewriteRule ^compradores$ Controllers/compradoresControllers.php [L]
+
+#Roles
+RewriteRule ^roles/([1-4]+)$ Controllers/rolesController.php?id_rol=$1 [L]
+
+#Sesiones
+RewriteRule ^sesiones$ Controllers/sesionesController.php [L]
+RewriteRule ^sesiones/([0-9]+)$ Controllers/sesionesController.php?id_sesion=$1 [L]
+
+#Tarjetas
+RewriteRule ^tarjetas$ Controllers/tarjetasController.php [L]
+
+#Usuarios
+RewriteRule ^usuarios$ Controllers/usuariosController.php [L]
+
+#Vendedores
+RewriteRule ^vendedores$ Controllers/vendedoresController.php [L]
