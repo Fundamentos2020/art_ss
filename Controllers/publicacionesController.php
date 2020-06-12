@@ -307,11 +307,10 @@ function savePublicacion() {
             $response->send();
             exit();
         }
+        //echo "Paso";
 
-        if (!isset($json_data->nombre) || !isset($json_data->descripcion) || !isset($json_data->stock) || 
-        !isset($json_data->vendedor_id) || !isset($json_data->fecha_alta) || 
-        !isset($json_data->precio) || !isset($json_data->vistas) || !isset($json_data->ventas) ||
-        !isset($json_data->categoria)){
+        /*if (!isset($json_data->nombre) || !isset($json_data->descripcion) || !isset($json_data->stock) || !isset($json_data->vendedor_id) || 
+        !isset($json_data->fecha_alta) || !isset($json_data->precio) || !isset($json_data->vistas) || !isset($json_data->ventas) || !isset($json_data->categoria)) {
             $response = new Response();
             $response->setHttpStatusCode(400);
             $response->setSuccess(false);
@@ -323,11 +322,11 @@ function savePublicacion() {
             (!isset($json_data->vistas) ? $response->addMessage('El campo de vistas es obligatorio') : false);
             (!isset($json_data->ventas) ? $response->addMessage('El campo de ventas es obligatorio') : false);
             (!isset($json_data->categoria) ? $response->addMessage('La categoría es obligatoria') : false);
-           //(!isset($json_data->imagen) ? $response->addMessage('El campo de imagen es obligatorio') : false);
+            (!isset($json_data->imagen) ? $response->addMessage('El campo de imagen es obligatorio') : false);
             $response->send();
             exit();
-        }
-
+        }*/
+        
         $nombre = $json_data->nombre;
         $descripcion = $json_data->descripcion;
         $stock = $json_data->stock;
@@ -338,7 +337,8 @@ function savePublicacion() {
         $vistas = $json_data->vistas;
         $ventas = $json_data->ventas;
         $categoria = $json_data->categoria;
-        $imagen = NULL;
+        $imagen=file_get_contents('Imagenes/'.$json_data->imagen);
+        //echo $_FILES;
 
         $query = $connection->prepare('INSERT INTO publicaciones(nombre, descripcion, stock, vendedor_id, comprador_id, fecha_alta, precio, vistas, 
         ventas, categoria, imagen) VALUES(:nombre, :descripcion, :stock, :vendedor_id, :comprador_id, STR_TO_DATE(:fecha_alta, \'%Y-%m-%d %H:%i\'), 
@@ -353,6 +353,7 @@ function savePublicacion() {
         $query->bindParam(':vistas', $vistas, PDO::PARAM_INT);
         $query->bindParam(':ventas', $ventas, PDO::PARAM_INT);
         $query->bindParam(':categoria', $categoria, PDO::PARAM_STR);
+        //$imagen=null;
         $query->bindParam(':imagen', $imagen, PDO::PARAM_LOB);
         $query->execute();
         
