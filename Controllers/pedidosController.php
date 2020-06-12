@@ -4,7 +4,7 @@ require_once('../Models/Response.php');
 require_once('../Models/Pedido.php');
 
 try {
-    $connection = DB::getConnection();
+    $connection = DB::dbConnect();
 }
 catch (PDOException $e){
     error_log("Error de conexión - " . $e);
@@ -199,18 +199,24 @@ function savePedido() {
         }
 
         $comprador_id = $json_data->comprador_id;
-        $status = $json_data->status;
+        $estatus = $json_data->estatus;
         $monto_total = $json_data->monto_total;
         $forma_pago = $json_data->forma_pago;
-        $fecha_alta = $json_data->fecha_pedido;
+        $fecha_pedido = $json_data->fecha_pedido;
 
-        $query = $connection->prepare('INSERT INTO pedidos(comprador_id, status, monto_total, forma_pago, fecha_pedido)
-        VALUES(:comprador_id, :status, :monto_total, :forma_pago, STR_TO_DATE(:fecha_pedido, \'%Y-%m-%d %H:%i\'))');
+        
+
+        // $query = $connection->prepare('INSERT INTO publicaciones(nombre, descripcion, stock, vendedor_id, comprador_id, fecha_alta, precio, vistas, 
+        // ventas, categoria, imagen) VALUES(:nombre, :descripcion, :stock, :vendedor_id, :comprador_id, STR_TO_DATE(:fecha_alta, \'%Y-%m-%d %H:%i\'), 
+        // :precio, :vistas, :ventas, :categoria, :imagen)');
+
+        $query = $connection->prepare('INSERT INTO pedidos (comprador_id, estatus, monto_total, forma_pago, fecha_pedido) 
+        VALUES (:comprador_id, :estatus, :monto_total, :forma_pago, STR_TO_DATE(:fecha_pedido, \'%Y-%m-%d %H:%i\'))');
         $query->bindParam(':comprador_id', $comprador_id, PDO::PARAM_INT);
-        $query->bindParam(':status', $status, PDO::PARAM_STR);
-        $query->bindParam(':monto_total', $monto_total, PDO::PARAM_INT);
-        $query->bindParam(':forma_pago', $forma_pago, PDO::PARAM_INT);
-        $query->bindParam(':fecha_pedido', $fecha_alta, PDO::PARAM_STR);
+        $query->bindParam(':estatus', $estatus, PDO::PARAM_STR);
+        $query->bindParam(':monto_total', $monto_total, PDO::PARAM_STR);
+        $query->bindParam(':forma_pago', $forma_pago, PDO::PARAM_STR);
+        $query->bindParam(':fecha_pedido', $fecha_pedido, PDO::PARAM_STR);
         $query->execute();
         
         $rowCount = $query->rowCount();
@@ -219,15 +225,14 @@ function savePedido() {
             $response = new Response();
             $response->setHttpStatusCode(500);
             $response->setSuccess(false);
-            $response->addMessage("Error al crear la publicacion");
+            $response->addMessage("Error al crear el pedido");
             $response->send();
             exit();
         }
 
         $ultimo_ID = $connection->lastInsertId();
 
-        $query = $connection->prepare('SELECT id, comprador_id, fecha_alta, precio, vistas, ventas, categoria, imagen 
-        FROM publicaciones WHERE id = :id');
+        $query = $connection->prepare('SELECT id, comprador_id, estatus, monto_total, forma_pago, fecha_pedido FROM pedidos WHERE id = :id');
         $query->bindParam(':id', $ultimo_ID, PDO::PARAM_INT);
         //$query->bindParam(':usuario_id', $consulta_idUsuario, PDO::PARAM_INT);
         $query->execute();
@@ -246,7 +251,7 @@ function savePedido() {
         $pedidos = array();
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $pedido = new Pedido($row['id'], $row['comprador_id'], $row['status'], $row['monto_total'], $row['forma_pago'], $row['fecha_pedido']);
+            $pedido = new Pedido($row['id'], $row['comprador_id'], $row['estatus'], $row['monto_total'], $row['forma_pago'], $row['fecha_pedido']);
             $pedidos[] = $pedido->getArray();
         }
 

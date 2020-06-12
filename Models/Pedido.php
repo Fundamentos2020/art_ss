@@ -5,15 +5,15 @@ class pedidoException extends Exception {}
 class Pedido {
     private $_id;
     private $_comprador_id;
-    private $_status;
+    private $_estatus;
     private $_monto_total;
     private $_forma_pago;
     private $_fecha_pedido;
 
-    public function __construct($id, $comprador_id, $status, $monto_total, $forma_pago, $fecha_pedido) {
+    public function __construct($id, $comprador_id, $estatus, $monto_total, $forma_pago, $fecha_pedido) {
         $this->setID($id);
         $this->setComprador($comprador_id);
-        $this->setStatus($status);
+        $this->setStatus($estatus);
         $this->setMontoTotal($monto_total);
         $this->setFormaPago($forma_pago);
         $this->setFecha($fecha_pedido);
@@ -28,7 +28,7 @@ class Pedido {
     }
 
     public function getStatus() {
-        return $this->_status;
+        return $this->_estatus;
     }
 
     public function getMontoTotal() {
@@ -59,11 +59,11 @@ class Pedido {
         $this->_comprador_id=$comprador_id;
     }
 
-    public function setStatus($status) {
-        if ($status===null || strlen($status)>50 || strlen($status)<1) {
+    public function setStatus($estatus) {
+        if ($estatus===null || strlen($estatus)>50 || strlen($estatus)<1) {
             throw new pedidoException("Error en el estatus de la publicacion");
         }
-        $this->_status=$status;
+        $this->_estatus=$estatus;
     }
 
     public function setMontoTotal($monto_total) {
@@ -91,11 +91,11 @@ class Pedido {
     public function getArray() {
         $pedido=array();
         $pedido['id']=$this->getID();
-        $pedido['comprador_id']=$this->getComprador();
-        $pedido['fecha_pedido']=$this->getFecha();
+        $pedido['comprador_id']=$this->getCompradorID();
+        $pedido['estatus']=$this->getStatus();
         $pedido['monto_total']=$this->getMontoTotal();
         $pedido['forma_pago']=$this->getFormaPago();
-        $pedido['status']=$this->getStatus();
+        $pedido['fecha_pedido']=$this->getFecha();
         return $pedido;
     }
 }
