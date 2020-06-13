@@ -234,11 +234,11 @@ function sort() {
 function loadJson(arch) {
     let inyect='';
     xhr=new XMLHttpRequest();
-    xhr.open('GET', arch, true);
+    xhr.open('GET', 'Controllers/publicacionesController.php'+arch, true);
     xhr.onload=function() {
         if(this.status===200) {
             doc=this.responseText;
-            obras=JSON.parse(doc);
+            obras=JSON.parse(doc).data;
             insertion(obras);
             localStorage.setItem('products', doc);
         }
@@ -249,14 +249,14 @@ function loadJson(arch) {
 function insertion(arr) {
     let inyect='';
     arr.forEach(function(elem) {
-        fecha=extraeFecha(elem.fechaAlta);
+        fecha=extraeFecha(elem.fecha_alta);
         inyect+=`
-            <a href="${elem.Nombre}.html" style="color: black;">
+            <a href="StandardImage.html" style="color: black;" onclick="setPublication(${elem.id})">
                 <div class="col-m_3 col_12">
                     <div class="t1 fondo bf1" style="background-image: url('${elem.imagen}');">
                     </div>
                     <div class="t2 l-name">
-                        ${elem.Nombre}
+                        ${elem.nombre}
                     </div>
                     <div class="t2 l-price">
                         <div class="pad2">
@@ -290,4 +290,8 @@ function extraeFecha(fecha) {
     var m=fecha[5]+fecha[6];
     var a=fecha[2]+fecha[3];
     return d+"/"+m+"/"+a;
+}
+
+function setPublication(id) {
+    localStorage.setItem('Actual-Image', id);
 }
