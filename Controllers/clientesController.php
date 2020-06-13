@@ -52,10 +52,12 @@ if (!isset($json_data->usuario_id) || (!isset($json_data->cuenta_paypal) && !iss
     exit();
 }
 $usuario_id=$json_data->usuario_id;
-$cuenta_paypal=trim($json_data->cuenta_paypal);
-$cuenta_tarjeta=trim($json_data->cuenta_tarjeta);
+$cuenta_paypal=$json_data->cuenta_paypal;
+$cuenta_tarjeta=$json_data->cuenta_tarjeta;
 try {
     if($cuenta_paypal!==null) {
+        //echo "Entro";
+        $cuenta_paypal=trim($json_data->cuenta_paypal);
         $query=$connection->prepare('SELECT usuario_id FROM clientes WHERE cuenta_paypal=:cuenta_paypal');
         $query->bindParam(':cuenta_paypal', $cuenta_paypal, PDO::PARAM_STR);
         $query->execute();
@@ -65,6 +67,7 @@ try {
             $response->setHttpStatusCode(409);
             $response->setSuccess(false);
             $response->addMessage("La cuenta de PayPal ya existe");
+            $response->setData($cuenta_paypal);
             $response->send();
             exit();
         }
@@ -86,7 +89,7 @@ try {
     $query=$connection->prepare('INSERT INTO clientes(usuario_id, cuenta_paypal, cuenta_tarjeta) VALUES(:usuario_id, :cuenta_paypal, :cuenta_tarjeta)');
     $query->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
     $query->bindParam(':cuenta_paypal', $cuenta_paypal, PDO::PARAM_STR);
-    $query->bindParam(':cuenta_tarjeta', $cuenta_tarjeta, PDO::PARAM_STR);
+    $query->bindParam(':cuenta_tarjeta', $cuenta_tarjeta, PDO::PARAM_INT);
     $query->execute();
     $rowCount=$query->rowCount();
     if($rowCount===0) {
