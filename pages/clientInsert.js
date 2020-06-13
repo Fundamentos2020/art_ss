@@ -35,12 +35,13 @@ newClientData.addEventListener('submit', function(e) {
                 }
             }
         }
-        if(ready===true){  
+        if(ready===true){
             var json={ 
                 "usuario_id": localStorage.getItem('ID_User'), 
                 "cuenta_paypal": user, 
                 "cuenta_tarjeta": tarjeta
             };  
+            console.log(json);
             var xhr=new XMLHttpRequest();
             xhr.withCredentials=true;
             xhr.open("POST", "./clientes");
@@ -137,10 +138,11 @@ newClientData.addEventListener('submit', function(e) {
                                         "contrasena": contrasena 
                                     };
                                     xhttp.send(JSON.stringify(json));
-                                    xhr.addEventListener("readystatechange", function() {
+                                    xhttp.addEventListener("readystatechange", function() {
                                         mes=JSON.parse(this.responseText);
                                         if (mes.success===true){
-                                            alert(mes.messages);
+                                            //alert(mes.messages);
+                                            localStorage.removeItem('Password');
                                             location.href="index.html";
                                         }
                                     });
