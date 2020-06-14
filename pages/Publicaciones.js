@@ -21,21 +21,22 @@ var fnProducto = function(e) {
 /* Funcion para guardar una publicacion */
 async function save() {
     //var form=new FormData(Form)
+    //console.log("Paso");
     let img=form.files[0];
-    let data=new FormData();
-    data.append('imagen', img);
+    let send=new FormData();
+    send.append('imagen', img);
+    //console.log(send);
     var param = {
         headers: {
             'IMAGEN': 'Arrival'
         },
         method: 'POST',
-        body: data
+        body: send
     };
-    let image_name = await fetch("./Controllers/imageController.php", param)
+    let image_name=await fetch("./Controllers/imageController.php", param)
         .then( response => response.json() )
         .then( data => { return data ; } )
-        .catch( error => localStorage.setItem('error', error ) );
-    //console.log(image_name.data);
+        .catch( error => localStorage.setItem('error', error));
     localStorage.setItem('image_name', image_name.data);
     var f=new Date();
     var fechaA=String(f.getFullYear())+"-";
@@ -50,7 +51,7 @@ async function save() {
     var tokens=JSON.parse(localStorage.getItem('l_sesion'));
     //console.log(tokens);
     if(localStorage.getItem('l_sesion')!==null) {
-        var xhttp=new XMLHttpRequest();
+        /*var xhttp=new XMLHttpRequest();
         xhttp.withCredentials=true;
         xhttp.open("GET", "./usuarios/"+tokens.id_usuario, true);
         var user;
@@ -70,7 +71,7 @@ async function save() {
                 };
             }
         };
-        xhttp.send();
+        xhttp.send();*/
         var params = {
             nombre: document.getElementById('pubTitle').value,
             descripcion: document.getElementById('pubDescription').value,
@@ -79,11 +80,11 @@ async function save() {
             categoria: document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value,
             vistas: 0,
             ventas: 0,
-            vendedor_id: tokens.id_uuario,
+            vendedor_id: tokens.id_usuario,
             fecha_alta: fechaA,
             imagen: localStorage.getItem('image_name')
         }
-        console.log(params);
+        //console.log(params);
         var xhr=new XMLHttpRequest();
         xhr.withCredentials = true; 
         xhr.open("POST", "./publicaciones", true);
@@ -94,6 +95,9 @@ async function save() {
             var mes=JSON.parse(this.responseText);
             if (mes.success===true){
                 location.href="index.html";
+            }
+            else {
+                alert(mes.messages);
             }
         });
     }

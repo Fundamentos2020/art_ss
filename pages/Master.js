@@ -3,6 +3,7 @@
 var arrCarrito = [];
 var commandName = "CREATE";
 const sesion=document.getElementById('inFin');
+const sesion2=document.getElementById('inFin2');
 
 /*try {
     document.getElementById('close').addEventListener('click', cerrarSesion());
@@ -20,6 +21,9 @@ window.addEventListener('DOMContentLoaded', function (e) {
         sesion.innerHTML=`
             <a href="index.html"><span class="item-menu-text"><i class="fa fa-sign-in" aria-hidden="true"></i>CERRAR SESION</span></a>
         `;
+        sesion2.innerHTML=`
+            <a href="index.html"><span class="item-menu-text"><i class="fa fa-sign-in" aria-hidden="true"></i>CERRAR SESION</span></a>
+        `;
     }
 });
 
@@ -31,12 +35,6 @@ sesion.addEventListener('click', function(e) {
         xhttp.withCredentials=true;
         xhttp.open("DELETE", "./sesiones/"+tokens.id_sesion, true);
         xhttp.setRequestHeader("Authorization", tokens.token);
-        xhttp.onload=function() {
-            if (this.status!==200) {
-                var data=JSON.parse(this.responseText);
-                alert(data.messages);
-            }
-        };
         xhttp.send();
         xhttp.addEventListener("readystatechange", function() {
             mes=JSON.parse(this.responseText);
