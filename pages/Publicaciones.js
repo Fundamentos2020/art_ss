@@ -51,55 +51,39 @@ async function save() {
     var tokens=JSON.parse(localStorage.getItem('l_sesion'));
     //console.log(tokens);
     if(localStorage.getItem('l_sesion')!==null) {
-        /*var xhttp=new XMLHttpRequest();
-        xhttp.withCredentials=true;
-        xhttp.open("GET", "./usuarios/"+tokens.id_usuario, true);
-        var user;
-        xhttp.onload=function() {
-            if (this.status!==200) {
-                var user=JSON.parse(this.responseText);
-                var xh=new XMLHttpRequest();
-                xh.withCredentials=true;
-                xh.open("GET", "./roles/"+user.rol_id, true);
-                xh.onload=function() {
-                    if (this.status!==200) {
-                        var rol=JSON.parse(this.responseText);
-                        if(rol.tipo==='COMPRADOR') {
-                            alert("Usted no esta autorizado para publicar obras")
-                        }
-                    }
-                };
-            }
-        };
-        xhttp.send();*/
-        var params = {
-            nombre: document.getElementById('pubTitle').value,
-            descripcion: document.getElementById('pubDescription').value,
-            precio: document.getElementById('pubUnitPrice').value,
-            stock: document.getElementById('pubStock').value,
-            categoria: document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value,
-            vistas: 0,
-            ventas: 0,
-            vendedor_id: tokens.id_usuario,
-            fecha_alta: fechaA,
-            imagen: localStorage.getItem('image_name')
+        if(tokens.rol_usuario==='COMPRADOR') {
+            alert("Usted no esta autorizado para publicar obras");
         }
-        //console.log(params);
-        var xhr=new XMLHttpRequest();
-        xhr.withCredentials = true; 
-        xhr.open("POST", "./publicaciones", true);
-        xhr.setRequestHeader("Authorization", tokens.token);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(JSON.stringify(params));
-        xhr.addEventListener("readystatechange", function() {
-            var mes=JSON.parse(this.responseText);
-            if (mes.success===true){
-                location.href="index.html";
+        else {
+            var params = {
+                nombre: document.getElementById('pubTitle').value,
+                descripcion: document.getElementById('pubDescription').value,
+                precio: document.getElementById('pubUnitPrice').value,
+                stock: document.getElementById('pubStock').value,
+                categoria: document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value,
+                vistas: 0,
+                ventas: 0,
+                vendedor_id: tokens.id_usuario,
+                fecha_alta: fechaA,
+                imagen: localStorage.getItem('image_name')
             }
-            else {
-                alert(mes.messages);
-            }
-        });
+            //console.log(params);
+            var xhr=new XMLHttpRequest();
+            xhr.withCredentials = true; 
+            xhr.open("POST", "./publicaciones", true);
+            xhr.setRequestHeader("Authorization", tokens.token);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(JSON.stringify(params));
+            xhr.addEventListener("readystatechange", function() {
+                var mes=JSON.parse(this.responseText);
+                if (mes.success===true){
+                    location.href="index.html";
+                }
+                else {
+                    alert(mes.messages);
+                }
+            });
+        }
     }
     else {
         alert("No hay ninguna sesion iniciada");

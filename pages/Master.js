@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', function (e) {
             <a href="index.html"><span class="item-menu-text"><i class="fa fa-sign-in" aria-hidden="true"></i>CERRAR SESION</span></a>
         `;
         sesion2.innerHTML=`
-            <a href="index.html"><span class="item-menu-text"><i class="fa fa-sign-in" aria-hidden="true"></i>CERRAR SESION</span></a>
+            <a href="index.html"><span class="item-menu-text"><i class="fa fa-sign-in" aria-hidden="true"></i></span></a>
         `;
     }
 });
@@ -37,7 +37,26 @@ sesion.addEventListener('click', function(e) {
         xhttp.setRequestHeader("Authorization", tokens.token);
         xhttp.send();
         xhttp.addEventListener("readystatechange", function() {
-            mes=JSON.parse(this.responseText);
+            var mes=JSON.parse(this.responseText);
+            if (mes.success===false){
+                alert(mes.messages);
+            }
+        });
+        localStorage.removeItem('l_sesion');
+    }
+});
+
+sesion2.addEventListener('click', function(e) {
+    //e.preventDefault();
+    if(localStorage.getItem('l_sesion')!==null) {
+        var tokens=JSON.parse(localStorage.getItem('l_sesion'));
+        var xhttp=new XMLHttpRequest();
+        xhttp.withCredentials=true;
+        xhttp.open("DELETE", "./sesiones/"+tokens.id_sesion, true);
+        xhttp.setRequestHeader("Authorization", tokens.token);
+        xhttp.send();
+        xhttp.addEventListener("readystatechange", function() {
+            var mes=JSON.parse(this.responseText);
             if (mes.success===false){
                 alert(mes.messages);
             }
