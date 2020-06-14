@@ -34,55 +34,66 @@ var fnProducto = function(e) {
 /* Funcion para guardar una publicacion */
 async function save() {
     var img = document.getElementById('productImage');
-    if(img.files[0] !== undefined) {
-        var fecha = new Date();
-        var fechaA=String(fecha.getFullYear())+"-";
-        if((fecha.getMonth()+1)<10) {
-            fechaA+="0";
-        }
-        fechaA+=String(fecha.getMonth()+1)+"-";
-        if(fecha.getDate()<10) {
-            fechaA+="0";
-        }
-        fechaA+=String(fecha.getDate())+" "+String(fecha.getHours())+":"+String(fecha.getMinutes());
-        //var tokens=JSON.parse(localStorage.getItem('l_sesion'));
-
-        if(document.getElementById('pubTitle').value !== '' && document.getElementById('pubDescription').value !== ''
-        && document.getElementById('pubUnitPrice').value !== '' && document.getElementById('pubStock').value !== ''
-        && document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value !== '') {
-            var params = {
-                nombre: document.getElementById('pubTitle').value,
-                descripcion: document.getElementById('pubDescription').value,
-                precio: document.getElementById('pubUnitPrice').value,
-                stock: document.getElementById('pubStock').value,
-                categoria: document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value,
-                vistas: 0,
-                ventas: 0,
-                vendedor_id: 57,
-                fecha_alta: fechaA,
-                imagen: form.files[0].name
+    var tokens=JSON.parse(localStorage.getItem('l_sesion'));
+    if(localStorage.getItem('l_sesion')!==null) {
+        if(img.files[0] !== undefined) {
+            if(tokens.rol_usuario==='COMPRADOR') {
+                alert("Usted no esta autorizado para publicar obras");
             }
-
-            savePublicacion(params).then((data) => {
-                if(data !== undefined) {
-                    alert("NUEVO PRODUCTO AGREGADO CORRECTAMENTE");
-                    document.getElementById('pubTitle').value = '';
-                    document.getElementById('pubDescription').value = '';
-                    document.getElementById('pubUnitPrice').value = '';
-                    document.getElementById('pubStock').value = '';
-                    document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value = '';
-                    document.getElementById('inputImage').defaultValue;
-                    document.getElementById('inputImage').value = "";
+            else {
+                var fecha = new Date();
+                var fechaA=String(fecha.getFullYear())+"-";
+                if((fecha.getMonth()+1)<10) {
+                    fechaA+="0";
                 }
-            });
+                fechaA+=String(fecha.getMonth()+1)+"-";
+                if(fecha.getDate()<10) {
+                    fechaA+="0";
+                }
+                fechaA+=String(fecha.getDate())+" "+String(fecha.getHours())+":"+String(fecha.getMinutes());
+    
+                if(document.getElementById('pubTitle').value !== '' && document.getElementById('pubDescription').value !== ''
+                && document.getElementById('pubUnitPrice').value !== '' && document.getElementById('pubStock').value !== ''
+                && document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value !== '') {
+                    var params = {
+                        nombre: document.getElementById('pubTitle').value,
+                        descripcion: document.getElementById('pubDescription').value,
+                        precio: document.getElementById('pubUnitPrice').value,
+                        stock: document.getElementById('pubStock').value,
+                        categoria: document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value,
+                        vistas: 0,
+                        ventas: 0,
+                        vendedor_id: 57,
+                        fecha_alta: fechaA,
+                        imagen: form.files[0].name
+                    }
+    
+                    savePublicacion(params).then((data) => {
+                        if(data !== undefined) {
+                            alert("NUEVO PRODUCTO AGREGADO CORRECTAMENTE");
+                            document.getElementById('pubTitle').value = '';
+                            document.getElementById('pubDescription').value = '';
+                            document.getElementById('pubUnitPrice').value = '';
+                            document.getElementById('pubStock').value = '';
+                            document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value = '';
+                            document.getElementById('inputImage').defaultValue;
+                            document.getElementById('inputImage').value = "";
+                        }
+                    });
+                }
+                else {
+                    alert("Hay campos faltantes!");
+                }
+            }
         }
         else {
-            alert("Hay campos faltantes!");
+            alert("Es necesario agregar una imagen en la publicacion");
         }
     }
     else {
-        alert("Es necesario agregar una imagen en la publicacion");
+        alert("No hay ninguna sesion iniciada");
     }
+    
     //var form=new FormData(Form)
     
     // let data = new FormData();
