@@ -16,7 +16,7 @@ RewriteRule ^publicaciones$ Controllers/publicacionesController.php [L]
 RewriteRule ^clientes$ Controllers/clientesController.php [L]
 
 #Compradores
-RewriteRule ^compradores$ Controllers/compradoresControllers.php [L]
+RewriteRule ^compradores$ Controllers/compradoresController.php [L]
 
 #Roles
 RewriteRule ^roles/([1-4]+)$ Controllers/rolesController.php?id_rol=$1 [L]
@@ -30,6 +30,5 @@ RewriteRule ^tarjetas$ Controllers/tarjetasController.php [L]
 
 #Usuarios
 RewriteRule ^usuarios$ Controllers/usuariosController.php [L]
-
 #Vendedores
 RewriteRule ^vendedores$ Controllers/vendedoresController.php [L]
