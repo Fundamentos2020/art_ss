@@ -4,11 +4,24 @@ const mn=document.getElementById('Mi');
 const mx=document.getElementById('Ma');
 const cont=document.getElementById('gallery');
 var obras=[];
+const category = document.getElementById('Title').innerHTML;
+
+window.addEventListener('DOMContentLoaded', function () {
+    bindCategories();
+});
 
 op.addEventListener('change', sort);
 de.addEventListener('change', priceFilter);
 mn.addEventListener('change', priceFilter);
 mx.addEventListener('change', priceFilter);
+
+function bindCategories() {
+    getPublicacionesByCategoria({categoria: category}).then((data) => {
+        if(data !== undefined) {
+            insertion(data.data.res);
+        }
+    })
+}
 
 function priceFilter() {
     var minimo;
@@ -249,7 +262,7 @@ function loadJson(arch) {
 function insertion(arr) {
     let inyect='';
     arr.forEach(function(elem) {
-        fecha=extraeFecha(elem.fecha_alta);
+        //fecha=extraeFecha(elem.fecha_alta);
         inyect+=`
             <a href="StandardImage.html" style="color: black;" onclick="setPublication(${elem.id})">
                 <div class="col-m_3 col_12">
@@ -275,7 +288,7 @@ function insertion(arr) {
                     </div>
                     <div class="t3">
                         <div class="l-date pad4" style="float: right;">
-                            <i>${fecha}</i>
+                            <i>hoy</i>
                         </div>
                     </div>
                 </div>

@@ -11,7 +11,7 @@
     <title>Art SS - Dibujos</title>
     <link rel="stylesheet" href="css/catalog_plant.css">
 </head>
-<body onload="loadJson('json/dibujos.json')">
+<body>
     <header class="header col-m_12 col-12">
         <div class="full-menu">
             <div class="img-logo">
@@ -101,7 +101,7 @@
                 </div>
             </li>
             <li class="item">
-                <div id="inFin2">
+                <div id="inFin">
                     <a href="Login.html"><span class="item-menu-text"><i class="fa fa-sign-in" aria-hidden="true"></i></span></a>
                 </div>
 			</li>
@@ -121,7 +121,7 @@
     <div class="content-page">
         <div class="adapt">
             <br>
-            <h1 class="title">Dibujos</h1>
+            <h1 id="Title" class="title">Dibujos</h1>
             <div>
                 <b>Ordenar por:</b>
                 <select id="orden">
@@ -198,5 +198,6 @@
         </div>
     </div>
     <script src="pages/Master.js"></script>
+    <script src="pages/response.js"></script>
 </body>
 </html>

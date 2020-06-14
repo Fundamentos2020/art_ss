@@ -1,4 +1,3 @@
-
 const api="http://localhost:80/art_ss";
 //Peticion General
 
@@ -45,8 +44,8 @@ function getPublicacionById(jParams) {
     return REQUEST(`${api}/Controllers/publicacionesControllers`, 'GET', jParams);
 }
 
-function getPublicacionByCategoria(jParams) {
-    return REQUEST(`${api}/Controllers/publicacionesController.php`, 'GET', jParams);
+function getPublicacionesByCategoria(jParams) {
+    return REQUEST(`./Controllers/publicacionesController.php?categoria=${jParams.categoria}`, 'GET');
 }
 
 function getPublicacionesByVendedor(jParams) {
