@@ -262,7 +262,7 @@ function loadJson(arch) {
 function insertion(arr) {
     let inyect='';
     arr.forEach(function(elem) {
-        //fecha=extraeFecha(elem.fecha_alta);
+        fecha=extraeFecha(elem.fecha_alta);
         inyect+=`
             <a href="StandardImage.html" style="color: black;" onclick="setPublication(${elem.id})">
                 <div class="col-m_3 col_12">
@@ -288,7 +288,7 @@ function insertion(arr) {
                     </div>
                     <div class="t3">
                         <div class="l-date pad4" style="float: right;">
-                            <i>hoy</i>
+                            <i>${fecha}</i>
                         </div>
                     </div>
                 </div>

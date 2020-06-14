@@ -127,7 +127,7 @@ class Publicacion {
         if ($fechaAlta!==null && date_format(date_create_from_format('Y-m-d H:i:s', $fechaAlta), 'Y-m-d H:i:s')!==$fechaAlta) {
             throw new publicateException("Error en fecha de alta de la publicacion");
         }
-        $this->_fechaAlta=$fechaAlta;
+        $this->_fecha=$fechaAlta;
     }
 
     public function setPrecio($precio) {
