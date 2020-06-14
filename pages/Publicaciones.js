@@ -93,66 +93,60 @@ async function save() {
         alert("No hay ninguna sesion iniciada");
     }
     
-    //var form=new FormData(Form)
-    
-    // let data = new FormData();
-    // data.append('imagen', img);
+    // //var form=new FormData(Form)
+    // //console.log("Paso");
+    // let img=form.files[0];
+    // let send=new FormData();
+    // send.append('imagen', img);
+    // //console.log(send);
     // var param = {
     //     headers: {
     //         'IMAGEN': 'Arrival'
     //     },
     //     method: 'POST',
-    //     body: data
+    //     body: send
     // };
-    // let image_name = await fetch("./Controllers/imageController.php", param)
+    // let image_name=await fetch("./Controllers/imageController.php", param)
     //     .then( response => response.json() )
     //     .then( data => { return data ; } )
-    //     .catch( error => localStorage.setItem('error', error ) );
-    // //console.log(image_name.data);
+    //     .catch( error => localStorage.setItem('error', error));
     // localStorage.setItem('image_name', image_name.data);
     
-    //console.log(tokens);
-    //if(localStorage.getItem('l_sesion')!==null) {
-        // var xhttp=new XMLHttpRequest();
-        // xhttp.withCredentials=true;
-        // xhttp.open("GET", "./usuarios/"+tokens.id_usuario, true);
-        // var user;
-        // xhttp.onload=function() {
-        //     if (this.status!==200) {
-        //         var user=JSON.parse(this.responseText);
-        //         var xh=new XMLHttpRequest();
-        //         xh.withCredentials=true;
-        //         xh.open("GET", "./roles/"+user.rol_id, true);
-        //         xh.onload=function() {
-        //             if (this.status!==200) {
-        //                 var rol=JSON.parse(this.responseText);
-        //                 if(rol.tipo==='COMPRADOR') {
-        //                     alert("Usted no esta autorizado para publicar obras")
-        //                 }
-        //             }
-        //         };
-        //     }
-        // };
-        //xhttp.send();
-        
-        //console.log(params);
-        // var xhr=new XMLHttpRequest();
-        // xhr.withCredentials = true; 
-        // xhr.open("POST", "./publicaciones", true);
-        // xhr.setRequestHeader("Authorization", tokens.token);
-        // xhr.setRequestHeader("Content-Type", "application/json");
-        // xhr.send(JSON.stringify(params));
-        // xhr.addEventListener("readystatechange", function() {
-        //     var mes=JSON.parse(this.responseText);
-        //     if (mes.success===true){
-        //         location.href="index.html";
-        //     }
-        // });
-    //}
-    //else {
-        //alert("No hay ninguna sesion iniciada");
-    //}
     
+    //console.log(tokens);
+    // if() {
+        
+    //     else {
+    //         var params = {
+    //             nombre: document.getElementById('pubTitle').value,
+    //             descripcion: document.getElementById('pubDescription').value,
+    //             precio: document.getElementById('pubUnitPrice').value,
+    //             stock: document.getElementById('pubStock').value,
+    //             categoria: document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value,
+    //             vistas: 0,
+    //             ventas: 0,
+    //             vendedor_id: tokens.id_usuario,
+    //             fecha_alta: fechaA,
+    //             imagen: localStorage.getItem('image_name')
+    //         }
+    //         //console.log(params);
+    //         var xhr=new XMLHttpRequest();
+    //         xhr.withCredentials = true; 
+    //         xhr.open("POST", "./publicaciones", true);
+    //         xhr.setRequestHeader("Authorization", tokens.token);
+    //         xhr.setRequestHeader("Content-Type", "application/json");
+    //         xhr.send(JSON.stringify(params));
+    //         xhr.addEventListener("readystatechange", function() {
+    //             var mes=JSON.parse(this.responseText);
+    //             if (mes.success===true){
+    //                 location.href="index.html";
+    //             }
+    //             else {
+    //                 alert(mes.messages);
+    //             }
+    //         });
+    //     }
+    // }
     
 }
 
