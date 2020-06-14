@@ -16,6 +16,59 @@ catch (PDOException $e){
     exit();
 }
 
+if(!isset($_SERVER['HTTP_AUTHORIZATION']) || strlen($_SERVER['HTTP_AUTHORIZATION'])<1) {
+    $response = new Response();
+    $response->setHttpStatusCode(401);
+    $response->setSuccess(false);
+    $response->addMessage("No se encontró el token de acceso");
+    $response->send();
+    exit();
+}
+$accesstoken=$_SERVER['HTTP_AUTHORIZATION']; 
+try {
+    $query=$connection->prepare('SELECT id_usuario, caducidad, status FROM sesiones, usuarios WHERE sesiones.id_usuario=usuarios.id AND token=:token_acceso');
+    $query->bindParam(':token_acceso', $accesstoken, PDO::PARAM_STR);
+    $query->execute();
+    $rowCount=$query->rowCount();
+    if ($rowCount===0) {
+        $response=new Response();
+        $response->setHttpStatusCode(401);
+        $response->setSuccess(false);
+        $response->addMessage("Token de acceso no válido");
+        $response->send();
+        exit();
+    }
+    $row=$query->fetch(PDO::FETCH_ASSOC);
+    $consulta_idUsuario=$row['id_usuario'];
+    $consulta_cadTokenAcceso=$row['caducidad'];
+    $consulta_activo=$row['status'];
+    if($consulta_activo!=='ACTIVO') {
+        $response=new Response();
+        $response->setHttpStatusCode(401);
+        $response->setSuccess(false);
+        $response->addMessage("Cuenta de usuario no activa");
+        $response->send();
+        exit();
+    }
+    if(strtotime($consulta_cadTokenAcceso)>time()) {
+        $response=new Response();
+        $response->setHttpStatusCode(401);
+        $response->setSuccess(false);
+        $response->addMessage("Token de acceso ha caducado");
+        $response->send();
+        exit();
+    }
+} 
+catch(PDOException $e) {
+    error_log('Error en DB - ' . $e);
+    $response = new Response();
+    $response->setHttpStatusCode(500);
+    $response->setSuccess(false);
+    $response->addMessage("Error al autenticar usuario");
+    $response->send();
+    exit();
+}
+
 if($_SERVER['REQUEST_METHOD'] === 'GET')
 {
     if (array_key_exists("id", $_GET))
@@ -337,7 +390,7 @@ function savePublicacion() {
         $vistas = $json_data->vistas;
         $ventas = $json_data->ventas;
         $categoria = $json_data->categoria;
-        $imagen=$json_data->imagen;
+        $imagen=file_get_contents('../images/'.$json_data->imagen);
         //$imagen=null;
         
         $query = $connection->prepare('INSERT INTO publicaciones(
@@ -357,9 +410,9 @@ function savePublicacion() {
         $query->bindParam(':ventas', $ventas, PDO::PARAM_INT);
         $query->bindParam(':categoria', $categoria, PDO::PARAM_STR);
         //$imagen=null;
-        $query->bindParam(':imagen', $imagen, PDO::PARAM_INT);
+        $query->bindParam(':imagen', $imagen, PDO::PARAM_LOB);
         $query->execute();
-        print_r($query->errorInfo());
+        //print_r($query->errorInfo());
         
         
         $rowCount = $query->rowCount();
@@ -380,7 +433,7 @@ function savePublicacion() {
         $query->bindParam(':id', $ultimo_ID, PDO::PARAM_INT);
         //$query->bindParam(':usuario_id', $consulta_idUsuario, PDO::PARAM_INT);
         $query->execute();
-        print_r($connection->errorInfo());
+        //print_r($connection->errorInfo());
         $rowCount = $query->rowCount();
 
         if ($rowCount === 0) {
@@ -392,16 +445,17 @@ function savePublicacion() {
             exit();
         }
 
-        $publicaciones = array();
+        //$publicaciones = array();
+        $returnData=array();
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], $row['precio'], $row['vistas'], $row['ventas'], $row['categoria'], $row['imagen']);
-            $publicaciones[] = $publicacion->getArray();
+            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], $row['precio'], $row['vistas'], $row['ventas'], $row['categoria'], null);
+            $returnData[] = $publicacion->getArray();
         }
 
-        $returnData = array();
+        /*$returnData = array();
         $returnData['total_registros'] = $rowCount;
-        $returnData['res'] = $publicaciones;
+        $returnData['res'] = $publicaciones;*/
 
         $response = new Response();
         $response->setHttpStatusCode(201);

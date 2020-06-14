@@ -33,6 +33,7 @@ if (array_key_exists('id_sesion', $_GET)) {
         $response->setHttpStatusCode(401);
         $response->setSuccess(false);
         $response->addMessage("No se encontró el token de acceso");
+        $response->setData($_SERVER);
         $response->send();
         exit();
     }
@@ -171,6 +172,7 @@ if (array_key_exists('id_sesion', $_GET)) {
             $returnData['caducidad_token_acceso']=$caducidad_tacceso_s;
             $returnData['token_actualizacion']=$token_actualizacion;
             $returnData['caducidad_token_actualizacion'] = $caducidad_tactualizacion_s;
+            $returnData['id_usuario']=$consulta_id;
             $response=newResponse();
             $response->setHttpStatusCode(200);
             $response->setSuccess(true);
@@ -246,7 +248,7 @@ elseif (empty($_GET)) {
             $response->setHttpStatusCode(401);
             $response->setSuccess(false);
             $response->addMessage("Nombre de usuario incorrecto");
-            //$response->send();
+            $response->send();
             exit();
         }
         $row=$query->fetch(PDO::FETCH_ASSOC);
@@ -272,8 +274,8 @@ elseif (empty($_GET)) {
         }
         $token=base64_encode(bin2hex(openssl_random_pseudo_bytes(24)) . time());
         $token_actualizacion=base64_encode(bin2hex(openssl_random_pseudo_bytes(24)) . time());
-        $caducidad_tacceso_s=1200;
-        $caducidad_tactualizacion_s=1296000;
+        $caducidad_tacceso_s=3600;
+        $caducidad_tactualizacion_s=3696000;
     }
     catch(PDOException $e){
         error_log('Error en DB - '.$e);
@@ -302,6 +304,22 @@ elseif (empty($_GET)) {
         $returnData['caducidad_token_acceso']=$caducidad_tacceso_s;
         $returnData['token_actualizacion']=$token_actualizacion;
         $returnData['caducidad_token_actualizacion']=$caducidad_tactualizacion_s;
+        $returnData['id_usuario']=$consulta_id;
+        $query = $connection->prepare('SELECT tipo FROM roles WHERE id=:id_usuario');
+        $query->bindParam(':id_usuario', $consulta_id, PDO::PARAM_INT);
+        $query->execute();
+        $rowCount=$query->rowCount();
+        //echo $rowCount;
+        if ($rowCount===0) {
+            $response=new Response();
+            $response->setHttpStatusCode(401);
+            $response->setSuccess(false);
+            $response->addMessage("No se pudo obtener el rol del usuario");
+            $response->send();
+            exit();
+        }
+        $row=$query->fetch(PDO::FETCH_ASSOC);
+        $returnData['rol_usuario']=$row['tipo'];
         $response=new Response();
         $response->setHttpStatusCode(201);
         $response->setSuccess(true);
