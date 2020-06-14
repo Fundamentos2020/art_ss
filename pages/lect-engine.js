@@ -264,35 +264,33 @@ function insertion(arr) {
     arr.forEach(function(elem) {
         fecha=extraeFecha(elem.fecha_alta);
         inyect+=`
-            <a href="StandardImage.html" style="color: black;" onclick="setPublication(${elem.id})">
-                <div class="col-m_3 col_12">
-                    <div class="t1 fondo bf1" style="background-image: url('${elem.imagen}');">
-                    </div>
-                    <div class="t2 l-name">
-                        ${elem.nombre}
-                    </div>
-                    <div class="t2 l-price">
-                        <div class="pad2">
-                            $${elem.precio}
-                        </div>
-                    </div>
-                    <div class="t3">
-                        <div class="t3 col-m_6 col_6 pad2">
-                            <div class="pad3 l-vs">
-                                ${elem.vistas} visitas
-                            </div>
-                        </div>
-                        <div class="t3 col-m_6 col_6 l-vs">
-                            ${elem.ventas} ventas
-                        </div>
-                    </div>
-                    <div class="t3">
-                        <div class="l-date pad4" style="float: right;">
-                            <i>${fecha}</i>
-                        </div>
+        <div class="col-m_3 col_12">
+            <div class="t1 fondo bf1" style="background-image: url('${elem.imagen}');">
+            </div>
+            <div class="t2 l-name">
+                ${elem.nombre}
+            </div>
+            <div class="t2 l-price">
+                <div class="pad2">
+                    $${elem.precio}
+                </div>
+            </div>
+            <div class="t3">
+                <div class="t3 col-m_6 col_6 pad2">
+                    <div class="pad3 l-vs">
+                    <button name="${elem.id}" onclick="fnAgregarAlCarrito(this)">Comprar</button>
                     </div>
                 </div>
-            </a>
+                <div class="t3 col-m_6 col_6 l-vs">
+                    ${elem.ventas} ventas
+                </div>
+            </div>
+            <div class="t3">
+                <div class="l-date pad4" style="float: right;">
+                    <i>${fecha}</i>
+                </div>
+            </div>
+        </div>
         `;
     })
     cont.innerHTML=inyect;
