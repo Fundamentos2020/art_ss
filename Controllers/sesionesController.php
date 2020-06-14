@@ -305,7 +305,7 @@ elseif (empty($_GET)) {
         $returnData['token_actualizacion']=$token_actualizacion;
         $returnData['caducidad_token_actualizacion']=$caducidad_tactualizacion_s;
         $returnData['id_usuario']=$consulta_id;
-        $query = $connection->prepare('SELECT tipo FROM roles WHERE id=:id_usuario');
+        $query = $connection->prepare('SELECT rol_id FROM usuarios WHERE id=:id_usuario');
         $query->bindParam(':id_usuario', $consulta_id, PDO::PARAM_INT);
         $query->execute();
         $rowCount=$query->rowCount();
@@ -314,7 +314,22 @@ elseif (empty($_GET)) {
             $response=new Response();
             $response->setHttpStatusCode(401);
             $response->setSuccess(false);
-            $response->addMessage("No se pudo obtener el rol del usuario");
+            $response->addMessage("No se pudo obtener el rol del usuario (usuarios TABLE ERROR)");
+            $response->send();
+            exit();
+        }
+        $row=$query->fetch(PDO::FETCH_ASSOC);
+        $rol_id=$row['rol_id'];
+        $query=$connection->prepare('SELECT tipo FROM roles WHERE id=:id_rol');
+        $query->bindParam(':id_rol', $rol_id, PDO::PARAM_INT);
+        $query->execute();
+        $rowCount=$query->rowCount();
+        //echo $rowCount;
+        if ($rowCount===0) {
+            $response=new Response();
+            $response->setHttpStatusCode(401);
+            $response->setSuccess(false);
+            $response->addMessage("No se pudo obtener el rol del usuario (roles TABLE ERROR)");
             $response->send();
             exit();
         }
