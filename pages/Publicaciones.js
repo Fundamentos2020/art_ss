@@ -22,7 +22,6 @@ var fnChangeImage = function(e) {
         fileRead.readAsDataURL(files[0]);
     }
 }
-
 //Functions
 var fnProducto = function(e) {
     if(commandName === "CREATE")
