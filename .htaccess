@@ -30,5 +30,6 @@ RewriteRule ^tarjetas$ Controllers/tarjetasController.php [L]
 
 #Usuarios
 RewriteRule ^usuarios$ Controllers/usuariosController.php [L]
+
 #Vendedores
 RewriteRule ^vendedores$ Controllers/vendedoresController.php [L]
