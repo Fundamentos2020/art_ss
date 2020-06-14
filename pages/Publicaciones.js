@@ -64,7 +64,7 @@ async function save() {
                         ventas: 0,
                         vendedor_id: 57,
                         fecha_alta: fechaA,
-                        imagen: form.files[0].name
+                        imagen: img.files[0].name
                     }
     
                     savePublicacion(params).then((data) => {
