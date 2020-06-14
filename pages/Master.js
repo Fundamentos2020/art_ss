@@ -66,6 +66,64 @@ sesion2.addEventListener('click', function(e) {
 });
 
 //Functions
-var fnAgregarAlCarrito = function(e) {
+function fnAgregarAlCarrito (e) {
+    let idPublicacion = parseInt(e.name);
+    var items;
+    
+    // if(arrCarrito.length === 0) {
+    //     localStorage.getItem('carrito') = "";
+    // }
+    if(localStorage.getItem('carrito') !== null) {
+        items = localStorage.getItem('carrito');
+        if(items !== "") {
+            items = items.split(',');
+            items.forEach((elem) => {
+                elem = parseInt(elem);
+            });
+        }
+        else
+            items = [];
+        if(!items.includes(idPublicacion)) {
+            arrCarrito = items;
+            arrCarrito.push(idPublicacion);
+            localStorage.setItem('carrito', arrCarrito);
+        }
+        else
+            alert("El producto ya existe en tu carrito de compra");
+    }
+    else {
+        //Es el primer ingreso del carrito
+        arrCarrito.push(idPublicacion);
+        localStorage.setItem('carrito', arrCarrito);
+    }
+}
+
+function bindCarritoCompra() {
+    var inyect = document.getElementById('content-user-form-pay');
+    arrCarrito.forEach((publicacionId) => {
+        getPublicacionById({id: publicacionId}).then((server) => {
+            if(data !== undefined) {
+                var publicacion = server.data.res;
+                inyect += `
+                <div class="col-m_6 col_12style ">
+                    <img alt="" width="100%" height="100%">
+                </div>
+            
+                <div class="col-m_6 col_12 ">
+                    <div class="margin-div">
+                        <label for="" style="font-weight: bold; font-size: 40px;" >Dog</label>
+                        <br>
+                        <label for="" style="font-weight: bold;" >Se enviara a la direccion:</label>
+                        <br>
+                        <label for="" style="font-weight: bold;" >Cantidad:</label>
+                        <br>
+                        <label for="" style="font-weight: bold;" >Vendedor/Artista:</label>
+                        <br>
+                    </div>
+                </div>          
+                `;
+            }
+        })
+    });
     
 }
