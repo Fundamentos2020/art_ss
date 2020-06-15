@@ -58,11 +58,11 @@ function getPublicacionesByCategoria(jParams) {
 }
 
 function getPublicacionesByVendedor(jParams) {
-    return REQUEST(`${api}/Controllers/publicacionesControllers`, 'GET', jParams);
+    return REQUEST(`./Controllers/publicacionesControllers.php?vendedor_id=${jParams.vendedor_id}`, 'GET', jParams);
 }
 
 function getPublicacionesByComprador(jParams) {
-    return REQUEST(`${api}/Controllers/publicacionesControllers`, 'GET', jParams);
+    return REQUEST(`./Controllers/publicacionesControllers.php?comprador_id=${jParams.comprador_id}`, 'GET', jParams);
 }
 
 function getPedidosByComprador(jParams) {

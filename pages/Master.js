@@ -109,13 +109,13 @@ function bindCarritoCompra() {
         return parseInt(x);
     });
     var inyect = "";
-    publicacionesInCarrito.innerHTML = "";
+    publicacionesInCarrito.innerHTML = "No hay Elementos en el carrito de comrpa!";
     if(fullCarrito.length > 0) {
         fullCarrito.forEach((publicacionId) => {
             getPublicacionById({id: publicacionId}).then((server) => {
                 if(server !== undefined) {
                     var publicacion = server.data.res[0];
-                    monto_total += publicacion.precio;
+                    monto_total += parseInt(publicacion.precio);
                     inyect = `
                     <div class="row">
                         <div class="col-m_3 col_12">
@@ -141,14 +141,13 @@ function bindCarritoCompra() {
                     publicacionesInCarrito.innerHTML += inyect;
                     setListeners();
                 }
+                localStorage.setItem('monto_total', monto_total);
             });
         });
         publicacionesInCarrito.innerHTML += `
             <div class="row">
                 <button type="submit" class="btn-submit" id="confirmOrden" onclick="confirmOrder()">Save</button>
             </div>`;
-        localStorage.setItem('monto_total', monto_total);
-        
     }
     else {
         alert("El carrito de compra esta vacío");
