@@ -96,6 +96,7 @@ function fnAgregarAlCarrito (e) {
 }
 
 function bindCarritoCompra() {
+    var monto_total = 0;
     var publicacionesInCarrito = document.getElementById('dataCarrito');
     var items = localStorage.getItem('carrito');
     var copyItems = items.split(',');
@@ -109,6 +110,7 @@ function bindCarritoCompra() {
             getPublicacionById({id: publicacionId}).then((server) => {
                 if(server !== undefined) {
                     var publicacion = server.data.res[0];
+                    monto_total += publicacion.precio;
                     inyect = `
                     <div class="row">
                         <div class="col-m_3 col_12">
@@ -139,12 +141,11 @@ function bindCarritoCompra() {
         });
         publicacionesInCarrito.innerHTML += `
             <div class="row">
-                <button type="submit" class="btn-submit">Save</button>
+                <button type="submit" class="btn-submit" id="confirmOrden" onclick="confirmOrder()">Save</button>
             </div>`;
+        localStorage.setItem('monto_total', monto_total);
     }
     else {
         alert("El carrito de compra esta vacío");
     }
-    
-    
 }

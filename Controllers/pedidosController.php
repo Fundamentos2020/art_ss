@@ -177,7 +177,7 @@ function savePedido() {
         }
 
         $postData = file_get_contents('php://input');
-        //print("Intentas POSTEAR:"+$postData);
+        
 
         if (!$json_data = json_decode($postData)) {
             $response = new Response();
@@ -187,7 +187,7 @@ function savePedido() {
             $response->send();
             exit();
         }
-
+        //print_r($json_data);
         if (!isset($json_data->comprador_id) || !isset($json_data->monto_total) || !isset($json_data->forma_pago)){
             $response = new Response();
             $response->setHttpStatusCode(400);
@@ -205,28 +205,26 @@ function savePedido() {
         $forma_pago = $json_data->forma_pago;
         $fecha_pedido = $json_data->fecha_pedido;
 
-        
-
         // $query = $connection->prepare('INSERT INTO publicaciones(nombre, descripcion, stock, vendedor_id, comprador_id, fecha_alta, precio, vistas, 
         // ventas, categoria, imagen) VALUES(:nombre, :descripcion, :stock, :vendedor_id, :comprador_id, STR_TO_DATE(:fecha_alta, \'%Y-%m-%d %H:%i\'), 
         // :precio, :vistas, :ventas, :categoria, :imagen)');
 
         $query = $connection->prepare('INSERT INTO pedidos (comprador_id, estatus, monto_total, forma_pago, fecha_pedido) 
-        VALUES (:comprador_id, :estatus, :monto_total, :forma_pago, STR_TO_DATE(:fecha_pedido, \'%Y-%m-%d %H:%i\'))');
+        VALUES (:comprador_id, :estatus, :monto_total, :forma_pago, :fecha_pedido)');
         $query->bindParam(':comprador_id', $comprador_id, PDO::PARAM_INT);
         $query->bindParam(':estatus', $estatus, PDO::PARAM_STR);
         $query->bindParam(':monto_total', $monto_total, PDO::PARAM_STR);
         $query->bindParam(':forma_pago', $forma_pago, PDO::PARAM_STR);
         $query->bindParam(':fecha_pedido', $fecha_pedido, PDO::PARAM_STR);
         $query->execute();
-        
+        //print_r($query->errorInfo());
         $rowCount = $query->rowCount();
 
         if ($rowCount === 0) {
             $response = new Response();
             $response->setHttpStatusCode(500);
             $response->setSuccess(false);
-            $response->addMessage("Error al crear el pedido");
+            $response->addMessage("Error al CREAR el pedido");
             $response->send();
             exit();
         }

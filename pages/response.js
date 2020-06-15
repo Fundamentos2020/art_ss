@@ -39,6 +39,10 @@ function savePublicacion(jParams) {
     return REQUEST(`./Controllers/publicacionesController.php`, 'POST', jParams);
 }
 
+function savePedido(jParams) {
+    return REQUEST(`./Controllers/pedidosController.php`, 'POST', jParams);
+}
+
 //UPDATES-PUT-PATCH
 
 //GETS
