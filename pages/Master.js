@@ -16,6 +16,7 @@ catch {
 //Callbacks
 window.addEventListener('DOMContentLoaded', function (e) {
     e.preventDefault();
+    
     //document.getElementsByName('carrito')[0].addEventListener('click', fnAgregarAlCarrito);
     //console.log(localStorage.getItem('l_sesion'));
     if(localStorage.getItem('l_sesion')!==null) {
@@ -134,12 +135,11 @@ function bindCarritoCompra() {
                             </div>
                         </div>
                         <div class="col-m_1 col_12">
-                            <button class="btn-delete"><span><i class="fa fa-trash" aria-hidden="true"></i></span>Eliminar</button>
+                            <button name="${publicacion.id}" class="btn-delete"><span><i class="fa fa-trash" aria-hidden="true"></i></span>Eliminar</button>
                         </div>
-                    </div>
-                             
-                    `;
+                    </div>`;
                     publicacionesInCarrito.innerHTML += inyect;
+                    setListeners();
                 }
             });
         });
@@ -148,8 +148,32 @@ function bindCarritoCompra() {
                 <button type="submit" class="btn-submit" id="confirmOrden" onclick="confirmOrder()">Save</button>
             </div>`;
         localStorage.setItem('monto_total', monto_total);
+        
     }
     else {
         alert("El carrito de compra esta vacío");
     }
+}
+
+function setListeners() {
+    document.querySelectorAll('.btn-delete').forEach(btn => {
+        btn.addEventListener('click', fnDescontarCarrito);
+    });
+}
+
+var fnDescontarCarrito = function(e) {
+    var idPublicacion = parseInt(e.target.name);
+    var items = localStorage.getItem('carrito');
+    var copyItems = items.split(',');
+    var fullCarrito = copyItems.map(function(x) {
+        return parseInt(x);
+    });
+    for( var i = 0; i < fullCarrito.length; i++) {
+        if ( fullCarrito[i] === idPublicacion) {
+            fullCarrito.splice(i, 1);
+        }
+    }
+    localStorage.setItem('carrito', fullCarrito);
+    bindCarritoCompra();
+    alert("Se ha eliminado el producto del carrito!");
 }
