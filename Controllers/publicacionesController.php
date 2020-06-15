@@ -495,6 +495,140 @@ function savePublicacion() {
 }
 /* ------------------------------------------- PATCH -------------------------------------------------- */
 function editPublicacion() {
-    console.log("Editar Publicacion");
+    try {
+        $connection = DB::dbConnect();
+        if ($_SERVER['CONTENT_TYPE'] !== 'application/json'){
+            $response = new Response();
+            $response->setHttpStatusCode(400);
+            $response->setSuccess(false);
+            $response->addMessage('Encabezado "Content type" no es JSON');
+            $response->send();
+            exit();
+        }
+
+        $patchData = file_get_contents('php://input');
+
+        if (!$json_data = json_decode($patchData)) {
+            $response = new Response();
+            $response->setHttpStatusCode(400);
+            $response->setSuccess(false);
+            $response->addMessage('El cuerpo de la solicitud no es un JSON válido');
+            $response->send();
+            exit();
+        }
+
+        $actualiza_comprador = false;
+        $campos_query = "";
+
+        if (isset($json_data->comprador_id)) {
+            $actualiza_comprador = true;
+            $campos_query .= "comprador_id = :comprador_id";
+        }
+
+        if ($actualiza_comprador === false) {
+            $response = new Response();
+            $response->setHttpStatusCode(400);
+            $response->setSuccess(false);
+            $response->addMessage("No hay campos para actualizar!!");
+            $response->send();
+            exit();
+        }
+
+        $id_publicacion = $json_data->id;
+
+        $query = $connection->prepare('SELECT * FROM publicaciones WHERE id = :id');
+        $query->bindParam(':id', $id_publicacion, PDO::PARAM_INT);
+        $query->execute();
+
+        $rowCount = $query->rowCount();
+
+        if($rowCount === 0) {
+            $response = new Response();
+            $response->setHttpStatusCode(404);
+            $response->setSuccess(false);
+            $response->addMessage("No se encontró la publicacion");
+            $response->send();
+            exit();
+        }
+
+        while($row = $query->fetch(PDO::FETCH_ASSOC)){
+            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], $row['precio'], $row['vistas'], $row['ventas'], $row['categoria'], null);
+        }
+
+        $cadena_query = 'UPDATE publicaciones SET ' . $campos_query . ' WHERE id = :id';
+        $query = $connection->prepare($cadena_query);
+
+        if($actualiza_comprador === true) {
+            $publicacion->setComprador($json_data->comprador_id);
+            $up_comprador = $publicacion->getComprador();
+            $query->bindParam(':comprador_id', $up_comprador, PDO::PARAM_STR);
+        }
+
+        $query->bindParam(':id', $id_publicacion, PDO::PARAM_INT);
+        $query->execute();
+
+        $rowCount = $query->rowCount();
+
+        if ($rowCount === 0) {
+            $response = new Response();
+            $response->setHttpStatusCode(500);
+            $response->setSuccess(false);
+            $response->addMessage("Error al actualizar la publicacion");
+            $response->send();
+            exit();
+        }
+
+        $query = $connection->prepare('SELECT * FROM publicaciones WHERE id = :id');
+        $query->bindParam(':id', $id_publicacion, PDO::PARAM_INT);
+        $query->execute();
+
+        $rowCount = $query->rowCount();
+
+        if($rowCount === 0) {
+            $response = new Response();
+            $response->setHttpStatusCode(404);
+            $response->setSuccess(false);
+            $response->addMessage("No se encontró la publicacion después de actulizar");
+            $response->send();
+            exit();
+        }
+
+        $publicaciones = array();
+
+        while($row = $query->fetch(PDO::FETCH_ASSOC)){
+            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], $row['precio'], $row['vistas'], $row['ventas'], $row['categoria'], null);
+            $publicaciones[] = $publicacion->getArray();
+        }
+
+        $returnData = array();
+        $returnData['total_registros'] = $rowCount;
+        $returnData['res'] = $publicaciones;
+
+        $response = new Response();
+        $response->setHttpStatusCode(200);
+        $response->setSuccess(true);
+        $response->addMessage("Publicacion actualizada");
+        $response->setData($returnData);
+        $response->send();
+        exit();
+    }
+    catch(TareaException $e) {
+        $response = new Response();
+        $response->setHttpStatusCode(500);
+        $response->setSuccess(false);
+        $response->addMessage($e->getMessage());
+        $response->send();
+        exit();
+    }
+    catch(PDOException $e) {
+        error_log("Error en BD - " . $e);
+
+        $response = new Response();
+        $response->setHttpStatusCode(500);
+        $response->setSuccess(false);
+        $response->addMessage("Error en BD al actualizar la publicacion");
+        $response->send();
+        exit();
+    }
 }
 ?>

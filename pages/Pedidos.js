@@ -40,6 +40,11 @@ function confirmOrder() {
             savePedido(params).then((server) => {
                 if(server !== undefined) {
                     alert("Pedido generado exitosamente!");
+                    //update de publicacioes
+                    
+                    var carrito = localStorage.getItem('carrito');
+                    carrito = "";
+                    localStorage.setItem('carrito', carrito);
                 }
                 else
                     alert("Error al guardar el pedido!");

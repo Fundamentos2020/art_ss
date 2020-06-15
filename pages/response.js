@@ -44,6 +44,9 @@ function savePedido(jParams) {
 }
 
 //UPDATES-PUT-PATCH
+function updatePublicacion(jParams) {
+    return REQUEST(`./Controllers/publicacionesController.php`, 'PATCH', jParams);
+}
 
 //GETS
 function getPublicacionById(jParams) {
