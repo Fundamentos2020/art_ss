@@ -300,9 +300,13 @@ function getByCategoria($categoria) {
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
             $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], 
-            $row['precio'], $row['vistas'], $row['ventas'], $row['categoria'], "data:imagen/png;base64, ".base64_encode($row['imagen']));
+            $row['precio'], $row['vistas'], $row['ventas'], $row['categoria']);
+            //print_r($row);
+            $publicacion->setImagen(/*print_r(*/"data:imagen/png;base64, ".base64_encode($row['imagen']));
+            //print_r($publicacion->getImagen());
             $publicaciones[] = $publicacion->getArray();
         }
+        //print_r($publicaciones);
 
         $returnData = array();
         $returnData['total_registros'] = $rowCount;

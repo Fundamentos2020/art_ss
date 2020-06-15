@@ -15,7 +15,7 @@ class Publicacion {
     private $_categoria;
     private $_imagen;
 
-    public function __construct($id, $nombre, $descripcion, $stock, $vendedor, $comprador, $fecha, $precio, $vistas, $categoria, $imagen) {
+    public function __construct($id, $nombre, $descripcion, $stock, $vendedor, $comprador, $fecha, $precio, $vistas, $categoria) {
         $this->setID($id);
         $this->setNombre($nombre);
         $this->setDescripcion($descripcion);
@@ -26,7 +26,6 @@ class Publicacion {
         $this->setPrecio($precio);
         $this->setVistas($vistas);
         $this->setCategoria($categoria);
-        $this->setImagen($imagen);
     }
 
     public function getID() {
@@ -160,7 +159,7 @@ class Publicacion {
     }
 
     public function setImagen($foto) {
-        $this->_foto=$foto;
+        $this->_imagen=$foto;
     }
 
     public function getArray() {
