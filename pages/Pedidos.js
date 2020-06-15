@@ -41,7 +41,25 @@ function confirmOrder() {
                 if(server !== undefined) {
                     alert("Pedido generado exitosamente!");
                     //update de publicacioes
-                    
+                    var items = localStorage.getItem('carrito');
+                    items = items.split(',');
+                    var copyItems = items;
+                    items = copyItems.map(function(x) {
+                        return parseInt(x);
+                    });
+                    items.forEach((publicacion) => {
+                        var publicacionParams = {
+                            comprador_id: l_sesion.id_usuario, 
+                            id: publicacion
+                        }
+                        updatePublicacion(publicacionParams).then((server) => {
+                            if(server !== undefined) {
+                                bindCarritoCompra();
+                            }
+                            else
+                                alert("Error al guardar el pedido!");
+                        });
+                    });
                     var carrito = localStorage.getItem('carrito');
                     carrito = "";
                     localStorage.setItem('carrito', carrito);
