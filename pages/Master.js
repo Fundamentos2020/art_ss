@@ -4,6 +4,8 @@ var arrCarrito = [];
 var commandName = "CREATE";
 const sesion=document.getElementById('inFin');
 const sesion2=document.getElementById('inFin2');
+const delet=document.getElementById('disableCount');
+const delet2=document.getElementById('disableCount2');
 
 /*try {
     document.getElementById('close').addEventListener('click', cerrarSesion());
@@ -23,6 +25,12 @@ window.addEventListener('DOMContentLoaded', function (e) {
         `;
         sesion2.innerHTML=`
             <a href="index.html"><span class="item-menu-text"><i class="fa fa-sign-in" aria-hidden="true"></i></span></a>
+        `;
+        delet.innerHTML=`
+            <a href="Borrar.html" style="color: red;"><span class="item-menu-text">BORRAR CUENTA</span></a>
+        `;
+        delet2.innerHTML=`
+            <a href="Borrar.html" style="color: red;"><span class="item-menu-text"></span></a>
         `;
     }
 });
@@ -114,7 +122,7 @@ function bindCarritoCompra() {
                     inyect = `
                     <div class="row">
                         <div class="col-m_3 col_12">
-                            <img src="images/01 dog - playback & quick EQ.jpg" alt="" width="100%" height="100%">
+                            <img src="${publicacion.imagen}" alt="" width="100%" height="100%">
                         </div>
                     
                         <div class="col-m_8 col_12">
