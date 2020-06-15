@@ -18,7 +18,10 @@ mx.addEventListener('change', priceFilter);
 function bindCategories() {
     getPublicacionesByCategoria({categoria: category}).then((data) => {
         if(data !== undefined) {
+            //console.log("Entro");
             insertion(data.data.res);
+            localStorage.setItem('products', JSON.stringify(data.data.res));
+            sort();
         }
     })
 }
@@ -28,7 +31,7 @@ function priceFilter() {
     var maximo;
     arr=[];
     obras=JSON.parse(localStorage.getItem('products'));
-    console.log(obras);
+    //console.log(obras);
     if(mn.value=='') {
         minimo=0;
     }
@@ -42,7 +45,7 @@ function priceFilter() {
         maximo=mx.value;
     }
     for(c=0;c<obras.length;c++) {
-        if(obras[c].precio>=minimo && obras[c].precio<=maximo) {
+        if(parseInt(obras[c].precio)>=minimo && parseInt(obras[c].precio)<=maximo) {
             arr.push(obras[c]);
         }
     }
@@ -51,15 +54,16 @@ function priceFilter() {
 }
 
 function dateFilter() {
+    obras=JSON.parse(localStorage.getItem('products'));
     switch (de.value) {
         case '0':
-            insertion(obras);
+            insertion(arr);
             break;
         case '1':
             var f=new Date();
             arr=[];
             for(c=0;c<obras.length;c++) {
-                if(obras[c].fechaAlta.substr(0, 4)==String(f.getFullYear())) {
+                if(obras[c].fecha_alta.substr(0, 4)==String(f.getFullYear())) {
                     var m;
                     if((f.getMonth()+1)<10) {
                         m='0'+String(f.getMonth()+1);
@@ -67,7 +71,7 @@ function dateFilter() {
                     else {
                         m=String(f.getMonth()+1);
                     }
-                    if(obras[c].fechaAlta.substr(5, 2)==m) {
+                    if(obras[c].fecha_alta.substr(5, 2)==m) {
                         var d;
                         if((f.getMonth()+1)<10) {
                             d='0'+String(f.getDate());
@@ -75,14 +79,14 @@ function dateFilter() {
                         else {
                             d=String(f.getDate());
                         }
-                        if(obras[c].fechaAlta.substr(8, 2)==d) {
+                        if(obras[c].fecha_alta.substr(8, 2)==d) {
                             arr.push(obras[c]);
                         }
                     }
                 }
             }
             obras=arr;
-            insertion(arr);
+            insertion(obras);
             break;
         case '2':
             var f=new Date();
@@ -139,7 +143,7 @@ function dateFilter() {
                 r=false;
                 i=0;
                 while(!r && i<days.length) {
-                    if(obras[c].fechaAlta.substr(0, 10)==days[i]) {
+                    if(obras[c].fecha_alta.substr(0, 10)==days[i]) {
                         arr.push(obras[c]);
                         r=true;
                     }
@@ -160,7 +164,7 @@ function dateFilter() {
                 m=String(f.getMonth()+1);
             }
             for(c=0;c<obras.length;c++) {
-                if(obras[c].fechaAlta.substr(5, 2)==m) {
+                if(obras[c].fecha_alta.substr(5, 2)==m) {
                     arr.push(obras[c]);
                 }
             }
@@ -171,7 +175,7 @@ function dateFilter() {
             var f=new Date();
             arr=[];
             for(c=0;c<obras.length;c++) {
-                if(obras[c].fechaAlta.substr(0, 4)==f.getFullYear()) {
+                if(obras[c].fecha_alta.substr(0, 4)==f.getFullYear()) {
                     arr.push(obras[c]);
                 }
             }
@@ -182,6 +186,7 @@ function dateFilter() {
 }
 
 function sort() {
+    obras=JSON.parse(localStorage.getItem('products'));
     switch (op.value) {
         case '0':
             insertion(obras);
@@ -220,7 +225,7 @@ function sort() {
         case '4':
             for(c=0;c<obras.length-1;c++) {
                 for (d=0;d<obras.length-c-1;d++) {
-                    if (obras[d].Nombre[0]>obras[d+1].Nombre[0]) {
+                    if (obras[d].nombre[0]>obras[d+1].nombre[0]) {
                         t=obras[d];
                         obras[d]=obras[d+1];
                         obras[d+1]=t;
@@ -232,7 +237,7 @@ function sort() {
         case '5':
             for(c=0;c<obras.length-1;c++) {
                 for (d=0;d<obras.length-c-1;d++) {
-                    if (obras[d].Nombre[0]<obras[d+1].Nombre[0]) {
+                    if (obras[d].nombre[0]<obras[d+1].nombre[0]) {
                         t=obras[d];
                         obras[d]=obras[d+1];
                         obras[d+1]=t;
@@ -244,7 +249,7 @@ function sort() {
     }
 }
 
-function loadJson(arch) {
+/*function loadJson(arch) {
     let inyect='';
     xhr=new XMLHttpRequest();
     xhr.open('GET', 'Controllers/publicacionesController.php'+arch, true);
@@ -257,7 +262,7 @@ function loadJson(arch) {
         }
     }
     xhr.send();
-}
+}*/
 
 function insertion(arr) {
     let inyect='';
