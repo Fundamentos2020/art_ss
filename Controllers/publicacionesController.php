@@ -188,12 +188,25 @@ function getByVendedorId($vendedor_id) {
             $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], 
             $row['precio'], $row['vistas'], $row['ventas'], $row['categoria']);
             $publicacion->setImagen("data:imagen/png;base64, ".base64_encode($row['imagen']));
+            $query=$connection->prepare('SELECT nombre FROM usuarios WHERE id=:vendedor_id');
+            $query->bindParam(':vendedor_id', $row['vendedor_id'], PDO::PARAM_INT);
+            $query->execute();
+            $r=$query->fetch(PDO::FETCH_ASSOC);
+            $publicacion->setNombreVendedor($r['nombre']);            
+            if ($publicacion->getComprador()!==null) {
+                $query=$connection->prepare('SELECT nombre FROM usuarios WHERE id=:comprador_id');
+                $query->bindParam(':comprador_id', $row['comprador_id'], PDO::PARAM_INT);
+                $query->execute();
+                $r=$query->fetch(PDO::FETCH_ASSOC);
+                $publicacion->setNombreComprador($r['nombre']);
+            }
             $publicaciones[] = $publicacion->getArray();
         }
 
         $returnData = array();
         $returnData['total_registros'] = $rowCount;
         $returnData['res'] = $publicaciones;
+
 
         $response = new Response();
         $response->setHttpStatusCode(200);

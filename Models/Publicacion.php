@@ -14,6 +14,8 @@ class Publicacion {
     private $_vistas;
     private $_categoria;
     private $_imagen;
+    private $_nomComprador;
+    private $_nomVendedor;
 
     public function __construct($id, $nombre, $descripcion, $stock, $vendedor, $comprador, $fecha, $precio, $vistas, $categoria) {
         $this->setID($id);
@@ -26,6 +28,8 @@ class Publicacion {
         $this->setPrecio($precio);
         $this->setVistas($vistas);
         $this->setCategoria($categoria);
+        $this->setNombreComprador(null);
+        $this->setNombreVendedor(null);
     }
 
     public function getID() {
@@ -162,6 +166,22 @@ class Publicacion {
         $this->_imagen=$foto;
     }
 
+    public function setNombreComprador($name) {
+        $this->_nomComprador=$name;
+    }
+
+    public function setNombreVendedor($name) {
+        $this->_nomVendedor=$name;
+    }
+    
+    public function getNombreComprador() {
+        return $this->_nomComprador;
+    }
+
+    public function getNombreVendedor() {
+        return $this->_nomVendedor;
+    }
+
     public function getArray() {
         $publicacion=array();
         $publicacion['id']=$this->getID();
@@ -176,6 +196,8 @@ class Publicacion {
         $publicacion['ventas']=$this->getVentas();
         $publicacion['categoria']=$this->getCategoria();
         $publicacion['imagen']=$this->getImagen();
+        $publicacion['nombre_comprador']=$this->getNombreComprador();
+        $publicacion['nombre_vendedor']=$this->getNombreVendedor();
         return $publicacion;
     }
 }
