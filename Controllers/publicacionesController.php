@@ -296,7 +296,7 @@ function getByCategoria($categoria) {
 
     try {
         $connection = DB::dbConnect();
-        $query = $connection->prepare('SELECT * FROM publicaciones WHERE categoria = :categoria AND comprador_id != NULL');
+        $query = $connection->prepare('SELECT * FROM publicaciones WHERE categoria = :categoria AND comprador_id is NULL');
         $query->bindParam(':categoria', $categoria, PDO::PARAM_STR);
         //$query->bindParam(':usuario_id', $consulta_idUsuario, PDO::PARAM_INT);
         $query->execute();
