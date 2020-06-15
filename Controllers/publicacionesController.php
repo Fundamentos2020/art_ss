@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET')
     }
 }
 else if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    /*if(!isset($_SERVER['HTTP_AUTHORIZATION']) || strlen($_SERVER['HTTP_AUTHORIZATION'])<1) {
+    if(!isset($_SERVER['HTTP_AUTHORIZATION']) || strlen($_SERVER['HTTP_AUTHORIZATION'])<1) {
         $response = new Response();
         $response->setHttpStatusCode(401);
         $response->setSuccess(false);
@@ -87,7 +87,7 @@ else if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $response->addMessage("Error al autenticar usuario");
         $response->send();
         exit();
-    }*/
+    }
     savePublicacion();
 }
 else if($_SERVER['REQUEST_METHOD'] === 'PATCH') {

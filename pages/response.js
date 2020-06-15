@@ -8,9 +8,11 @@ async function REQUEST(url, method, params) {
     };
 
     if (method !== 'GET') {
-        options['headers'] = { 'Content-Type': 'application/json' };
+        options['headers'] = {
+            'Content-Type': 'application/json', 
+            'Authorization': params.token ? params.token : 'Basic'
+        };
         options['body'] = JSON.stringify(params);
-        //options['credentials'] = "omit";
     }
 
     try {

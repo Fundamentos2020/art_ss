@@ -64,7 +64,8 @@ async function save() {
                         ventas: 0,
                         vendedor_id: sesion.id_usuario,
                         fecha_alta: fechaA,
-                        imagen: img.files[0].name
+                        imagen: img.files[0].name,
+                        token: tokens.token
                     }
     
                     savePublicacion(params).then((data) => {
