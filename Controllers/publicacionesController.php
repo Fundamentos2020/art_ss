@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET')
     }
 }
 else if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if(!isset($_SERVER['HTTP_AUTHORIZATION']) || strlen($_SERVER['HTTP_AUTHORIZATION'])<1) {
+    /*if(!isset($_SERVER['HTTP_AUTHORIZATION']) || strlen($_SERVER['HTTP_AUTHORIZATION'])<1) {
         $response = new Response();
         $response->setHttpStatusCode(401);
         $response->setSuccess(false);
@@ -87,7 +87,7 @@ else if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $response->addMessage("Error al autenticar usuario");
         $response->send();
         exit();
-    }
+    }*/
     savePublicacion();
 }
 else if($_SERVER['REQUEST_METHOD'] === 'PATCH') {
@@ -350,9 +350,17 @@ function savePublicacion() {
 
         $postData = file_get_contents('php://input');
         //print("Intentas POSTEAR:"+$postData);
-
+        //print_r($postData);
         
-        
+        if(!$json_data=json_decode($postData)) {
+            $response=new Response();
+            $response->setHttpStatusCode(400);
+            $response->setSuccess(false);
+            $response->addMessage("Cuerpo de la solicitud no es un JSON válido");
+            $response->send();
+            exit();
+        }
+        //print_r($json_data);
 
         if (!isset($json_data->nombre) || !isset($json_data->descripcion) || !isset($json_data->stock) || !isset($json_data->vendedor_id) || 
         !isset($json_data->fecha_alta) || !isset($json_data->precio) || !isset($json_data->vistas) || !isset($json_data->ventas) || !isset($json_data->categoria)) {
@@ -376,15 +384,16 @@ function savePublicacion() {
         $descripcion = $json_data->descripcion;
         $stock = $json_data->stock;
         $vendedor_id = $json_data->vendedor_id;
-        $comprador_id = NULL;
+        $comprador_id = null;
         $fecha_alta = $json_data->fecha_alta;
         $precio = $json_data->precio;
         $vistas = $json_data->vistas;
         $ventas = $json_data->ventas;
         $categoria = $json_data->categoria;
-        $imagen=file_get_contents('../images/'.$json_data->imagen);
+        //$imagen=file_get_contents('../images/'.$json_data->imagen);
         //$imagen=null;
-        
+        $imagen = $json_data->imagen;
+
         $query = $connection->prepare('INSERT INTO publicaciones(
             nombre, descripcion, stock, vendedor_id, comprador_id, fecha_alta, precio, vistas, ventas,
             categoria, imagen) 

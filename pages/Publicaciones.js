@@ -50,7 +50,7 @@ async function save() {
                     fechaA+="0";
                 }
                 fechaA+=String(fecha.getDate())+" "+String(fecha.getHours())+":"+String(fecha.getMinutes());
-    
+                var sesion=JSON.parse(localStorage.getItem('l_sesion'));
                 if(document.getElementById('pubTitle').value !== '' && document.getElementById('pubDescription').value !== ''
                 && document.getElementById('pubUnitPrice').value !== '' && document.getElementById('pubStock').value !== ''
                 && document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value !== '') {
@@ -62,7 +62,7 @@ async function save() {
                         categoria: document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value,
                         vistas: 0,
                         ventas: 0,
-                        vendedor_id: 57,
+                        vendedor_id: sesion.id_usuario,
                         fecha_alta: fechaA,
                         imagen: img.files[0].name
                     }
@@ -75,7 +75,7 @@ async function save() {
                             document.getElementById('pubUnitPrice').value = '';
                             document.getElementById('pubStock').value = '';
                             document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value = '';
-                            document.getElementById('inputImage').defaultValue;
+                            //document.getElementById('inputImage').defaultValue;
                             document.getElementById('inputImage').value = "";
                         }
                     });
