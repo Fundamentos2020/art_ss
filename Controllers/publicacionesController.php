@@ -399,9 +399,9 @@ function savePublicacion() {
         $vistas = $json_data->vistas;
         $ventas = $json_data->ventas;
         $categoria = $json_data->categoria;
-        //$imagen=file_get_contents('../images/'.$json_data->imagen);
+        $imagen=file_get_contents('../images/'.$json_data->imagen);
         //$imagen=null;
-        $imagen = $json_data->imagen;
+        //$imagen = $json_data->imagen;
 
         $query = $connection->prepare('INSERT INTO publicaciones(
             nombre, descripcion, stock, vendedor_id, comprador_id, fecha_alta, precio, vistas, ventas,
