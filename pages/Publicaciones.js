@@ -88,7 +88,7 @@ async function save() {
                             document.getElementById('pubDescription').value = '';
                             document.getElementById('pubUnitPrice').value = '';
                             //document.getElementById('pubStock').value = '';
-                            document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value = '';
+                            //document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value = '';
                             //document.getElementById('inputImage').defaultValue;
                             document.getElementById('inputImage').value = "";
                         }

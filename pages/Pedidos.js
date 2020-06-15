@@ -17,7 +17,7 @@ function getPedidos() {
 function confirmOrder() {
     if(localStorage.getItem('l_sesion')) {
         var l_sesion = JSON.parse(localStorage.getItem('l_sesion'));
-        if(l_sesion.rol_usuario == "COMPRADOR") {
+        if(l_sesion.rol_usuario == "COMPRADOR" || l_sesion.rol_usuario == "COMPRADOR-VENDEDOR") {
             var fecha = new Date();
             var fechaA=String(fecha.getFullYear())+"-";
             if((fecha.getMonth()+1)<10) {
