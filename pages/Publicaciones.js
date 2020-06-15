@@ -54,6 +54,20 @@ async function save() {
                 if(document.getElementById('pubTitle').value !== '' && document.getElementById('pubDescription').value !== ''
                 && document.getElementById('pubUnitPrice').value !== '' && document.getElementById('pubStock').value !== ''
                 && document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value !== '') {
+                    let form=img.files[0];
+                    let send=new FormData();
+                    send.append('imagen', form);
+                    var param = {
+                        headers: {
+                            'IMAGEN': 'Arrival'
+                        },
+                        method: 'POST',
+                        body: send
+                    };
+                    let image_name=await fetch("./Controllers/imageController.php", param)
+                        .then( response => response.json() )
+                        .then( data => { return data ; } )
+                        .catch( error => localStorage.setItem('error', error));
                     var params = {
                         nombre: document.getElementById('pubTitle').value,
                         descripcion: document.getElementById('pubDescription').value,

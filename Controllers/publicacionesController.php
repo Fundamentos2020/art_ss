@@ -299,7 +299,8 @@ function getByCategoria($categoria) {
         $publicaciones = array();
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], $row['precio'], $row['vistas'], $row['ventas'], $row['categoria'], $row['imagen']);
+            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], 
+            $row['precio'], $row['vistas'], $row['ventas'], $row['categoria'], "data:imagen/png;base64, ".base64_encode($row['imagen']));
             $publicaciones[] = $publicacion->getArray();
         }
 
