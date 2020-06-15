@@ -3,7 +3,7 @@
 class DB {
     public function dbConnect() {
         try {
-            $dns = 'mysql:host=localhost;dbname=art ss';
+            $dns = 'mysql:host=localhost;dbname=art_ss';
             $username = 'root';
             $password = '';
             
