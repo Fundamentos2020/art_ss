@@ -125,7 +125,9 @@ function getById($id) {
         $publicaciones = array();
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], $row['precio'], $row['vistas'], $row['ventas'], $row['categoria'], $row['imagen']);
+            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], 
+            $row['precio'], $row['vistas'], $row['ventas'], $row['categoria']);
+            $publicacion->setImagen("data:imagen/png;base64, ".base64_encode($row['imagen']));
             $publicaciones[] = $publicacion->getArray();
         }
 
@@ -183,7 +185,9 @@ function getByVendedorId($vendedor_id) {
         $publicaciones = array();
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], $row['precio'], $row['vistas'], $row['ventas'], $row['categoria'], $row['imagen']);
+            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], 
+            $row['precio'], $row['vistas'], $row['ventas'], $row['categoria']);
+            $publicacion->setImagen("data:imagen/png;base64, ".base64_encode($row['imagen']));
             $publicaciones[] = $publicacion->getArray();
         }
 
@@ -241,7 +245,9 @@ function getByCompradorId($comprador_id) {
         $publicaciones = array();
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], $row['precio'], $row['vistas'], $row['ventas'], $row['categoria'], $row['imagen']);
+            $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], 
+            $row['precio'], $row['vistas'], $row['ventas'], $row['categoria']);
+            $publicacion->setImagen("data:imagen/png;base64, ".base64_encode($row['imagen']));
             $publicaciones[] = $publicacion->getArray();
         }
 
@@ -301,9 +307,7 @@ function getByCategoria($categoria) {
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
             $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], 
             $row['precio'], $row['vistas'], $row['ventas'], $row['categoria']);
-            //print_r($row);
-            $publicacion->setImagen(/*print_r(*/"data:imagen/png;base64, ".base64_encode($row['imagen']));
-            //print_r($publicacion->getImagen());
+            $publicacion->setImagen("data:imagen/png;base64, ".base64_encode($row['imagen']));
             $publicaciones[] = $publicacion->getArray();
         }
         //print_r($publicaciones);
