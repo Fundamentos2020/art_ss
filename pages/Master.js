@@ -5,7 +5,6 @@ var commandName = "CREATE";
 const sesion=document.getElementById('inFin');
 const sesion2=document.getElementById('inFin2');
 const delet=document.getElementById('disableCount');
-const delet2=document.getElementById('disableCount2');
 
 /*try {
     document.getElementById('close').addEventListener('click', cerrarSesion());
@@ -28,9 +27,6 @@ window.addEventListener('DOMContentLoaded', function (e) {
         `;
         delet.innerHTML=`
             <a href="Borrar.html" style="color: red;"><span class="item-menu-text">BORRAR CUENTA</span></a>
-        `;
-        delet2.innerHTML=`
-            <a href="Borrar.html" style="color: red;"><span class="item-menu-text"></span></a>
         `;
     }
 });
