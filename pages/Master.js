@@ -117,6 +117,7 @@ function bindCarritoCompra() {
                     var publicacion = server.data.res[0];
                     monto_total += parseInt(publicacion.precio);
                     inyect = `
+                    <br>
                     <div class="row">
                         <div class="col-m_3 col_12">
                             <img src="${publicacion.imagen}" alt="" width="100%" height="100%">
@@ -147,6 +148,7 @@ function bindCarritoCompra() {
         publicacionesInCarrito.innerHTML += `
             <div class="row">
             <button id="confirmOrden" type="submit" class="btn-submit" onclick="confirmOrder()"><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span>Guardar</button>
+            <br>
             </div>`;
     }
     else {
