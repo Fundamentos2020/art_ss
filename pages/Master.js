@@ -69,17 +69,14 @@ sesion2.addEventListener('click', function(e) {
 function fnAgregarAlCarrito (e) {
     let idPublicacion = parseInt(e.name);
     var items;
-    
-    // if(arrCarrito.length === 0) {
-    //     localStorage.getItem('carrito') = "";
-    // }
     if(localStorage.getItem('carrito') !== null) {
         items = localStorage.getItem('carrito');
         if(items !== "") {
             items = items.split(',');
-            items.forEach((elem) => {
-                elem = parseInt(elem);
-            });
+            var copyItems = items;
+            items = copyItems.map(function(x) {
+                return parseInt(x);
+             });
         }
         else
             items = [];
@@ -87,12 +84,12 @@ function fnAgregarAlCarrito (e) {
             arrCarrito = items;
             arrCarrito.push(idPublicacion);
             localStorage.setItem('carrito', arrCarrito);
+            alert("Producto Agregado al carrito de compra!");
         }
         else
             alert("El producto ya existe en tu carrito de compra");
     }
     else {
-        //Es el primer ingreso del carrito
         arrCarrito.push(idPublicacion);
         localStorage.setItem('carrito', arrCarrito);
     }
