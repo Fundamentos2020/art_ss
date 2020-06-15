@@ -23,6 +23,19 @@
     right: auto;
 }
 
+.btn-delete {
+    background-color: #C22337;
+    text-align: center;
+    align-items: center;
+    border:#C22337;
+    border-radius: 4px;
+    align-content: center;
+    padding-left: 10px;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .full-menu {
     display: block;
     background-color: black;

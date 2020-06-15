@@ -43,7 +43,7 @@ function savePublicacion(jParams) {
 
 //GETS
 function getPublicacionById(jParams) {
-    return REQUEST(`./Controllers/publicacionesControllers?id=${jParams.id}`, 'GET');
+    return REQUEST(`./Controllers/publicacionesController.php?id=${jParams.id}`, 'GET');
 }
 
 function getPublicacionesByCategoria(jParams) {

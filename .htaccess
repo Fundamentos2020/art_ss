@@ -11,6 +11,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 
 #Publicaciones
 RewriteRule ^publicaciones$ Controllers/publicacionesController.php [L]
+RewriteRule ^publicaciones$ Controllers/publicacionesController.php?id=$1 [L]
 
 #Clientes
 RewriteRule ^clientes$ Controllers/clientesController.php [L]

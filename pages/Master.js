@@ -76,7 +76,7 @@ function fnAgregarAlCarrito (e) {
             var copyItems = items;
             items = copyItems.map(function(x) {
                 return parseInt(x);
-             });
+            });
         }
         else
             items = [];
@@ -96,31 +96,55 @@ function fnAgregarAlCarrito (e) {
 }
 
 function bindCarritoCompra() {
-    var inyect = document.getElementById('content-user-form-pay');
-    arrCarrito.forEach((publicacionId) => {
-        getPublicacionById({id: publicacionId}).then((server) => {
-            if(data !== undefined) {
-                var publicacion = server.data.res;
-                inyect += `
-                <div class="col-m_6 col_12style ">
-                    <img alt="" width="100%" height="100%">
-                </div>
-            
-                <div class="col-m_6 col_12 ">
-                    <div class="margin-div">
-                        <label for="" style="font-weight: bold; font-size: 40px;" >Dog</label>
-                        <br>
-                        <label for="" style="font-weight: bold;" >Se enviara a la direccion:</label>
-                        <br>
-                        <label for="" style="font-weight: bold;" >Cantidad:</label>
-                        <br>
-                        <label for="" style="font-weight: bold;" >Vendedor/Artista:</label>
-                        <br>
-                    </div>
-                </div>          
-                `;
-            }
-        })
+    var publicacionesInCarrito = document.getElementById('dataCarrito');
+    var items = localStorage.getItem('carrito');
+    var copyItems = items.split(',');
+    var fullCarrito = copyItems.map(function(x) {
+        return parseInt(x);
     });
+    var inyect = "";
+    publicacionesInCarrito.innerHTML = "";
+    if(fullCarrito.length > 0) {
+        fullCarrito.forEach((publicacionId) => {
+            getPublicacionById({id: publicacionId}).then((server) => {
+                if(server !== undefined) {
+                    var publicacion = server.data.res[0];
+                    inyect = `
+                    <div class="row">
+                        <div class="col-m_3 col_12">
+                            <img src="images/01 dog - playback & quick EQ.jpg" alt="" width="100%" height="100%">
+                        </div>
+                    
+                        <div class="col-m_8 col_12">
+                            <div class="margin-div">
+                                <label for="" style="font-weight: bold; font-size: 40px;">${publicacion.nombre}</label>
+                                <br>
+                                <label for="" style="font-weight: bold;">${publicacion.descripcion}</label>
+                                <br>
+                                <label for="" style="font-weight: bold;">$${publicacion.precio}</label>
+                                <br>
+                                <label for="" style="font-weight: bold;">${publicacion.categoria}</label>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="col-m_1 col_12">
+                            <button class="btn-delete"><span><i class="fa fa-trash" aria-hidden="true"></i></span>Eliminar</button>
+                        </div>
+                    </div>
+                             
+                    `;
+                    publicacionesInCarrito.innerHTML += inyect;
+                }
+            });
+        });
+        publicacionesInCarrito.innerHTML += `
+            <div class="row">
+                <button type="submit" class="btn-submit">Save</button>
+            </div>`;
+    }
+    else {
+        alert("El carrito de compra esta vacío");
+    }
+    
     
 }
