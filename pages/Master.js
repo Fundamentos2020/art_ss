@@ -109,7 +109,7 @@ function bindCarritoCompra() {
         return parseInt(x);
     });
     var inyect = "";
-    publicacionesInCarrito.innerHTML = "No hay Elementos en el carrito de comrpa!";
+    publicacionesInCarrito.innerHTML = "";
     if(fullCarrito.length > 0) {
         fullCarrito.forEach((publicacionId) => {
             getPublicacionById({id: publicacionId}).then((server) => {
@@ -146,7 +146,7 @@ function bindCarritoCompra() {
         });
         publicacionesInCarrito.innerHTML += `
             <div class="row">
-                <button type="submit" class="btn-submit" id="confirmOrden" onclick="confirmOrder()">Save</button>
+            <button id="confirmOrden" type="submit" class="btn-submit" onclick="confirmOrder()"><span><i class="fa fa-check-square-o" aria-hidden="true"></i></span>Guardar</button>
             </div>`;
     }
     else {

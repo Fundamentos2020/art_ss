@@ -283,11 +283,8 @@ function insertion(arr) {
             <div class="t3">
                 <div class="t3 col-m_6 col_6 pad2">
                     <div class="pad3 l-vs">
-                    <button name="${elem.id}" onclick="fnAgregarAlCarrito(this)">Comprar</button>
+                    <button name="${elem.id}" class="btn-buy" onclick="fnAgregarAlCarrito(this)"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>Comprar</button>
                     </div>
-                </div>
-                <div class="t3 col-m_6 col_6 l-vs">
-                    ${elem.ventas} ventas
                 </div>
             </div>
             <div class="t3">

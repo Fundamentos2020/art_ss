@@ -52,8 +52,7 @@ async function save() {
                 fechaA+=String(fecha.getDate())+" "+String(fecha.getHours())+":"+String(fecha.getMinutes());
                 var sesion=JSON.parse(localStorage.getItem('l_sesion'));
                 if(document.getElementById('pubTitle').value !== '' && document.getElementById('pubDescription').value !== ''
-                && document.getElementById('pubUnitPrice').value !== '' && document.getElementById('pubStock').value !== ''
-                && document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value !== '') {
+                && document.getElementById('pubUnitPrice').value !== '' && document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value !== '') {
                     let form=img.files[0];
                     let send=new FormData();
                     send.append('imagen', form);
@@ -72,7 +71,7 @@ async function save() {
                         nombre: document.getElementById('pubTitle').value,
                         descripcion: document.getElementById('pubDescription').value,
                         precio: document.getElementById('pubUnitPrice').value,
-                        stock: document.getElementById('pubStock').value,
+                        stock: 1,
                         categoria: document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value,
                         vistas: 0,
                         ventas: 0,
@@ -88,7 +87,7 @@ async function save() {
                             document.getElementById('pubTitle').value = '';
                             document.getElementById('pubDescription').value = '';
                             document.getElementById('pubUnitPrice').value = '';
-                            document.getElementById('pubStock').value = '';
+                            //document.getElementById('pubStock').value = '';
                             document.getElementById('pubCategory')[(document.getElementById('pubCategory')).selectedIndex].value = '';
                             //document.getElementById('inputImage').defaultValue;
                             document.getElementById('inputImage').value = "";

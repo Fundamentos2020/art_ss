@@ -36,6 +36,24 @@
     padding-bottom: 5px;
 }
 
+#pubDescription {
+    border-color: white;
+    width: 100%;
+}
+
+.btn-buy {
+    background-color: #337AB7;
+    text-align: center;
+    align-items: center;
+    border:#337AB7;
+    border-radius: 4px;
+    align-content: center;
+    padding-left: 10px;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .full-menu {
     display: block;
     background-color: black;
@@ -190,20 +208,25 @@ a {
 /*---------------------------------------------Botones------------------------------*/
 
 .btn-submit {
-    background-color: #3376AE;
+    background-color: #337AB7;
+    text-align: center;
+    align-items: center;
+    border:#337AB7;
+    border-radius: 0.8em;
+    align-content: center;
+    padding-left: 10px;
     color: white;
     padding: 1em;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    border-radius: 0.8em;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
 }
 
 .btn-submit:hover {
     background-color: rgb(64, 125, 175);
     color: white;
     padding: 1em;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
     border-radius: 0.8em;
 }
 
