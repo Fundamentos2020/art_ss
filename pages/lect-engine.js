@@ -73,7 +73,7 @@ function dateFilter() {
                     }
                     if(obras[c].fecha_alta.substr(5, 2)==m) {
                         var d;
-                        if((f.getMonth()+1)<10) {
+                        if((f.getDate()+1)<10) {
                             d='0'+String(f.getDate());
                         }
                         else {
