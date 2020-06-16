@@ -176,7 +176,7 @@ function getByVendedorId($vendedor_id) {
 
     try {
         $connection = DB::dbConnect();
-        $query = $connection->prepare('SELECT * FROM publicaciones WHERE vendedor_id = :vendedor_id');
+        $query = $connection->prepare('SELECT * FROM publicaciones WHERE vendedor_id = :vendedor_id AND comprador_id is not NULL');
         $query->bindParam(':vendedor_id', $vendedor_id, PDO::PARAM_INT);
         //$query->bindParam(':usuario_id', $consulta_idUsuario, PDO::PARAM_INT);
         $query->execute();
@@ -188,15 +188,23 @@ function getByVendedorId($vendedor_id) {
             $publicacion = new Publicacion($row['id'], $row['nombre'], $row['descripcion'], $row['stock'], $row['vendedor_id'], $row['comprador_id'], $row['fecha_alta'], 
             $row['precio'], $row['vistas'], $row['categoria']);
             $publicacion->setImagen("data:imagen/png;base64, ".base64_encode($row['imagen']));
-            if ($publicacion->getComprador()!==null) {
-                $query=$connection->prepare('SELECT nombre FROM usuarios WHERE id=:comprador_id');
-                $query->bindParam(':comprador_id', $row['comprador_id'], PDO::PARAM_INT);
-                $query->execute();
-                $r=$query->fetch(PDO::FETCH_ASSOC);
-                $publicacion->setNombreComprador($r['nombre']);
-            }
+            //print();
             $publicaciones[] = $publicacion->getArray();
         }
+
+        //$copyPublicaciones = $publicaciones;
+
+        // foreach($publicaciones as $publicacion) {
+        //     $comprador_id = $publicacion['comprador_id'];
+        //     //if ($publicacion->getComprador()!==null) {
+        //         $query=$connection->prepare('SELECT nombre FROM usuarios WHERE id=:comprador_id');
+        //         $query->bindParam(':comprador_id', $comprador_id, PDO::PARAM_INT);
+        //         $query->execute();
+        //         $row=$query->fetch(PDO::FETCH_ASSOC);
+        //         print_r($query->fetch(PDO::FETCH_ASSOC));
+        //         $publicacion['nombre_comprador'] = $row['nombre'];
+        //     //}
+        // }
 
         $returnData = array();
         $returnData['total_registros'] = $rowCount;

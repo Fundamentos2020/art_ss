@@ -14,7 +14,7 @@ class Publicacion {
     private $_vistas;
     private $_categoria;
     private $_imagen;
-    private $_nomComprador;
+    public $_nomComprador;
     private $_nomVendedor;
 
     public function __construct($id, $nombre, $descripcion, $stock, $vendedor, $comprador, $fecha, $precio, $vistas, $categoria) {

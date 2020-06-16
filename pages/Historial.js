@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', function () {
                                 <div class="col-m_8 col_12 pad9">
                                     <h1>${elem.nombre}</h1>
                                     <br>
-                                    <h4>Comprador: ${elem.nombre_comprador}</h4>
+                                    <h4>Vendido</h4>
                                     <h4>Monto pagado: $${elem.precio}</h4>
                                 </div>
                                 <div class="col_11p5">
