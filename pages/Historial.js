@@ -4,6 +4,7 @@ const list=document.getElementById('List');
 window.addEventListener('DOMContentLoaded', function () {
     var info=JSON.parse(localStorage.getItem('l_sesion'));
     let inyect='';
+    //console.log("Entro");
     if (info!==null) {
         var obras=[]
         if (filter=="Historial de ventas") {
@@ -11,10 +12,10 @@ window.addEventListener('DOMContentLoaded', function () {
                 if(data !== undefined) {
                     obras=data.data.res;
                     obras.forEach(function(elem) {
-                        //console.log(elem);
+                        console.log(elem);
                         fecha=extraeFecha(elem.fecha_alta);
                         if(elem.comprador_id!==null) {
-                            //console.log("Entro");
+                            console.log("Entro");
                             inyect+=`
                             <div class="row adapt" style="background-color: grey; border: solid black;">
                                 <div class="t1 fondo bf4 col-m_2p5 col_12" style="background-image: url('${elem.imagen}');">
@@ -38,6 +39,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 else {
                     alert("No se pudieron obtener las ventas");
                 }
+                list.innerHTML+=inyect;
             })
         }
         else {
@@ -45,7 +47,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 if(data !== undefined) {
                     obras=data.data.res;
                     obras.forEach(function(elem) {
-                        //console.log(elem);
+                        console.log(elem);
                         fecha=extraeFecha(elem.fecha_alta);
                         if(elem.comprador_id!==null) {
                             //console.log("Entro");
@@ -56,7 +58,7 @@ window.addEventListener('DOMContentLoaded', function () {
                                 <div class="col-m_8 col_12 pad9">
                                     <h1>${elem.nombre}</h1>
                                     <br>
-                                    <h4>Comprador: ${elem.nombre_vendedor}</h4>
+                                    <h4>Vendedor: ${elem.nombre_vendedor}</h4>
                                     <h4>Monto pagado: $${elem.precio}</h4>
                                 </div>
                                 <div class="col_11p5">
@@ -72,15 +74,14 @@ window.addEventListener('DOMContentLoaded', function () {
                 else {
                     alert("No se pudieron obtener las compras");
                 }
+                list.innerHTML+=inyect;
             })
         }
-        list.innerHTML+=inyect;
     }
     else {
         alert("No hay ninguna sesion iniciada");
     }
 });
-
 
 function extraeFecha(fecha) {
     var d=fecha[8]+fecha[9];

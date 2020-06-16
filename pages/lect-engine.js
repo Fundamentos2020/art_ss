@@ -189,14 +189,14 @@ function sort() {
     obras=JSON.parse(localStorage.getItem('products'));
     switch (op.value) {
         case '0':
-            insertion(obras);
-            break;
-        case '1':
             arr=[];
             for(c=obras.length-1;c>=0;c--) {
                 arr.push(obras[c]);
             }
             insertion(arr);
+            break;
+        case '1':
+            insertion(obras);
             break;
         case '2':
             for(c=0;c<obras.length-1;c++) {
