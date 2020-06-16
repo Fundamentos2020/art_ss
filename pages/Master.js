@@ -48,6 +48,9 @@ sesion.addEventListener('click', function(e) {
             }
         });
         localStorage.removeItem('l_sesion');
+        var carrito = localStorage.getItem('carrito');
+        carrito = "";
+        localStorage.setItem('carrito', carrito);
     }
 });
 
@@ -67,6 +70,9 @@ sesion2.addEventListener('click', function(e) {
             }
         });
         localStorage.removeItem('l_sesion');
+        var carrito = localStorage.getItem('carrito');
+        carrito = "";
+        localStorage.setItem('carrito', carrito);
     }
 });
 
