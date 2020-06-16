@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/stylesGeneral.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Blinker' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <style>
+    *{
+        font-family: 'Blinker';font-size: 16px;
+    }
+    </style>
+    <title>Sign in ART_SS</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="top-menu">
+            <div class="img-logo">
+                <label for="" class="title-page">ART_SS</label>
+            </div>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="col_12style logo"></div>
+        <div class="col-m_4 col_12style content-form2">
+            <form class="form" id="signIn">
+                <label for="">Email</label>
+                <input type="email" name="email" required>
+                <label for="">Nombre de usaurio</label>
+                <input type="text" name="nombre" required>
+                <label for="">Contraseña</label>
+                <input type="password" name="contraseña" id="Contrasena" required>
+                <label for="">Pais</label>
+                <input type="text" name="pais" required>
+                <label for="">Calle</label>
+                <input type="text" name="calle" required>
+                <label for="">Colonia</label>
+                <input type="text" name="colonia" required>
+                <label for="">Numero de casa</label>
+                <input type="number" name="numero" required>
+                <label for="">CP</label>
+                <input type="number" name="CP" required>
+                <label for="">Estado</label>
+                <input type="text" name="estado" required>
+                <label for="">Tipo de usaurio</label>
+                <select name="user-type">
+                    <option value="user-buyer">Comprador</option>
+                    <option value="user-seller">Vendedor</option>
+                    <option value="user-buyandsell">Comprador/Vendedor</option>
+                </select>
+                <button type="submit" class="btn-submit">Sign in</button>
+            </form>
+        </div>
+    </div>
+    <!--<script src="pages/Master.js"></script>-->
+    <script src="../pages/userInsert.js"></script>
+</body>
+</html>

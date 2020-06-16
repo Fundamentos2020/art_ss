@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+    <link rel="stylesheet" href="css/catalog_plant.css">
+    <link rel="stylesheet" href="css/stylesGeneral.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Blinker' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/4c6df665da.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header col-m_12 col-12">
+        <div class="full-menu">
+            <div class="img-logo">
+                <a href="index.html"><label for="" class="title-page" style="font-family: 'Caveat';">ART_SS</label></a>
+            </div>
+            <div class="search-user">
+                <!-- <input type="text" placeholder="Ingrese alguna busqueda" id="search-in"> -->
+                <a href="Agregar_Producto.html"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                <a href="Detalle_Compra.html"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                <a href="Historial_compras.html"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <a href="Historial_ventas.html"><i class="fa fa-history" aria-hidden="true"></i></a>
+                <a href="Administrador.html"><i class="fa fa-user" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="left-menu">
+        <i class="fa fa-bars" id="items" aria-hidden="true"></i>
+        <ul id="menu-item">
+            <li class="item">
+                <div>
+                    <span class="item-menu-text">CATEGORIAS</span>
+                </div>
+            </li>
+            <li class="item">
+                <div>
+                    <a href="Ilustraciones.html"><span class="item-menu-text"><i class="fa fa-pencil" aria-hidden="true"></i>Ilustraciones</span></a>
+                </div>
+            </li>
+            <li class="item">
+                <div>
+                    <a href="Dibujos.html"><span class="item-menu-text"><i class="fa fa-book" aria-hidden="true"></i>Dibujos</span></a>
+                </div>
+            </li>
+            <li class="item">
+                <div>
+                    <a href="Fotografia.html"><span class="item-menu-text"><i class="fa fa-camera" aria-hidden="true"></i>Fotografia</span></a>
+                </div>
+			</li>
+			<li class="item">
+                <div>
+                    <a href="Pintura.html"><span class="item-menu-text"><i class="fa fa-paint-brush" aria-hidden="true"></i>Pintura</span></a>
+                </div>
+            </li>
+            <li class="item">
+                <div id="inFin">
+                    <a href="Login.html"><span class="item-menu-text"><i class="fa fa-sign-in" aria-hidden="true"></i>INICIAR SESION</span></a>
+                </div>
+            </li>
+            <li class="item">
+				<div id="disableCount">
+
+				</div>
+			</li>
+			<li class="item">
+                <div>
+                    <a href="SignIn.html"><span class="item-menu-text"><i class="fa fa-user-plus" aria-hidden="true"></i>REGISTRARSE</span></a>
+                </div>
+			</li>
+            <li class="item">
+                <div>
+                    <span class="item-menu-text">CONTACTO</span>
+                </div>
+			</li>
+        </ul>
+
+        <ul id="menu-item-icon">
+			<li class="item">
+                <div>
+                    <span class="item-menu-text"></span>
+                </div>
+            </li>
+            <li class="item">
+                <div>
+                    <a href="Ilustraciones.html"><span class="item-menu-text"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
+                </div>
+            </li>
+            <li class="item">
+                <div>
+                    <a href="Dibujos.html"><span class="item-menu-text"><i class="fa fa-book" aria-hidden="true"></i></span></a>
+                </div>
+            </li>
+            <li class="item">
+                <div>
+                    <a href="Fotografia.html"><span class="item-menu-text"><i class="fa fa-camera" aria-hidden="true"></i></span></a>
+                </div>
+			</li>
+			<li class="item">
+                <div>
+                    <a href="Pintura.html"><span class="item-menu-text"><i class="fa fa-paint-brush" aria-hidden="true"></i></span></a>
+                </div>
+            </li>
+            <li class="item">
+                <div id="inFin2">
+                    <a href="Login.html"><span class="item-menu-text"><i class="fa fa-sign-in" aria-hidden="true"></i></span></a>
+                </div>
+			</li>
+			<li class="item">
+                <div>
+                    <a href="SignIn.html"><span class="item-menu-text"><i class="fa fa-user-plus" aria-hidden="true"></i></span></a>
+                </div>
+			</li>
+            <li class="item">
+                <div>
+                    <span class="item-menu-text"></span>
+                </div>
+			</li>
+        </ul>
+	</div>
+
+    <div class="content-page">
+        <div class="row adapt">
+            <div class="col-m_6 col_12">
+                <div class="title2">
+                    Total de visitas de la pagina
+                    <br><br>
+                    <div class="graphMenu">
+                        <div>
+                            <button class="boton" onclick="change1(1)">Dias</button>
+                        </div>
+                        <div>
+                            <button class="boton" onclick="change1(2)">Semanas</button>
+                        </div>
+                        <div>
+                            <button class="boton" onclick="change1(3)">Meses</button>
+                        </div>
+                        <div>
+                            <button class="boton" onclick="change1(4)">Años</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="grafica1">
+                    <img src="images/DiasP.PNG" class="adjGraf1 adjGraf2 pad17">
+                </div>
+            </div>
+            <div class="col-m_6 col_12">
+                <div class="title2">
+                    Visitas por categoria
+                    <br><br>
+                    <div class="graphMenu">
+                        <div>
+                            <button class="boton" onclick="change3(1)">Dias</button>
+                        </div>
+                        <div>
+                            <button class="boton" onclick="change3(2)">Semanas</button>
+                        </div>
+                        <div>
+                            <button class="boton" onclick="change3(3)">Meses</button>
+                        </div>
+                        <div>
+                            <button class="boton" onclick="change3(4)">Años</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div style="display: flex;" class="men1 men2 col-m_1 col_12 pad18">
+                        <div onclick="change2(1)">
+                            <i class="fas fb fa-pencil-alt"></i>
+                        </div>
+                        <div onclick="change2(2)">
+                            <i class="fas fb fa-book"></i>
+                        </div>
+                        <div onclick="change2(3)">
+                            <i class="fas fb fa-camera"></i>
+                        </div>
+                        <div onclick="change2(4)">
+                            <i class="fas fb fa-paint-brush"></i>
+                        </div>
+                    </div>
+                    <div id="grafica2" style="padding-bottom: 100px;">
+                        <img src="images/DiasI.PNG" class="adjGraf3 adjGraf2">
+                    </div>
+                </div>
+            </div>
+            <div class="title2">
+                Tendencias de busqueda
+                <div style="font-size: large;">
+                    <ol type="1" style="display: flex; flex-direction: column; padding-bottom: 100px;">
+                        <li class="pad19">bocetos</li>
+                        <li class="pad19">china</li>
+                        <li class="pad19">space</li>
+                        <li class="pad19">aves</li>
+                        <li class="pad19">star wars</li>
+                        <li class="pad19">comic books</li>
+                        <li class="pad19">ferrari</li>
+                        <li class="pad19">cars</li>
+                        <li class="pad19">streets</li>
+                        <li class="pad19">marvel</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <script>
+            var a=1;
+            var b=1;
+
+            function change1(time) {
+                var panel=document.getElementById('grafica1');
+                switch (time) {
+                    case 1: panel.innerHTML=`
+                                <img src="images/DiasP.PNG" class="adjGraf1 adjGraf2 pad17">
+                            `;
+                            break;
+                    case 2: panel.innerHTML=`
+                                <img src="images/SemanasP.PNG" class="adjGraf1 adjGraf2 pad17">
+                            `;
+                            break;
+                    case 3: panel.innerHTML=`
+                                <img src="images/MesesP.PNG" class="adjGraf1 adjGraf2 pad17">
+                            `;
+                            break;
+                    case 4: panel.innerHTML=`
+                                <img src="images/AñosP.PNG" class="adjGraf1 adjGraf2 pad17">
+                            `;
+                            break;
+                }
+            }
+
+            function change2(val) {
+                a=val;
+                change4();
+            }
+
+            function change3(time) {
+                b=time;
+                change4();
+            }
+
+            function change4() {
+                var panel=document.getElementById('grafica2');
+                switch (a) {
+                    case 1: switch (b) {
+                                case 1: panel.innerHTML=`
+                                            <img src="images/DiasI.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                                case 2: panel.innerHTML=`
+                                            <img src="images/SemanasI.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                                case 3: panel.innerHTML=`
+                                            <img src="images/MesesI.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                                case 4: panel.innerHTML=`
+                                            <img src="images/AñosI.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                            }
+                            break;
+                    case 2: switch (b) {
+                                case 1: panel.innerHTML=`
+                                            <img src="images/DiasD.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                                case 2: panel.innerHTML=`
+                                            <img src="images/SemanasD.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                                case 3: panel.innerHTML=`
+                                            <img src="images/MesesD.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                                case 4: panel.innerHTML=`
+                                            <img src="images/AñosD.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                            }
+                            break;
+                    case 3: switch (b) {
+                                case 1: panel.innerHTML=`
+                                            <img src="images/DiasF.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                                case 2: panel.innerHTML=`
+                                            <img src="images/SemanasF.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                                case 3: panel.innerHTML=`
+                                            <img src="images/MesesF.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                                case 4: panel.innerHTML=`
+                                            <img src="images/AñosF.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                            }
+                            break;
+                    case 4: switch (b) {
+                                case 1: panel.innerHTML=`
+                                            <img src="images/DiasPi.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                                case 2: panel.innerHTML=`
+                                            <img src="images/SemanasPi.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                                case 3: panel.innerHTML=`
+                                            <img src="images/MesesPi.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                                case 4: panel.innerHTML=`
+                                            <img src="images/AñosPi.PNG" class="adjGraf3 adjGraf2">
+                                        `;
+                                        break;
+                            }
+                            break;
+                }
+            }
+        </script>
+    </div>
+    <script src="../pages/Master.js"></script>
+</body>
+</html>
