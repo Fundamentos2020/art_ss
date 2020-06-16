@@ -44,7 +44,7 @@ newClientData.addEventListener('submit', function(e) {
             console.log(json);
             var xhr=new XMLHttpRequest();
             xhr.withCredentials=true;
-            xhr.open("POST", "./clientes");
+            xhr.open("POST", "../clientes");
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send(JSON.stringify(json));
             xhr.addEventListener("readystatechange", function() {
@@ -62,7 +62,7 @@ newClientData.addEventListener('submit', function(e) {
                             };
                             var xhrT=new XMLHttpRequest();
                             xhrT.withCredentials=true;
-                            xhrT.open("POST", "./tarjetas");
+                            xhrT.open("POST", "../tarjetas");
                             xhrT.setRequestHeader("Content-Type", "application/json");
                             xhrT.send(JSON.stringify(json));
                             xhrT.addEventListener("readystatechange", function() {
@@ -82,7 +82,7 @@ newClientData.addEventListener('submit', function(e) {
                                     "usuario_id": userID, 
                                     "compras_id": null
                                 };
-                                xhrR.open("POST", "./compradores");
+                                xhrR.open("POST", "../compradores");
                                 xhrR.setRequestHeader("Content-Type", "application/json");
                                 xhrR.send(JSON.stringify(json));
                                 xhrR.addEventListener("readystatechange", function() {
@@ -100,7 +100,7 @@ newClientData.addEventListener('submit', function(e) {
                                     "usuario_id": userID, 
                                     "publicaciones_id": null
                                 };
-                                xhr.open("POST", "./vendedores");
+                                xhr.open("POST", "../vendedores");
                                 xhr.setRequestHeader("Content-Type", "application/json");
                                 xhr.send(JSON.stringify(json));
                                 xhr.addEventListener("readystatechange", function() {
@@ -114,7 +114,7 @@ newClientData.addEventListener('submit', function(e) {
                             if(ready===true) {
                                 var xhttp=new XMLHttpRequest();
                                 xhttp.withCredentials=true;
-                                xhttp.open("POST", "./sesiones", true);
+                                xhttp.open("POST", "../sesiones", true);
                                 xhttp.setRequestHeader("Content-Type", "application/json");
                                 xhttp.onload=function() {
                                     if (this.status == 201) {

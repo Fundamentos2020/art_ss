@@ -63,7 +63,7 @@ async function save() {
                         method: 'POST',
                         body: send
                     };
-                    let image_name=await fetch("./Controllers/imageController.php", param)
+                    let image_name=await fetch("../Controllers/imageController.php", param)
                         .then( response => response.json() )
                         .then( data => { return data ; } )
                         .catch( error => localStorage.setItem('error', error));

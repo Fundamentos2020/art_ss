@@ -2,7 +2,7 @@ function errase() {
     var tokens=JSON.parse(localStorage.getItem('l_sesion'));
     var xhr=new XMLHttpRequest();
     xhr.withCredentials = true;
-    xhr.open("PATCH", "./usuarios", true);
+    xhr.open("PATCH", "../usuarios", true);
     //console.log(tokens.token);
     xhr.setRequestHeader("Authorization", tokens.token);
     xhr.setRequestHeader("Content-Type", "application/json");

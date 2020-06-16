@@ -31,7 +31,7 @@ newUserData.addEventListener('submit', function(e) {
     var idRol=0;
     var xhrP=new XMLHttpRequest();
     xhrP.withCredentials=true;
-    xhrP.open("POST", "./roles/"+r);
+    xhrP.open("POST", "../roles/"+r);
     xhrP.addEventListener("readystatechange", function() {
         if(this.readyState===4) {
             var rol=JSON.parse(this.responseText);
@@ -54,7 +54,7 @@ newUserData.addEventListener('submit', function(e) {
             };
             var xhr=new XMLHttpRequest();
             xhr.withCredentials=true;
-            xhr.open("POST", "./usuarios");
+            xhr.open("POST", "../usuarios");
             xhr.setRequestHeader("Content-Type", "application/json");
             //console.log(json);
             xhr.send(JSON.stringify(json));

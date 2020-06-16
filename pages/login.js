@@ -5,7 +5,7 @@ logIn.addEventListener('submit', function(e) {
     var form=new FormData(logIn);
     var xhttp=new XMLHttpRequest();
     xhttp.withCredentials=true;
-    xhttp.open("POST", "./sesiones", true);
+    xhttp.open("POST", "../sesiones", true);
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.onload = function() {
         if (this.status == 201) {

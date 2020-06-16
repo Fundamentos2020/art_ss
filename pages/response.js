@@ -36,33 +36,33 @@ async function REQUEST(url, method, params) {
 
 //SAVES-POST
 function savePublicacion(jParams) {
-    return REQUEST(`./Controllers/publicacionesController.php`, 'POST', jParams);
+    return REQUEST(`../Controllers/publicacionesController.php`, 'POST', jParams);
 }
 
 function savePedido(jParams) {
-    return REQUEST(`./Controllers/pedidosController.php`, 'POST', jParams);
+    return REQUEST(`../Controllers/pedidosController.php`, 'POST', jParams);
 }
 
 //UPDATES-PUT-PATCH
 function updatePublicacion(jParams) {
-    return REQUEST(`./Controllers/publicacionesController.php`, 'PATCH', jParams);
+    return REQUEST(`../Controllers/publicacionesController.php`, 'PATCH', jParams);
 }
 
 //GETS
 function getPublicacionById(jParams) {
-    return REQUEST(`./Controllers/publicacionesController.php?id=${jParams.id}`, 'GET');
+    return REQUEST(`../Controllers/publicacionesController.php?id=${jParams.id}`, 'GET');
 }
 
 function getPublicacionesByCategoria(jParams) {
-    return REQUEST(`./Controllers/publicacionesController.php?categoria=${jParams.categoria}`, 'GET');
+    return REQUEST(`../Controllers/publicacionesController.php?categoria=${jParams.categoria}`, 'GET');
 }
 
 function getPublicacionesByVendedor(jParams) {
-    return REQUEST(`./Controllers/publicacionesController.php?vendedor_id=${jParams.vendedor_id}`, 'GET', jParams);
+    return REQUEST(`../Controllers/publicacionesController.php?vendedor_id=${jParams.vendedor_id}`, 'GET', jParams);
 }
 
 function getPublicacionesByComprador(jParams) {
-    return REQUEST(`./Controllers/publicacionesController.php?comprador_id=${jParams.comprador_id}`, 'GET', jParams);
+    return REQUEST(`../Controllers/publicacionesController.php?comprador_id=${jParams.comprador_id}`, 'GET', jParams);
 }
 
 function getPedidosByComprador(jParams) {
